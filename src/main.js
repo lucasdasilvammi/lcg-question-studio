@@ -9,17 +9,27 @@ const CSV_COLUMNS = [
   'id', 'question', 'answer', 'wrong_answers', 'explanation', 'category',
   'difficulty', 'milestones', 'mode', 'challenge_type', 'status', 'tags',
   'source', 'source_page', 'revision_notes', 'favorite',
-  'confidence', 'created_at', 'updated_at',
+  'confidence', 'lucas_validation', 'awen_validation', 'created_at', 'updated_at',
 ]
 
 const DIFFICULTIES = ['Pour les nuls', 'Facile', 'Moyen', 'Difficile', 'Expert']
 const CATEGORIES = ['Culture graphique', 'Signe et couleur', 'Typographie', 'Logo', 'Composition', 'Production']
 const CHALLENGES = ['Buzzer', 'Vrai/Faux', 'Chiffres']
-const STATUS_ORDER = { pending: 0, review: 1, validated: 2 }
+const REVIEWERS = ['Lucas', 'Awen']
+const STATUS_ORDER = { pending: 0, review: 1, approved: 2, validated: 3 }
 const STATUSES = {
   pending: 'En attente',
   review: 'En révision',
+  approved: 'Validation croisée',
   validated: 'Validée',
+}
+const FILTER_LABELS = {
+  all: 'Toutes les questions',
+  pending: 'En attente',
+  review: 'En révision',
+  'approved-lucas': 'Validées par Lucas',
+  'approved-awen': 'Validées par Awen',
+  validated: 'Validées par les deux',
 }
 const CATEGORY_ASSETS = {
   'Culture graphique': 'culture',
@@ -101,6 +111,7 @@ function saveQuestions() {
 
 function normalizeQuestion(input = {}) {
   const createdAt = input.createdAt || input.created_at || now()
+  const updatedAt = input.updatedAt || input.updated_at || createdAt
   const mode = input.mode === 'Défi' ? 'Défi' : 'Quiz'
   const requestedChallenge = input.challengeType || input.challenge_type
   const challengeType = mode === 'Défi' && CHALLENGES.includes(requestedChallenge)
@@ -112,6 +123,32 @@ function normalizeQuestion(input = {}) {
   const wrongAnswerLimit = mode === 'Quiz' || challengeType === 'Buzzer'
     ? 2
     : challengeType === 'Vrai/Faux' ? 1 : 0
+  const rawApprovals = Array.isArray(input.approvals)
+    ? input.approvals
+    : [
+        input.lucasValidation || input.lucas_validation
+          ? { reviewer: 'Lucas', at: input.lucasValidation || input.lucas_validation }
+          : null,
+        input.awenValidation || input.awen_validation
+          ? { reviewer: 'Awen', at: input.awenValidation || input.awen_validation }
+          : null,
+      ].filter(Boolean)
+  let approvals = rawApprovals
+    .filter((approval) => REVIEWERS.includes(approval?.reviewer))
+    .filter((approval, index, list) => list.findIndex((item) => item.reviewer === approval.reviewer) === index)
+    .map((approval) => ({ reviewer: approval.reviewer, at: approval.at || updatedAt }))
+  const hasExplicitApprovalData = Array.isArray(input.approvals)
+    || input.lucasValidation !== undefined || input.lucas_validation !== undefined
+    || input.awenValidation !== undefined || input.awen_validation !== undefined
+  if (input.status === 'validated' && !hasExplicitApprovalData && approvals.length === 0) {
+    approvals = REVIEWERS.map((reviewer) => ({ reviewer, at: updatedAt }))
+  }
+  const requestedStatus = Object.hasOwn(STATUSES, input.status) ? input.status : 'pending'
+  if (requestedStatus === 'review') approvals = []
+  const status = requestedStatus === 'review'
+    ? 'review'
+    : approvals.length === REVIEWERS.length ? 'validated'
+      : approvals.length === 1 ? 'approved' : 'pending'
   return {
     id: input.id || uid(),
     question: input.question || '',
@@ -123,7 +160,8 @@ function normalizeQuestion(input = {}) {
     milestones: Number(input.milestones) || 1,
     mode,
     challengeType,
-    status: Object.hasOwn(STATUSES, input.status) ? input.status : 'pending',
+    status,
+    approvals,
     tags: Array.isArray(input.tags) ? input.tags : splitPipe(input.tags),
     source: input.source || '',
     sourcePage: input.sourcePage || input.source_page || '',
@@ -132,7 +170,7 @@ function normalizeQuestion(input = {}) {
     confidence: Number(input.confidence) || 0,
     history: Array.isArray(input.history) ? input.history : [],
     createdAt,
-    updatedAt: input.updatedAt || input.updated_at || createdAt,
+    updatedAt,
   }
 }
 
@@ -159,7 +197,7 @@ function allTags() {
 function filteredQuestions() {
   return state.questions
     .filter((question) => {
-      if (state.statusFilter !== 'all' && question.status !== state.statusFilter) return false
+      if (!matchesStatusFilter(question, state.statusFilter)) return false
       if (state.categoryFilter !== 'all' && question.category !== state.categoryFilter) return false
       if (state.difficultyFilter !== 'all' && question.difficulty !== state.difficultyFilter) return false
       if (state.tagFilter !== 'all' && !(question.tags || []).includes(state.tagFilter)) return false
@@ -168,6 +206,31 @@ function filteredQuestions() {
     .sort((left, right) =>
       STATUS_ORDER[left.status] - STATUS_ORDER[right.status]
       || new Date(right.updatedAt) - new Date(left.updatedAt))
+}
+
+function matchesStatusFilter(question, filter) {
+  if (filter === 'all') return true
+  if (filter === 'approved-lucas') return question.status === 'approved' && hasApproval(question, 'Lucas')
+  if (filter === 'approved-awen') return question.status === 'approved' && hasApproval(question, 'Awen')
+  return question.status === filter
+}
+
+function hasApproval(question, reviewer) {
+  return (question.approvals || []).some((approval) => approval.reviewer === reviewer)
+}
+
+function statusLabel(question) {
+  if (question.status !== 'approved') return STATUSES[question.status]
+  const reviewer = REVIEWERS.find((name) => hasApproval(question, name))
+  return reviewer ? `Validée par ${reviewer}` : STATUSES.approved
+}
+
+function approvalMarkup(question) {
+  return `<div class="approval-row" aria-label="Validations croisées">
+    ${REVIEWERS.map((reviewer) => `<span class="approval-chip ${hasApproval(question, reviewer) ? 'approved' : ''}">
+      ${hasApproval(question, reviewer) ? '✓' : '○'} ${reviewer}
+    </span>`).join('')}
+  </div>`
 }
 
 function duplicateIds() {
@@ -213,9 +276,10 @@ function render() {
   const app = document.querySelector('#app')
   const visible = filteredQuestions()
   const duplicates = duplicateIds()
-  const statusCount = (status) => state.questions.filter((question) => status === 'all' || question.status === status).length
+  const statusCount = (status) => state.questions.filter((question) => matchesStatusFilter(question, status)).length
   const validated = statusCount('validated')
   const review = statusCount('review')
+  const crossValidation = statusCount('approved-lucas') + statusCount('approved-awen')
   const total = state.questions.length
   const favorites = state.questions.filter((question) => question.favorite).length
   const warnings = state.questions.filter(needsVerification).length
@@ -244,6 +308,8 @@ function render() {
               ${statusFilterButton('all', 'Toutes', statusCount('all'))}
               ${statusFilterButton('pending', 'En attente', statusCount('pending'))}
               ${statusFilterButton('review', 'En révision', review)}
+              ${statusFilterButton('approved-lucas', 'Validées par Lucas', statusCount('approved-lucas'))}
+              ${statusFilterButton('approved-awen', 'Validées par Awen', statusCount('approved-awen'))}
               ${statusFilterButton('validated', 'Validées', validated)}
             </div>
             <button class="status-help-button" data-action="status-help">Comprendre les états</button>
@@ -273,7 +339,7 @@ function render() {
         <main class="main">
           <div class="page-head">
             <div>
-              <p class="eyebrow">${state.statusFilter === 'all' ? 'Toutes les questions' : STATUSES[state.statusFilter]}</p>
+              <p class="eyebrow">${FILTER_LABELS[state.statusFilter]}</p>
               <h1>Atelier des questions</h1>
               <p class="subhead">Relisez, classez et validez votre matière avant export.</p>
             </div>
@@ -286,6 +352,7 @@ function render() {
           <div class="summary-strip">
             <div class="summary-item"><strong>${total}</strong><span>questions au total</span></div>
             <div class="summary-item"><strong>${validated}</strong><span>prêtes à exporter</span></div>
+            <div class="summary-item"><strong>${crossValidation}</strong><span>avec une validation</span></div>
             <div class="summary-item"><strong>${review}</strong><span>à reformuler</span></div>
             <div class="summary-item"><strong>${duplicates.size + warnings}</strong><span>alertes à vérifier</span></div>
           </div>
@@ -345,7 +412,7 @@ function selectionMarkup() {
       <div class="selection-actions">
         <button class="button small" data-bulk="pending">Mettre en attente</button>
         <button class="button small" data-bulk="review">Mettre en révision</button>
-        <button class="button small" data-bulk="validated">Valider</button>
+        <button class="button small primary" data-action="validate-selected">Ajouter une validation</button>
         <button class="button small danger" data-action="delete-selected">Supprimer</button>
         <button class="button small" data-action="clear-selection">Annuler</button>
       </div>
@@ -375,7 +442,8 @@ function questionCard(question, duplicate) {
       </div>
       <div class="card-side">
         <div class="card-side-top">
-          <span class="status ${question.status}">${STATUSES[question.status]}</span>
+          <span class="status ${question.status}">${statusLabel(question)}</span>
+          ${approvalMarkup(question)}
           <div class="card-meta">
             ${question.source ? `<span>Source : ${escapeHtml(question.source)}${question.sourcePage ? `, p. ${escapeHtml(question.sourcePage)}` : ''}</span>` : ''}
           </div>
@@ -429,6 +497,7 @@ function modalMarkup() {
   if (state.modal.type === 'history') return historyModalMarkup(state.modal.id)
   if (state.modal.type === 'export') return exportModalMarkup()
   if (state.modal.type === 'status-help') return statusHelpModalMarkup()
+  if (state.modal.type === 'validate') return validationModalMarkup(state.modal.ids)
   return ''
 }
 
@@ -484,9 +553,13 @@ function editModalMarkup(id, reviewMode) {
               <label for="challengeType">Type de défi</label>
               <select id="challengeType" name="challengeType">${CHALLENGES.map((value) => option(value, question.challengeType === 'Aucun' ? 'Buzzer' : question.challengeType)).join('')}</select>
             </div>
+            <input type="hidden" name="status" value="${reviewMode ? 'review' : question.status}" />
             <div class="field">
-              <label for="status">État</label>
-              <select id="status" name="status">${Object.entries(STATUSES).map(([value, label]) => option(value, reviewMode ? 'review' : question.status).replace(`>${value}<`, `>${label}<`)).join('')}</select>
+              <label>État actuel</label>
+              <div class="form-status">
+                <span class="status ${reviewMode ? 'review' : question.status}">${reviewMode ? STATUSES.review : statusLabel(question)}</span>
+                ${approvalMarkup(question)}
+              </div>
             </div>
             <div class="field check-field">
               <input id="favorite" name="favorite" type="checkbox" ${question.favorite ? 'checked' : ''} />
@@ -548,6 +621,7 @@ function previewModalMarkup(id) {
 function statsModalMarkup() {
   const validated = state.questions.filter((question) => question.status === 'validated').length
   const review = state.questions.filter((question) => question.status === 'review').length
+  const crossValidation = state.questions.filter((question) => question.status === 'approved').length
   const chart = (values, field) => {
     const rows = values.map((value) => ({ value, count: state.questions.filter((question) => question[field] === value).length }))
     const max = Math.max(...rows.map(({ count }) => count), 1)
@@ -560,6 +634,7 @@ function statsModalMarkup() {
         <div class="stat-grid">
           <div class="stat-block"><strong>${state.questions.length}</strong><span>questions</span></div>
           <div class="stat-block"><strong>${state.questions.length ? Math.round(validated / state.questions.length * 100) : 0}%</strong><span>validées</span></div>
+          <div class="stat-block"><strong>${crossValidation}</strong><span>avec une validation</span></div>
           <div class="stat-block"><strong>${review}</strong><span>en révision</span></div>
         </div>
         <h3>Répartition par catégorie</h3>${chart(uniqueCategories(), 'category')}
@@ -576,13 +651,37 @@ function statusHelpModalMarkup() {
       <div class="modal-head"><div><p class="eyebrow">Workflow éditorial</p><h2>À quoi servent les états ?</h2></div><button class="close" data-action="close-modal">×</button></div>
       <div class="modal-body">
         <div class="status-guide">
-          <div class="status-guide-item pending"><span class="status pending">En attente</span><p>Question nouvellement créée ou importée. Elle attend ta première relecture et peut encore être modifiée librement.</p></div>
-          <div class="status-guide-item review"><span class="status review">En révision</span><p>La question a du potentiel, mais quelque chose doit changer. Ajoute une note précise pour demander à l’IA de la reformuler, de corriger les réponses ou d’ajuster sa difficulté.</p></div>
-          <div class="status-guide-item validated"><span class="status validated">Validée</span><p>La question est relue et prête. C’est le seul état autorisé dans l’export final destiné à l’application.</p></div>
+          <div class="status-guide-item pending"><span class="status pending">En attente</span><p>Question nouvellement créée ou importée. Elle n’a encore été approuvée ni par Lucas ni par Awen.</p></div>
+          <div class="status-guide-item review"><span class="status review">En révision</span><p>La question doit être corrigée ou reformulée. Le passage en révision annule les validations précédentes.</p></div>
+          <div class="status-guide-item approved"><span class="status approved">Validation croisée</span><p>Lucas ou Awen a approuvé la question. Elle attend encore la validation de l’autre personne.</p></div>
+          <div class="status-guide-item validated"><span class="status validated">Validée</span><p>Lucas et Awen ont tous les deux approuvé la question. C’est le seul état autorisé dans l’export final.</p></div>
         </div>
-        <p class="field-help">Ce ne sont pas des étapes obligatoires : tu peux passer directement une question d’En attente à Validée, ou renvoyer une question validée en révision.</p>
+        <p class="field-help">Une modification du contenu remet automatiquement la question en attente et annule les validations précédentes.</p>
       </div>
       <div class="modal-footer"><button class="button primary" data-action="close-modal">J’ai compris</button></div>
+    </div>
+  </div>`
+}
+
+function validationModalMarkup(ids) {
+  const questions = state.questions.filter((question) => ids.includes(question.id))
+  const label = questions.length > 1 ? `${questions.length} questions` : questions[0]?.id || 'Question'
+  return `<div class="modal-backdrop" data-close-modal>
+    <div class="modal narrow">
+      <div class="modal-head"><div><p class="eyebrow">Validation croisée</p><h2>Qui valide ?</h2></div><button class="close" data-action="close-modal">×</button></div>
+      <div class="modal-body">
+        <p style="margin-top:0"><b>${escapeHtml(label)}</b></p>
+        <p class="subhead">La première validation place la carte dans la file de validation croisée. La seconde la rend définitivement validée.</p>
+        <div class="reviewer-choice">
+          ${REVIEWERS.map((reviewer) => {
+            const alreadyApproved = questions.length > 0 && questions.every((question) => hasApproval(question, reviewer))
+            return `<button class="reviewer-button" data-approve-reviewer="${reviewer}" ${alreadyApproved ? 'disabled' : ''}>
+              <strong>${reviewer}</strong>
+              <span>${alreadyApproved ? 'Déjà validé' : `Valider par ${reviewer}`}</span>
+            </button>`
+          }).join('')}
+        </div>
+      </div>
     </div>
   </div>`
 }
@@ -652,6 +751,9 @@ function bindEvents() {
   document.querySelectorAll('[data-action]').forEach((button) => button.addEventListener('click', handleAction))
   document.querySelectorAll('[data-card-action]').forEach((button) => button.addEventListener('click', handleCardAction))
   document.querySelectorAll('[data-bulk]').forEach((button) => button.addEventListener('click', () => bulkStatus(button.dataset.bulk)))
+  document.querySelectorAll('[data-approve-reviewer]').forEach((button) => button.addEventListener('click', () => {
+    applyApproval(state.modal.ids, button.dataset.approveReviewer)
+  }))
   document.querySelectorAll('[data-export-scope]').forEach((button) => button.addEventListener('click', () => exportValidated(button.dataset.exportScope)))
   document.querySelectorAll('[data-restore-history]').forEach((button) => button.addEventListener('click', () => {
     restoreHistory(button.dataset.id, Number(button.dataset.restoreHistory))
@@ -677,6 +779,7 @@ function handleAction(event) {
   if (action === 'export-revisions') exportRevisions()
   if (action === 'stats') openModal({ type: 'stats' })
   if (action === 'status-help') openModal({ type: 'status-help' })
+  if (action === 'validate-selected') openModal({ type: 'validate', ids: [...state.selected] })
   if (action === 'close-modal') closeModal()
   if (action === 'clear-selection') { state.selected.clear(); render() }
   if (action === 'delete-selected') deleteSelected()
@@ -722,7 +825,7 @@ function handleCardAction(event) {
   if (action === 'preview') openModal({ type: 'preview', id })
   if (action === 'history') openModal({ type: 'history', id })
   if (action === 'review') openModal({ type: 'edit', id, reviewMode: true })
-  if (action === 'validate') updateStatus(id, 'validated')
+  if (action === 'validate') openModal({ type: 'validate', ids: [id] })
   if (action === 'delete') deleteQuestion(id)
 }
 
@@ -764,18 +867,34 @@ function saveForm(event) {
     createdAt: existing?.createdAt || now(),
     updatedAt: now(),
   })
+  const approvalsInvalidated = existing && hasApprovalSensitiveChanges(existing, updated)
+  if (data.status === 'review' || approvalsInvalidated) {
+    updated.approvals = []
+    updated.status = data.status === 'review' ? 'review' : 'pending'
+  }
   addHistory(
     updated,
     existing ? 'Question modifiée' : 'Question créée',
-    STATUSES[updated.status],
+    approvalsInvalidated
+      ? 'Contenu modifié · validations annulées'
+      : STATUSES[updated.status],
     questionSnapshot(existing),
   )
   if (existing) state.questions[state.questions.indexOf(existing)] = updated
   else state.questions.unshift(updated)
   saveQuestions()
   state.modal = null
-  showToast(existing ? 'Question mise à jour.' : 'Question créée.')
+  showToast(approvalsInvalidated ? 'Question mise à jour et validations annulées.' : existing ? 'Question mise à jour.' : 'Question créée.')
   render()
+}
+
+function hasApprovalSensitiveChanges(previous, next) {
+  if (!(previous.approvals || []).length) return false
+  const fields = [
+    'question', 'answer', 'wrongAnswers', 'explanation', 'category',
+    'difficulty', 'milestones', 'mode', 'challengeType',
+  ]
+  return fields.some((field) => JSON.stringify(previous[field]) !== JSON.stringify(next[field]))
 }
 
 function updateStatus(id, status) {
@@ -783,9 +902,10 @@ function updateStatus(id, status) {
   if (!question) return
   const previous = questionSnapshot(question)
   question.status = status
+  if (status === 'pending' || status === 'review') question.approvals = []
   addHistory(question, `État changé : ${STATUSES[status]}`, '', previous)
   saveQuestions()
-  showToast(status === 'validated' ? 'Question validée.' : 'État mis à jour.')
+  showToast('État mis à jour.')
   render()
 }
 
@@ -793,11 +913,39 @@ function bulkStatus(status) {
   state.questions.filter((question) => state.selected.has(question.id)).forEach((question) => {
     const previous = questionSnapshot(question)
     question.status = status
+    if (status === 'pending' || status === 'review') question.approvals = []
     addHistory(question, `État changé en lot : ${STATUSES[status]}`, '', previous)
   })
   saveQuestions()
   state.selected.clear()
   showToast(`Sélection passée à l’état « ${STATUSES[status]} ».`)
+  render()
+}
+
+function applyApproval(ids, reviewer) {
+  if (!REVIEWERS.includes(reviewer)) return
+  let added = 0
+  let fullyValidated = 0
+  state.questions.filter((question) => ids.includes(question.id)).forEach((question) => {
+    if (hasApproval(question, reviewer)) return
+    const previous = questionSnapshot(question)
+    question.approvals = [...(question.approvals || []), { reviewer, at: now() }]
+    question.status = question.approvals.length === REVIEWERS.length ? 'validated' : 'approved'
+    addHistory(
+      question,
+      `Validée par ${reviewer}`,
+      question.status === 'validated' ? 'Double validation obtenue' : 'En attente de la seconde validation',
+      previous,
+    )
+    added += 1
+    if (question.status === 'validated') fullyValidated += 1
+  })
+  saveQuestions()
+  state.modal = null
+  state.selected.clear()
+  showToast(fullyValidated
+    ? `${fullyValidated} question(s) validée(s) par Lucas et Awen.`
+    : `${added} validation(s) ajoutée(s) par ${reviewer}.`)
   render()
 }
 
@@ -877,6 +1025,8 @@ function questionToRow(question) {
     revision_notes: question.revisionNotes,
     favorite: question.favorite,
     confidence: question.confidence,
+    lucas_validation: question.approvals.find((approval) => approval.reviewer === 'Lucas')?.at || '',
+    awen_validation: question.approvals.find((approval) => approval.reviewer === 'Awen')?.at || '',
     created_at: question.createdAt,
     updated_at: question.updatedAt,
   }

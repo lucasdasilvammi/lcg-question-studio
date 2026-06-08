@@ -23,7 +23,7 @@ les données du site sont effacées.
 
 Le site charge automatiquement 182 cartes :
 
-- 128 questions existantes du jeu, déjà `Validées` et sourcées `Socle` ;
+- 128 questions existantes du jeu, déjà validées par Lucas et Awen et sourcées `Socle` ;
 - 54 questions issues du livre, `En attente`, avec leur page source ;
 - 3 questions par niveau demandé et par catégorie pour le nouveau lot.
 
@@ -38,8 +38,9 @@ Le catalogue peut être régénéré avec `npm run catalog`.
 4. Cliquer sur `Exporter les révisions`, faire corriger ce CSV en conservant
    les identifiants, puis réimporter le fichier : les fiches existantes sont
    mises à jour.
-5. Valider les bonnes questions.
-6. Sélectionner les questions souhaitées et exporter les validées.
+5. Lucas ou Awen ajoute une première validation.
+6. L'autre personne valide à son tour : la question passe alors en `Validée`.
+7. Sélectionner les questions souhaitées et exporter les validées.
 
 Chaque modification importante conserve la version précédente dans
 `Historique`. Le bouton `Restaurer cette version` permet d'annuler une
@@ -72,7 +73,13 @@ supplémentaire n'est nécessaire.
 
 - `pending` : En attente
 - `review` : En révision
-- `validated` : Validée
+- `approved` : Validation croisée, approuvée par Lucas ou Awen
+- `validated` : Validée par Lucas et Awen
+
+Le bouton `Valider` demande qui effectue la validation. Une question ne peut
+être exportée dans le lot final qu'après les deux validations. Toute
+modification du contenu ou passage en révision annule les validations
+précédentes.
 
 Une suppression efface réellement la fiche après confirmation. Il n'existe pas
 d'état `refused`, afin d'éviter deux notions ayant le même usage.
@@ -94,13 +101,15 @@ Les listes internes emploient ` | `.
 | `milestones` | Nombre de jalons gagnés. |
 | `mode` | Quiz ou Défi. |
 | `challenge_type` | `Aucun` pour un Quiz ; Buzzer, Vrai/Faux ou Chiffres pour un Défi. |
-| `status` | `pending`, `review` ou `validated`. |
+| `status` | `pending`, `review`, `approved` ou `validated`. |
 | `tags` | Tags libres séparés par ` | `. |
 | `source` | Livre, lot ou document source. |
 | `source_page` | Page source. |
 | `revision_notes` | Consignes de reformulation destinées à l'IA. |
 | `favorite` | `true` ou `false`. |
 | `confidence` | Indice de confiance entre 0 et 1. |
+| `lucas_validation` | Date ISO de validation par Lucas, ou vide. |
+| `awen_validation` | Date ISO de validation par Awen, ou vide. |
 | `created_at` | Date ISO de création. |
 | `updated_at` | Date ISO de dernière modification. |
 
