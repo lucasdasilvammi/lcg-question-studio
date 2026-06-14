@@ -19,6 +19,7 @@ const supabase = !previewMode && configured
 
 const VIEW_KEY = 'lcg-question-studio-view-v2'
 const DIFFICULTIES = ['Pour les nuls', 'Facile', 'Moyen', 'Difficile', 'Expert']
+const GAME_MODES = ['Quiz', 'Défi']
 const CATEGORIES = [
   'Culture graphique',
   'Signe et couleur',
@@ -76,7 +77,9 @@ const state = {
   statusFilter: 'all',
   categoryFilter: 'all',
   difficultyFilter: 'all',
+  modeFilter: 'all',
   tagFilter: 'all',
+  favoriteOnly: false,
   trashMode: false,
   modal: null,
   realtimeChannel: null,
@@ -382,10 +385,18 @@ function render() {
               <option value="all">Toutes les difficultés</option>
               ${DIFFICULTIES.map((value) => option(value, state.difficultyFilter)).join('')}
             </select>
+            <select class="select" data-filter="mode">
+              <option value="all">Quiz et défis</option>
+              ${GAME_MODES.map((value) => option(value, state.modeFilter)).join('')}
+            </select>
             <select class="select" data-filter="tag">
               <option value="all">Tous les tags</option>
               ${allTags().map((value) => option(value, state.tagFilter)).join('')}
             </select>
+            <label class="filter-toggle ${state.favoriteOnly ? 'active' : ''}">
+              <input type="checkbox" data-favorite-filter ${state.favoriteOnly ? 'checked' : ''} />
+              <span>Favoris uniquement</span>
+            </label>
           </section>
 
           <section class="sidebar-section">
@@ -535,7 +546,9 @@ function filteredQuestions() {
       if (!matchesStatus(question, state.statusFilter)) return false
       if (state.categoryFilter !== 'all' && question.category !== state.categoryFilter) return false
       if (state.difficultyFilter !== 'all' && question.difficulty !== state.difficultyFilter) return false
+      if (state.modeFilter !== 'all' && question.mode !== state.modeFilter) return false
       if (state.tagFilter !== 'all' && !question.tags.includes(state.tagFilter)) return false
+      if (state.favoriteOnly && !question.favorite) return false
       return true
     })
     .sort((left, right) =>
@@ -580,10 +593,17 @@ function questionCard(question) {
           <button class="favorite-button ${question.favorite ? 'active' : ''}" data-card-action="favorite" data-id="${escapeHtml(question.id)}" title="Favorite">★</button>
         </div>
         <h2 class="question-text">${escapeHtml(question.question)}</h2>
-        <p class="answer"><span class="answer-label">Réponse</span><span>${escapeHtml(question.answer || 'À compléter')}</span></p>
+        <div class="card-answers">
+          <p class="answer correct-answer"><span class="answer-label">Bonne réponse</span><span>${escapeHtml(question.answer || 'À compléter')}</span></p>
+          ${question.wrongAnswers.length
+            ? `<div class="wrong-answer-list">
+                <span class="answer-label">Fausses réponses</span>
+                ${question.wrongAnswers.map((answer) => `<span>${escapeHtml(answer)}</span>`).join('')}
+              </div>`
+            : '<p class="answer muted-answer"><span class="answer-label">Fausses réponses</span><span>Aucune</span></p>'}
+        </div>
         <div class="game-tags">${gameTags(question)}</div>
         <div class="tags secondary-tags">
-          <span class="tag difficulty">${escapeHtml(question.difficulty)}</span>
           ${exported === 'exported' ? '<span class="tag exported">Déjà exportée</span>' : ''}
           ${exported === 'modified' ? '<span class="tag modified">Modifiée depuis l’export</span>' : ''}
           ${question.commentCount ? `<span class="tag comment-tag">${question.commentCount} commentaire${question.commentCount > 1 ? 's' : ''}</span>` : ''}
@@ -614,7 +634,6 @@ function questionCard(question) {
               <button class="button small ${hasMyApproval(question) ? '' : 'primary'}" data-card-action="${hasMyApproval(question) ? 'revoke' : 'approve'}" data-id="${escapeHtml(question.id)}">
                 ${hasMyApproval(question) ? 'Retirer ma validation' : 'Valider'}
               </button>
-              <button class="button small danger" data-card-action="trash" data-id="${escapeHtml(question.id)}">Corbeille</button>
             `}
         </div>
       </div>
@@ -692,7 +711,9 @@ function hasActiveFilters() {
   return state.statusFilter !== 'all'
     || state.categoryFilter !== 'all'
     || state.difficultyFilter !== 'all'
+    || state.modeFilter !== 'all'
     || state.tagFilter !== 'all'
+    || state.favoriteOnly
 }
 
 function emptyMarkup() {
@@ -758,11 +779,15 @@ function editModalMarkup() {
                 <label for="answer">Bonne réponse</label>
                 <input id="answer" name="answer" value="${escapeHtml(question.answer)}" required />
               </div>
-              <div class="field" id="wrong-field">
-                <label for="wrongAnswers">Mauvaises réponses</label>
-                <input id="wrongAnswers" name="wrongAnswers" value="${escapeHtml(question.wrongAnswers.join(' | '))}" />
-                <p class="field-help" id="wrong-help"></p>
+              <div class="field" id="wrong-answer-1-field">
+                <label for="wrongAnswer1">Fausse réponse 1</label>
+                <input id="wrongAnswer1" name="wrongAnswer1" value="${escapeHtml(question.wrongAnswers[0] || '')}" />
               </div>
+              <div class="field" id="wrong-answer-2-field">
+                <label for="wrongAnswer2">Fausse réponse 2</label>
+                <input id="wrongAnswer2" name="wrongAnswer2" value="${escapeHtml(question.wrongAnswers[1] || '')}" />
+              </div>
+              <p class="field-help full" id="wrong-help"></p>
               <div class="field full">
                 <label for="explanation">Explication</label>
                 <textarea id="explanation" name="explanation">${escapeHtml(question.explanation)}</textarea>
@@ -821,6 +846,7 @@ function editModalMarkup() {
               ${existing ? `
                 <button class="button" type="button" data-card-action="comments" data-id="${escapeHtml(existing.id)}">Discussion (${existing.commentCount})</button>
                 <button class="button" type="button" data-card-action="history" data-id="${escapeHtml(existing.id)}">Historique</button>
+                <button class="button danger" type="button" data-card-action="trash" data-id="${escapeHtml(existing.id)}">Mettre à la corbeille</button>
               ` : ''}
             </div>
             <div>
@@ -1012,6 +1038,10 @@ function bindEvents() {
       render()
     })
   })
+  document.querySelector('[data-favorite-filter]')?.addEventListener('change', (event) => {
+    state.favoriteOnly = event.currentTarget.checked
+    render()
+  })
   document.querySelectorAll('[data-view]').forEach((button) => {
     button.addEventListener('click', () => {
       state.view = button.dataset.view
@@ -1059,7 +1089,8 @@ async function handleAction(event) {
     render()
   }
   if (action === 'clear-filters') {
-    state.statusFilter = state.categoryFilter = state.difficultyFilter = state.tagFilter = 'all'
+    state.statusFilter = state.categoryFilter = state.difficultyFilter = state.modeFilter = state.tagFilter = 'all'
+    state.favoriteOnly = false
     render()
   }
   if (action === 'logout') {
@@ -1131,10 +1162,18 @@ function syncQuestionForm() {
   if (!form) return
   const isChallenge = form.elements.mode.value === 'Défi'
   const challenge = form.elements.challengeType.value
+  const usesManualWrongAnswers = !isChallenge || challenge === 'Buzzer'
+  const wrongFields = [
+    form.querySelector('#wrong-answer-1-field'),
+    form.querySelector('#wrong-answer-2-field'),
+  ]
   form.querySelector('#challenge-field').hidden = !isChallenge
-  form.querySelector('#wrong-field').hidden = isChallenge && challenge === 'Chiffres'
-  form.querySelector('#wrong-help').textContent = !isChallenge || challenge === 'Buzzer'
-    ? 'Exactement 2 mauvaises réponses, séparées par |.'
+  wrongFields.forEach((field) => {
+    field.hidden = !usesManualWrongAnswers
+    field.querySelector('input').required = usesManualWrongAnswers
+  })
+  form.querySelector('#wrong-help').textContent = usesManualWrongAnswers
+    ? 'Exactement 2 mauvaises réponses.'
     : challenge === 'Vrai/Faux'
       ? 'La bonne réponse doit être Vrai ou Faux. La réponse opposée sera générée automatiquement.'
       : 'Aucune mauvaise réponse pour un défi Chiffres.'
@@ -1148,7 +1187,9 @@ async function saveQuestion(event) {
   const existing = state.questions.find((question) => question.id === state.modal.id)
   const mode = data.mode
   const challengeType = mode === 'Défi' ? data.challengeType : 'Aucun'
-  let wrongAnswers = splitPipe(data.wrongAnswers)
+  let wrongAnswers = [data.wrongAnswer1, data.wrongAnswer2]
+    .map((answer) => String(answer || '').trim())
+    .filter(Boolean)
 
   if (challengeType === 'Vrai/Faux') {
     const answer = data.answer.trim().toLowerCase()
