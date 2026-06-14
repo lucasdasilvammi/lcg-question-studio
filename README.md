@@ -1,118 +1,131 @@
-# Question Studio
+# LCG Question Studio
 
-Mini-site éditorial autonome pour préparer les questions du Cube Graphique.
-Il ne communique pas avec l'application de jeu : le passage de données se fait
-uniquement par fichiers CSV.
+Outil editorial partage pour preparer les questions du Cube Graphique.
 
-## Lancer le site
+Le Studio et le jeu restent deux applications independantes :
 
-Depuis le dossier `question-studio` :
+- le Studio stocke les cartes, validations, commentaires et historiques dans Supabase ;
+- le jeu continue de lire ses propres fichiers `quiz.json` et `duels.json` ;
+- l'export du Studio propose le fichier a generer, sans ecrire directement dans le jeu.
+
+## Fonctionnement
+
+- Deux comptes fixes : `Lucas` et `Awen`.
+- Les deux utilisateurs voient les memes donnees en temps reel.
+- Une carte devient `Validee` uniquement apres les deux validations.
+- Une validation peut etre retiree.
+- Une carte peut repasser en attente ou en revision dans n'importe quel ordre.
+- Les modifications importantes sont conservees dans l'historique avec un diff visuel.
+- Chaque carte possede un fil de commentaires avec mentions.
+- La suppression place la carte dans une corbeille restaurable.
+- Les cartes deja exportees sont identifiees, ainsi que celles modifiees depuis leur dernier export.
+
+## Installer Supabase
+
+Supabase fournit la base de donnees, l'authentification et le temps reel. Un projet gratuit suffit pour ce Studio.
+
+1. Creer un projet sur [Supabase](https://supabase.com/dashboard).
+2. Ouvrir `SQL Editor` dans le projet.
+3. Executer tout le fichier [`supabase/schema.sql`](supabase/schema.sql).
+4. Copier `.env.example` vers `.env.local`.
+5. Renseigner les variables suivantes :
+
+```env
+VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=VOTRE_CLE_PUBLIQUE
+SUPABASE_SECRET_KEY=VOTRE_CLE_SECRETE
+```
+
+La cle publique se trouve dans les reglages API du projet. La cle secrete sert uniquement au script local de creation des comptes et ne doit jamais etre ajoutee a Netlify ou a Git.
+
+Installer les dependances puis creer les deux comptes et le catalogue initial :
 
 ```bash
 npm install
+npm run supabase:bootstrap
+```
+
+Le script affiche les mots de passe generes pour Lucas et Awen. Les identifiants visibles sur la page de connexion sont simplement `Lucas` et `Awen`.
+
+Pour choisir les mots de passe avant l'initialisation, ajouter dans `.env.local` :
+
+```env
+LUCAS_PASSWORD=un-mot-de-passe-solide
+AWEN_PASSWORD=un-autre-mot-de-passe-solide
+```
+
+Il est recommande de definir ces deux mots de passe avant le premier lancement et de les conserver dans un gestionnaire de mots de passe.
+
+Le bootstrap peut etre relance sans recreer les comptes. Attention : il resynchronise le catalogue canonique, remet toutes les cartes en attente, efface les validations existantes et reinitialise les marqueurs d'export.
+
+Apres un bootstrap reussi :
+
+1. Verifier dans `Authentication > Users` que seuls Lucas et Awen existent.
+2. Ouvrir la configuration Auth des fournisseurs de connexion.
+3. Conserver la connexion Email active.
+4. Desactiver `Allow new users to sign up`.
+5. Laisser les connexions anonymes desactivees.
+
+Cette fermeture des inscriptions est importante : les politiques de la base autorisent les utilisateurs authentifies, qui doivent donc rester limites aux deux comptes prevus.
+
+## Developpement local
+
+```bash
 npm run dev
 ```
 
-Les données sont enregistrées dans le `localStorage` du navigateur utilisé.
-Sur un site Netlify, elles restent disponibles après un rechargement et
-généralement après un redéploiement conservant le même domaine. Elles ne sont
-cependant pas synchronisées entre navigateurs ou appareils et disparaissent si
-les données du site sont effacées.
+Le mode de previsualisation sans Supabase est disponible uniquement en developpement sur `?preview=1`. Il sert aux tests visuels et ne sauvegarde pas les modifications.
+
+## Deploiement Netlify
+
+Dans les variables d'environnement Netlify, ajouter seulement :
+
+```env
+VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=VOTRE_CLE_PUBLIQUE
+```
+
+Ne jamais ajouter `SUPABASE_SECRET_KEY` a Netlify.
+
+Le fichier `netlify.toml` configure :
+
+- la commande `npm run build` ;
+- le dossier publie `dist` ;
+- Node.js 22.
+
+## Exports du jeu
+
+Le bouton `Exporter` ouvre un choix :
+
+- `quiz.json` contient uniquement les questions Quiz validees ;
+- `duels.json` contient les defis Buzzer, Vrai/Faux et Chiffres valides.
+
+Chaque export est un instantane complet des questions validees du type choisi. Il est donc destine a remplacer directement le fichier correspondant dans le jeu :
+
+```text
+server/data/quiz.json
+server/data/duels.json
+```
+
+Les metadonnees propres au Studio, comme la source, la page du livre, les commentaires et les dates editoriales, ne sont pas envoyees au jeu. Le defi Zoom deja present dans `duels.json` est conserve dans le fichier genere ; le Studio ne permet pas de creer de cartes Zoom ou Pique.
+
+## Etats
+
+- `En attente` : carte a relire ou a valider.
+- `En revision` : carte qui demande une correction ou une reformulation.
+- `Validation simple` : un seul des deux comptes a valide la carte.
+- `Validee` : Lucas et Awen ont tous les deux valide la carte.
+- `Corbeille` : carte masquee des listes normales, restaurable tant que la corbeille n'est pas videe.
+
+Une modification editoriale ou un retour en attente/revision retire les validations existantes afin que la nouvelle version soit relue.
 
 ## Catalogue initial
 
-Le site charge automatiquement 182 cartes :
+Le bootstrap charge 182 cartes :
 
-- 128 questions existantes du jeu, déjà validées par Lucas et Awen et sourcées `Socle` ;
-- 54 questions issues du livre, `En attente`, avec leur page source ;
-- 3 questions par niveau demandé et par catégorie pour le nouveau lot.
+- 164 questions Quiz ;
+- 18 defis : 4 Buzzer, 8 Vrai/Faux et 6 Chiffres.
 
-Le fichier équivalent est disponible dans `data/questions-initiales.csv`.
-Le catalogue peut être régénéré avec `npm run catalog`.
+Les 182 cartes sont toutes chargees en `En attente`, sans validation Lucas/Awen et sans marqueur d'export. Elles doivent donc toutes etre relues et validees par les deux comptes.
 
-## Parcours conseillé
-
-1. Filtrer et relire les fiches en attente.
-2. Modifier les tags, la difficulté, les jalons et le contenu si nécessaire.
-3. Passer les questions à reformuler en `En révision` et ajouter une note.
-4. Cliquer sur `Exporter les révisions`, faire corriger ce CSV en conservant
-   les identifiants, puis réimporter le fichier : les fiches existantes sont
-   mises à jour.
-5. Lucas ou Awen ajoute une première validation.
-6. L'autre personne valide à son tour : la question passe alors en `Validée`.
-7. Sélectionner les questions souhaitées et exporter les validées.
-
-Chaque modification importante conserve la version précédente dans
-`Historique`. Le bouton `Restaurer cette version` permet d'annuler une
-modification ou une mise à jour importée.
-
-## Actions du bandeau
-
-- `Importer un CSV` ajoute un lot ou met à jour les cartes portant le même `id`.
-- `Sauvegarder tout` exporte toutes les cartes avec leurs états, notes et dates.
-- `Exporter les révisions` produit le fichier à transmettre à l'IA avec tes notes.
-- `Exporter les validées` produit le lot final, sans connexion directe au jeu.
-- `Créer une question` ajoute manuellement une carte sans passer par un CSV.
-
-Pour restaurer une sauvegarde complète, il suffit de réimporter son CSV. Pour
-reprendre le travail avec une IA, transmets-lui cette sauvegarde : elle contient
-l'état éditorial complet du site.
-
-## Déploiement Netlify
-
-Le fichier `netlify.toml` configure automatiquement :
-
-- la commande de build : `npm run build` ;
-- le dossier publié : `dist` ;
-- Node.js 20.
-
-Après avoir connecté le dépôt GitHub dans Netlify, aucune configuration
-supplémentaire n'est nécessaire.
-
-## États
-
-- `pending` : En attente
-- `review` : En révision
-- `approved` : Validation croisée, approuvée par Lucas ou Awen
-- `validated` : Validée par Lucas et Awen
-
-Le bouton `Valider` demande qui effectue la validation. Une question ne peut
-être exportée dans le lot final qu'après les deux validations. Toute
-modification du contenu ou passage en révision annule les validations
-précédentes.
-
-Une suppression efface réellement la fiche après confirmation. Il n'existe pas
-d'état `refused`, afin d'éviter deux notions ayant le même usage.
-
-## Format CSV
-
-Le fichier doit être encodé en UTF-8 et utiliser une virgule comme séparateur.
-Les listes internes emploient ` | `.
-
-| Colonne | Description |
-| --- | --- |
-| `id` | Identifiant stable. À conserver lors d'une reformulation. |
-| `question` | Intitulé affiché au joueur. |
-| `answer` | Bonne réponse. |
-| `wrong_answers` | Deux mauvaises réponses pour Quiz/Buzzer, une pour Vrai/Faux, aucune pour Chiffres. |
-| `explanation` | Explication affichable après la réponse. |
-| `category` | Catégorie éditoriale. |
-| `difficulty` | Pour les nuls, Facile, Moyen, Difficile ou Expert. |
-| `milestones` | Nombre de jalons gagnés. |
-| `mode` | Quiz ou Défi. |
-| `challenge_type` | `Aucun` pour un Quiz ; Buzzer, Vrai/Faux ou Chiffres pour un Défi. |
-| `status` | `pending`, `review`, `approved` ou `validated`. |
-| `tags` | Tags libres séparés par ` | `. |
-| `source` | Livre, lot ou document source. |
-| `source_page` | Page source. |
-| `revision_notes` | Consignes de reformulation destinées à l'IA. |
-| `favorite` | `true` ou `false`. |
-| `confidence` | Indice de confiance entre 0 et 1. |
-| `lucas_validation` | Date ISO de validation par Lucas, ou vide. |
-| `awen_validation` | Date ISO de validation par Awen, ou vide. |
-| `created_at` | Date ISO de création. |
-| `updated_at` | Date ISO de dernière modification. |
-
-Pour une mise à jour par IA, celle-ci doit conserver la colonne `id`, modifier
-les champs demandés, puis rendre le CSV avec les mêmes colonnes. La réimportation
-fusionnera chaque ligne avec sa fiche et ajoutera l'opération à son historique.
+L'ancien stockage `localStorage` n'est pas synchronise avec Supabase. Le bootstrap utilise le catalogue canonique versionne dans le depot.
