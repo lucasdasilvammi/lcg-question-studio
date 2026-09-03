@@ -78,6 +78,11 @@ button { color: inherit; }
 .brand span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
 .top-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
 
+.mobile-filter-button,
+.mobile-filter-panel {
+  display: none;
+}
+
 .account-menu {
   position: relative;
   flex: 0 0 auto;
@@ -644,15 +649,104 @@ h1 { margin: 0; font-size: clamp(27px, 3vw, 38px); letter-spacing: -0.045em; }
 }
 
 @media (max-width: 700px) {
-  .topbar { gap: 11px; padding: 13px 15px; }
+  .topbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
   .brand { min-width: 0; width: auto; }
-  .brand span { display: none; }
+  .brand strong,
+  .brand span,
+  .account-avatar,
+  .account-name {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .mobile-filter-button {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    padding: 0 13px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: #171717;
+    font-size: 13px;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .mobile-filter-button.active {
+    border-color: var(--blue);
+    color: #101010;
+    background: var(--blue);
+  }
+
   .account-dropdown { right: 0; min-width: min(240px, calc(100vw - 30px)); }
   .workspace { min-height: auto; }
-  .sidebar { grid-template-columns: 1fr; padding: 15px; }
+
+  .sidebar,
+  .main > .filters-panel {
+    display: none;
+  }
+
+  .mobile-filters-open .mobile-filter-panel {
+    position: fixed;
+    z-index: 35;
+    top: 59px;
+    right: 10px;
+    left: 10px;
+    display: block;
+    max-height: calc(100dvh - 74px);
+    overflow: auto;
+    border: 1px solid var(--line);
+    background: rgba(16, 16, 16, 0.98);
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-filter-surface {
+    display: grid;
+    gap: 15px;
+    padding: 13px;
+  }
+
+  .mobile-filter-panel .sidebar-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-filter-panel .sidebar-stats .summary-item:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .mobile-filter-panel .filters-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .mobile-filter-panel .favorite-filter-button {
+    width: 100%;
+  }
+
+  .mobile-filter-panel .view-switch {
+    justify-self: stretch;
+  }
+
   .sidebar-section { margin: 0; }
   .state-filter { grid-template-columns: repeat(2, 1fr); }
-  .main { padding: 20px 15px; }
+  .main { padding: 16px 12px 22px; }
   .summary-strip { grid-template-columns: repeat(2, 1fr); }
   .question-card.list { display: flex; }
   .card-side { padding-top: 0; border-top: 1px solid var(--line); border-left: 0; border-radius: 0 0 15px 15px; }
@@ -661,7 +755,7 @@ h1 { margin: 0; font-size: clamp(27px, 3vw, 38px); letter-spacing: -0.045em; }
   .modal-backdrop { padding: 8px; }
   .modal { max-height: calc(100vh - 16px); border-radius: 13px; }
   .modal-body, .modal-head { padding: 17px; }
-  .modal-footer { padding: 13px 17px; }
+  .modal-footer { position: static; padding: 13px 17px; }
 }
 
 /* Cube Graphique visual language */

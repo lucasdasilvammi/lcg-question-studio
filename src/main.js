@@ -89,6 +89,7 @@ const state = {
   favoriteOnly: false,
   trashMode: false,
   accountMenuOpen: false,
+  mobileFiltersOpen: false,
   lastUndo: null,
   undoing: false,
   modal: null,
@@ -350,7 +351,7 @@ function render() {
   const exported = active.filter((question) => exportState(question) === 'exported').length
 
   app.innerHTML = `
-    <div class="app-shell">
+    <div class="app-shell ${state.mobileFiltersOpen ? 'mobile-filters-open' : ''}">
       <header class="topbar">
         <div class="brand">
           <div class="brand-mark">QS</div>
@@ -359,6 +360,7 @@ function render() {
             <span>Base de questions</span>
           </div>
         </div>
+        <button class="mobile-filter-button ${state.mobileFiltersOpen ? 'active' : ''}" type="button" data-action="mobile-filters" aria-expanded="${state.mobileFiltersOpen ? 'true' : 'false'}">Filtres</button>
         <div class="account-menu ${state.accountMenuOpen ? 'open' : ''}">
           <button class="account-button" data-action="account-menu" aria-expanded="${state.accountMenuOpen ? 'true' : 'false'}">
             <span class="account-avatar">${escapeHtml(state.profile.display_name.slice(0, 1))}</span>
@@ -373,6 +375,75 @@ function render() {
           </div>
         </div>
       </header>
+
+      <div class="mobile-filter-panel">
+        <div class="mobile-filter-surface">
+          <section class="sidebar-section">
+            <p class="sidebar-label">Vue rapide</p>
+            <div class="sidebar-stats">
+              <div class="summary-item"><strong>${active.length}</strong><span>questions actives</span></div>
+              <div class="summary-item"><strong>${awaitingMe}</strong><span>à valider par moi</span></div>
+              <div class="summary-item"><strong>${validated}</strong><span>validées par les deux</span></div>
+              <div class="summary-item"><strong>${review}</strong><span>en révision</span></div>
+              <div class="summary-item"><strong>${exported}</strong><span>déjà exportées</span></div>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <p class="sidebar-label">État</p>
+            <div class="state-filter">
+              ${statusButton('all', 'Toutes', countStatus('all'))}
+              ${statusButton('pending', 'En attente', countStatus('pending'))}
+              ${statusButton('review', 'En révision', review)}
+              ${statusButton('awaiting-me', 'À valider par moi', awaitingMe)}
+              ${statusButton('approved-lucas', 'Validées par Lucas', countStatus('approved-lucas'))}
+              ${statusButton('approved-awen', 'Validées par Awen', countStatus('approved-awen'))}
+              ${statusButton('validated', 'Validées par les deux', validated)}
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <p class="sidebar-label">Répartition</p>
+            <div class="balance-card">${balanceMarkup()}</div>
+          </section>
+
+          <section class="sidebar-section trash-section">
+            <button class="trash-button ${state.trashMode ? 'active' : ''}" data-action="trash">
+              Corbeille <span>${state.questions.filter((question) => question.deletedAt).length}</span>
+            </button>
+          </section>
+
+          <div class="filters-panel mobile-filters-panel">
+            ${state.trashMode ? '' : `
+              <select class="select" data-filter="category">
+                <option value="all">Toutes les catégories</option>
+                ${CATEGORIES.map((value) => option(value, state.categoryFilter)).join('')}
+              </select>
+              <select class="select" data-filter="difficulty">
+                <option value="all">Toutes les difficultés</option>
+                ${DIFFICULTIES.map((value) => option(value, state.difficultyFilter)).join('')}
+              </select>
+              <select class="select" data-filter="mode">
+                <option value="all">Quiz et défis</option>
+                ${GAME_MODES.map((value) => option(value, state.modeFilter)).join('')}
+              </select>
+              <select class="select" data-filter="source">
+                <option value="all">Toutes les sources</option>
+                ${allSources().map((value) => option(value, state.sourceFilter)).join('')}
+              </select>
+              <button class="favorite-filter-button ${state.favoriteOnly ? 'active' : ''}" type="button" data-action="favorite-filter" title="Favoris uniquement" aria-label="Favoris uniquement" aria-pressed="${state.favoriteOnly ? 'true' : 'false'}">★</button>
+            `}
+            ${state.trashMode && visible.length
+              ? '<button class="button danger" data-action="empty-trash">Vider la corbeille</button>'
+              : ''}
+            <button class="undo-button" type="button" data-action="undo-last" ${state.lastUndo && !state.undoing ? '' : 'disabled'} title="${state.lastUndo ? `Annuler : ${escapeHtml(state.lastUndo.label)}` : 'Aucune action à annuler'}">↶ Annuler</button>
+            <div class="view-switch">
+              <button class="icon-button ${state.view === 'grid' ? 'active' : ''}" data-view="grid" title="Vue grille">▦</button>
+              <button class="icon-button ${state.view === 'list' ? 'active' : ''}" data-view="list" title="Vue liste">☷</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="workspace">
         <aside class="sidebar">
@@ -1084,6 +1155,7 @@ function bindEvents() {
   document.querySelectorAll('[data-open-card]').forEach((card) => {
     card.addEventListener('click', (event) => {
       if (event.target.closest('button, a, input, select, textarea, summary')) return
+      state.mobileFiltersOpen = false
       openModal({ type: 'edit', id: card.dataset.openCard })
     })
   })
@@ -1116,8 +1188,15 @@ function bindEvents() {
 async function handleAction(event) {
   const action = event.currentTarget.dataset.action
   if (action !== 'account-menu') state.accountMenuOpen = false
+  if (action !== 'mobile-filters') state.mobileFiltersOpen = false
   if (action === 'account-menu') {
+    state.mobileFiltersOpen = false
     state.accountMenuOpen = !state.accountMenuOpen
+    render()
+  }
+  if (action === 'mobile-filters') {
+    state.accountMenuOpen = false
+    state.mobileFiltersOpen = !state.mobileFiltersOpen
     render()
   }
   if (action === 'new') openModal({ type: 'edit', id: null })
