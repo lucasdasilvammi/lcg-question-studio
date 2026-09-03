@@ -93,6 +93,39 @@ Le fichier `netlify.toml` configure :
 - le dossier publie `dist` ;
 - Node.js 22.
 
+## Import Pyramide QCM
+
+Les questions extraites des cartes Pyramide QCM sont versionnees dans :
+
+```text
+data/pyramide-qcm-questions.json
+```
+
+Elles sont importees dans Supabase avec la source `pyramide QCM`, le type `Quiz`, le statut `En attente` et sans validation Lucas/Awen.
+
+Avant import, verifier que `.env.local` contient :
+
+```env
+VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
+SUPABASE_SECRET_KEY=VOTRE_CLE_SECRETE
+```
+
+Puis lancer une simulation :
+
+```bash
+npm run supabase:import:pyramide:dry-run
+```
+
+Si le resume est correct, lancer l'import :
+
+```bash
+npm run supabase:import:pyramide
+```
+
+Cette commande ne relance pas le bootstrap initial et ne vide pas les validations existantes. Elle ajoute ou resynchronise uniquement les questions dont l'identifiant commence par `PYRAMIDE-QCM-`.
+
+Un redeploiement Netlify n'est pas necessaire pour voir ces questions si le Studio pointe deja vers la meme base Supabase. Netlify sert seulement l'interface ; les cartes viennent de Supabase.
+
 ## Exports du jeu
 
 Le bouton `Exporter` ouvre un choix :

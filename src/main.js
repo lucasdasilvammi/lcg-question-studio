@@ -19,6 +19,13 @@ const supabase = !previewMode && configured
 
 const VIEW_KEY = 'lcg-question-studio-view-v2'
 const DIFFICULTIES = ['Pour les nuls', 'Facile', 'Moyen', 'Difficile', 'Expert']
+const DIFFICULTY_BY_MILESTONE = {
+  1: 'Pour les nuls',
+  2: 'Facile',
+  3: 'Moyen',
+  4: 'Difficile',
+  5: 'Expert',
+}
 const GAME_MODES = ['Quiz', 'Défi']
 const CATEGORIES = [
   'Culture graphique',
@@ -78,9 +85,12 @@ const state = {
   categoryFilter: 'all',
   difficultyFilter: 'all',
   modeFilter: 'all',
-  tagFilter: 'all',
+  sourceFilter: 'all',
   favoriteOnly: false,
   trashMode: false,
+  accountMenuOpen: false,
+  lastUndo: null,
+  undoing: false,
   modal: null,
   realtimeChannel: null,
   presenceChannel: null,
@@ -91,6 +101,7 @@ const state = {
 const app = document.querySelector('#app')
 
 start()
+document.addEventListener('keydown', handleGlobalKeydown)
 
 async function start() {
   if (previewMode) {
@@ -345,22 +356,37 @@ function render() {
           <div class="brand-mark">QS</div>
           <div>
             <strong>Question Studio</strong>
-            <span>Base partagée · synchronisation en temps réel</span>
+            <span>Base de questions</span>
           </div>
         </div>
-        <div class="top-actions">
-          <span class="sync-indicator"><i></i> Synchronisé</span>
-          <button class="button primary" data-action="export">Exporter JSON</button>
-          <button class="button accent" data-action="new">Créer une question</button>
-          <button class="account-button" data-action="logout">
-            <span>${escapeHtml(state.profile.display_name.slice(0, 1))}</span>
-            ${escapeHtml(state.profile.display_name)}
+        <div class="account-menu ${state.accountMenuOpen ? 'open' : ''}">
+          <button class="account-button" data-action="account-menu" aria-expanded="${state.accountMenuOpen ? 'true' : 'false'}">
+            <span class="account-avatar">${escapeHtml(state.profile.display_name.slice(0, 1))}</span>
+            <span class="account-name">${escapeHtml(state.profile.display_name)}</span>
+            <span class="account-menu-icon">☰</span>
           </button>
+          <div class="account-dropdown">
+            <button type="button" data-action="new">Créer une question</button>
+            <button type="button" data-action="export">Exporter JSON</button>
+            <button type="button" data-action="status-help">Comprendre les états</button>
+            <button type="button" data-action="logout">Se déconnecter</button>
+          </div>
         </div>
       </header>
 
       <div class="workspace">
         <aside class="sidebar">
+          <section class="sidebar-section">
+            <p class="sidebar-label">Vue rapide</p>
+            <div class="sidebar-stats">
+              <div class="summary-item"><strong>${active.length}</strong><span>questions actives</span></div>
+              <div class="summary-item"><strong>${awaitingMe}</strong><span>à valider par moi</span></div>
+              <div class="summary-item"><strong>${validated}</strong><span>validées par les deux</span></div>
+              <div class="summary-item"><strong>${review}</strong><span>en révision</span></div>
+              <div class="summary-item"><strong>${exported}</strong><span>déjà exportées</span></div>
+            </div>
+          </section>
+
           <section class="sidebar-section">
             <p class="sidebar-label">État</p>
             <div class="state-filter">
@@ -372,31 +398,6 @@ function render() {
               ${statusButton('approved-awen', 'Validées par Awen', countStatus('approved-awen'))}
               ${statusButton('validated', 'Validées par les deux', validated)}
             </div>
-            <button class="status-help-button" data-action="status-help">Comprendre les états</button>
-          </section>
-
-          <section class="sidebar-section">
-            <p class="sidebar-label">Filtres</p>
-            <select class="select" data-filter="category">
-              <option value="all">Toutes les catégories</option>
-              ${CATEGORIES.map((value) => option(value, state.categoryFilter)).join('')}
-            </select>
-            <select class="select" data-filter="difficulty">
-              <option value="all">Toutes les difficultés</option>
-              ${DIFFICULTIES.map((value) => option(value, state.difficultyFilter)).join('')}
-            </select>
-            <select class="select" data-filter="mode">
-              <option value="all">Quiz et défis</option>
-              ${GAME_MODES.map((value) => option(value, state.modeFilter)).join('')}
-            </select>
-            <select class="select" data-filter="tag">
-              <option value="all">Tous les tags</option>
-              ${allTags().map((value) => option(value, state.tagFilter)).join('')}
-            </select>
-            <label class="filter-toggle ${state.favoriteOnly ? 'active' : ''}">
-              <input type="checkbox" data-favorite-filter ${state.favoriteOnly ? 'checked' : ''} />
-              <span>Favoris uniquement</span>
-            </label>
           </section>
 
           <section class="sidebar-section">
@@ -412,34 +413,35 @@ function render() {
         </aside>
 
         <main class="main">
-          <div class="page-head">
-            <div>
-              <p class="eyebrow">${state.trashMode ? 'Corbeille' : FILTER_LABELS[state.statusFilter]}</p>
-              <h1>${state.trashMode ? 'Cartes supprimées' : 'Atelier des questions'}</h1>
-              <p class="subhead">${state.trashMode
-                ? 'Ces cartes restent restaurables jusqu’au vidage de la corbeille.'
-                : `Connecté en tant que ${escapeHtml(state.profile.display_name)}.`}</p>
-            </div>
-            <div class="page-head-actions">
-              ${state.trashMode && visible.length
-                ? '<button class="button danger" data-action="empty-trash">Vider la corbeille</button>'
-                : ''}
-              <div class="view-switch">
-                <button class="icon-button ${state.view === 'grid' ? 'active' : ''}" data-view="grid" title="Vue grille">▦</button>
-                <button class="icon-button ${state.view === 'list' ? 'active' : ''}" data-view="list" title="Vue liste">☷</button>
-              </div>
+          <div class="filters-panel">
+            ${state.trashMode ? '' : `
+              <select class="select" data-filter="category">
+                <option value="all">Toutes les catégories</option>
+                ${CATEGORIES.map((value) => option(value, state.categoryFilter)).join('')}
+              </select>
+              <select class="select" data-filter="difficulty">
+                <option value="all">Toutes les difficultés</option>
+                ${DIFFICULTIES.map((value) => option(value, state.difficultyFilter)).join('')}
+              </select>
+              <select class="select" data-filter="mode">
+                <option value="all">Quiz et défis</option>
+                ${GAME_MODES.map((value) => option(value, state.modeFilter)).join('')}
+              </select>
+              <select class="select" data-filter="source">
+                <option value="all">Toutes les sources</option>
+                ${allSources().map((value) => option(value, state.sourceFilter)).join('')}
+              </select>
+              <button class="favorite-filter-button ${state.favoriteOnly ? 'active' : ''}" type="button" data-action="favorite-filter" title="Favoris uniquement" aria-label="Favoris uniquement" aria-pressed="${state.favoriteOnly ? 'true' : 'false'}">★</button>
+            `}
+            ${state.trashMode && visible.length
+              ? '<button class="button danger" data-action="empty-trash">Vider la corbeille</button>'
+              : ''}
+            <button class="undo-button" type="button" data-action="undo-last" ${state.lastUndo && !state.undoing ? '' : 'disabled'} title="${state.lastUndo ? `Annuler : ${escapeHtml(state.lastUndo.label)}` : 'Aucune action à annuler'}">↶ Annuler</button>
+            <div class="view-switch">
+              <button class="icon-button ${state.view === 'grid' ? 'active' : ''}" data-view="grid" title="Vue grille">▦</button>
+              <button class="icon-button ${state.view === 'list' ? 'active' : ''}" data-view="list" title="Vue liste">☷</button>
             </div>
           </div>
-
-          ${state.trashMode ? '' : `
-            <div class="summary-strip">
-              <div class="summary-item"><strong>${active.length}</strong><span>questions actives</span></div>
-              <div class="summary-item"><strong>${awaitingMe}</strong><span>à valider par moi</span></div>
-              <div class="summary-item"><strong>${validated}</strong><span>validées par les deux</span></div>
-              <div class="summary-item"><strong>${review}</strong><span>en révision</span></div>
-              <div class="summary-item"><strong>${exported}</strong><span>déjà exportées</span></div>
-            </div>
-          `}
 
           <div class="results-line">
             <span>${visible.length} résultat${visible.length > 1 ? 's' : ''} · tri automatique par état</span>
@@ -547,7 +549,7 @@ function filteredQuestions() {
       if (state.categoryFilter !== 'all' && question.category !== state.categoryFilter) return false
       if (state.difficultyFilter !== 'all' && question.difficulty !== state.difficultyFilter) return false
       if (state.modeFilter !== 'all' && question.mode !== state.modeFilter) return false
-      if (state.tagFilter !== 'all' && !question.tags.includes(state.tagFilter)) return false
+      if (state.sourceFilter !== 'all' && sourceLabel(question) !== state.sourceFilter) return false
       if (state.favoriteOnly && !question.favorite) return false
       return true
     })
@@ -644,9 +646,8 @@ function questionCard(question) {
 function gameTags(question) {
   const category = CATEGORY_ASSETS[question.category]
   const challenge = CHALLENGE_ASSETS[question.challengeType]
-  const milestone = Math.min(5, Math.max(1, question.milestones))
   return `
-    <img class="game-tag-image" src="/game/categorie/diff-${milestone}.png" alt="${milestone} jalons" />
+    ${difficultyTagMarkup(question)}
     ${category
       ? `<img class="game-tag-image" src="/game/categorie/${category}.png" alt="${escapeHtml(question.category)}" />`
       : `<span class="game-tag-fallback">${escapeHtml(question.category)}</span>`}
@@ -678,6 +679,44 @@ function exportState(question) {
   return Number(question.lastExportedVersion) === question.version ? 'exported' : 'modified'
 }
 
+function difficultyControlMarkup(question) {
+  const milestone = clampMilestones(question.milestones)
+  const difficulty = difficultyForMilestone(milestone)
+
+  return `
+    <div class="difficulty-stepper" data-difficulty-stepper data-milestone="${milestone}">
+      <button class="difficulty-step-button" type="button" data-difficulty-step="-1" ${milestone <= 1 ? 'disabled' : ''} aria-label="Baisser la difficulté">−</button>
+      <div class="difficulty-display">
+        <img src="/game/categorie/diff-${milestone}.png" alt="${milestone} jalons" />
+        <span class="difficulty-copy">
+          <strong>${milestone} jalon${milestone > 1 ? 's' : ''}</strong>
+          <span>${escapeHtml(difficulty)}</span>
+        </span>
+      </div>
+      <button class="difficulty-step-button" type="button" data-difficulty-step="1" ${milestone >= 5 ? 'disabled' : ''} aria-label="Monter la difficulté">+</button>
+      <input type="hidden" name="milestones" value="${milestone}" />
+      <input type="hidden" name="difficulty" value="${escapeHtml(difficulty)}" />
+    </div>
+  `
+}
+
+function difficultyTagMarkup(question) {
+  const milestone = clampMilestones(question.milestones)
+  const canShowControls = !state.trashMode
+
+  return `
+    <span class="difficulty-tag-control">
+      ${canShowControls
+        ? `<button class="tag-step-button" type="button" data-card-action="difficulty" data-id="${escapeHtml(question.id)}" data-direction="-1" ${milestone <= 1 || previewMode ? 'disabled' : ''} aria-label="Baisser la difficulté">−</button>`
+        : ''}
+      <img class="game-tag-image" src="/game/categorie/diff-${milestone}.png" alt="${milestone} jalons" />
+      ${canShowControls
+        ? `<button class="tag-step-button" type="button" data-card-action="difficulty" data-id="${escapeHtml(question.id)}" data-direction="1" ${milestone >= 5 || previewMode ? 'disabled' : ''} aria-label="Monter la difficulté">+</button>`
+        : ''}
+    </span>
+  `
+}
+
 function statusButton(value, label, count) {
   return `<button class="filter-chip ${state.statusFilter === value && !state.trashMode ? 'active' : ''}" data-status-filter="${value}">
     <span>${label}</span><span class="filter-count">${count}</span>
@@ -701,9 +740,9 @@ function balanceMarkup() {
   }).join('')
 }
 
-function allTags() {
+function allSources() {
   return [...new Set(
-    state.questions.filter((question) => !question.deletedAt).flatMap((question) => question.tags),
+    state.questions.filter((question) => !question.deletedAt).map(sourceLabel),
   )].sort((left, right) => left.localeCompare(right, 'fr'))
 }
 
@@ -712,7 +751,7 @@ function hasActiveFilters() {
     || state.categoryFilter !== 'all'
     || state.difficultyFilter !== 'all'
     || state.modeFilter !== 'all'
-    || state.tagFilter !== 'all'
+    || state.sourceFilter !== 'all'
     || state.favoriteOnly
 }
 
@@ -798,13 +837,9 @@ function editModalMarkup() {
                 <label for="category">Catégorie</label>
                 <select id="category" name="category">${CATEGORIES.map((value) => option(value, question.category)).join('')}</select>
               </div>
-              <div class="field">
-                <label for="difficulty">Difficulté</label>
-                <select id="difficulty" name="difficulty">${DIFFICULTIES.map((value) => option(value, question.difficulty)).join('')}</select>
-              </div>
-              <div class="field">
-                <label for="milestones">Jalons gagnés</label>
-                <select id="milestones" name="milestones">${[1, 2, 3, 4, 5].map((value) => option(String(value), String(question.milestones))).join('')}</select>
+              <div class="field difficulty-field">
+                <label>Difficulté et jalons</label>
+                ${difficultyControlMarkup(question)}
               </div>
               <div class="field">
                 <label for="mode">Type</label>
@@ -837,7 +872,7 @@ function editModalMarkup() {
               </div>
               <label class="check-field">
                 <input type="checkbox" name="favorite" ${question.favorite ? 'checked' : ''} />
-                Ajouter aux favorites
+                Ajouter aux favoris
               </label>
             </div>
           </div>
@@ -852,6 +887,7 @@ function editModalMarkup() {
             <div>
               <button class="button" type="button" data-action="close-modal">Annuler</button>
               <button class="button primary" type="submit">Enregistrer</button>
+              <button class="button accent" type="submit" name="saveIntent" value="approve">Enregistrer et valider</button>
             </div>
           </div>
         </form>
@@ -1038,10 +1074,6 @@ function bindEvents() {
       render()
     })
   })
-  document.querySelector('[data-favorite-filter]')?.addEventListener('change', (event) => {
-    state.favoriteOnly = event.currentTarget.checked
-    render()
-  })
   document.querySelectorAll('[data-view]').forEach((button) => {
     button.addEventListener('click', () => {
       state.view = button.dataset.view
@@ -1066,6 +1098,9 @@ function bindEvents() {
   document.querySelectorAll('[data-delete-comment]').forEach((button) => {
     button.addEventListener('click', () => deleteComment(Number(button.dataset.deleteComment)))
   })
+  document.querySelectorAll('[data-difficulty-step]').forEach((button) => {
+    button.addEventListener('click', () => shiftFormDifficulty(Number(button.dataset.difficultyStep)))
+  })
 
   const questionForm = document.querySelector('#question-form')
   if (questionForm) {
@@ -1080,16 +1115,26 @@ function bindEvents() {
 
 async function handleAction(event) {
   const action = event.currentTarget.dataset.action
+  if (action !== 'account-menu') state.accountMenuOpen = false
+  if (action === 'account-menu') {
+    state.accountMenuOpen = !state.accountMenuOpen
+    render()
+  }
   if (action === 'new') openModal({ type: 'edit', id: null })
   if (action === 'export') openModal({ type: 'export' })
   if (action === 'status-help') openModal({ type: 'status-help' })
   if (action === 'close-modal') closeModal()
+  if (action === 'favorite-filter') {
+    state.favoriteOnly = !state.favoriteOnly
+    render()
+  }
+  if (action === 'undo-last') await undoLastAction()
   if (action === 'trash') {
     state.trashMode = !state.trashMode
     render()
   }
   if (action === 'clear-filters') {
-    state.statusFilter = state.categoryFilter = state.difficultyFilter = state.modeFilter = state.tagFilter = 'all'
+    state.statusFilter = state.categoryFilter = state.difficultyFilter = state.modeFilter = state.sourceFilter = 'all'
     state.favoriteOnly = false
     render()
   }
@@ -1113,6 +1158,7 @@ async function handleCardAction(event) {
   if (cardAction === 'trash') await trashQuestion(id)
   if (cardAction === 'restore') await restoreQuestion(id)
   if (cardAction === 'favorite') await toggleFavorite(id)
+  if (cardAction === 'difficulty') await changeQuestionDifficulty(id, Number(event.currentTarget.dataset.direction))
 }
 
 function openModal(modal) {
@@ -1122,9 +1168,14 @@ function openModal(modal) {
 }
 
 function closeModal() {
+  if (!state.modal) return
   state.modal = null
   render()
   updatePresence(null)
+}
+
+function handleGlobalKeydown(event) {
+  if (event.key === 'Escape' && state.modal) closeModal()
 }
 
 async function openHistory(id) {
@@ -1179,11 +1230,28 @@ function syncQuestionForm() {
       : 'Aucune mauvaise réponse pour un défi Chiffres.'
 }
 
+function shiftFormDifficulty(direction) {
+  const stepper = document.querySelector('#question-form [data-difficulty-stepper]')
+  if (!stepper) return
+  const nextMilestone = clampMilestones(Number(stepper.dataset.milestone) + direction)
+  const nextDifficulty = difficultyForMilestone(nextMilestone)
+  stepper.dataset.milestone = String(nextMilestone)
+  stepper.querySelector('img').src = `/game/categorie/diff-${nextMilestone}.png`
+  stepper.querySelector('img').alt = `${nextMilestone} jalons`
+  stepper.querySelector('.difficulty-copy strong').textContent = `${nextMilestone} jalon${nextMilestone > 1 ? 's' : ''}`
+  stepper.querySelector('.difficulty-copy span').textContent = nextDifficulty
+  stepper.querySelector('input[name="milestones"]').value = String(nextMilestone)
+  stepper.querySelector('input[name="difficulty"]').value = nextDifficulty
+  stepper.querySelector('[data-difficulty-step="-1"]').disabled = nextMilestone <= 1
+  stepper.querySelector('[data-difficulty-step="1"]').disabled = nextMilestone >= 5
+}
+
 async function saveQuestion(event) {
   event.preventDefault()
   if (previewMode) return showToast('Mode aperçu : aucune donnée n’est enregistrée.')
   const form = event.currentTarget
   const data = Object.fromEntries(new FormData(form))
+  const shouldApproveAfterSave = event.submitter?.value === 'approve'
   const existing = state.questions.find((question) => question.id === state.modal.id)
   const mode = data.mode
   const challengeType = mode === 'Défi' ? data.challengeType : 'Aucun'
@@ -1214,8 +1282,8 @@ async function saveQuestion(event) {
     wrong_answers: wrongAnswers,
     explanation: data.explanation.trim(),
     category: data.category,
-    difficulty: data.difficulty,
-    milestones: Number(data.milestones),
+    difficulty: difficultyForMilestone(data.milestones),
+    milestones: clampMilestones(data.milestones),
     mode,
     challenge_type: challengeType,
     status: existing?.status === 'review' ? 'review' : 'pending',
@@ -1228,6 +1296,7 @@ async function saveQuestion(event) {
     version: nextVersion,
     created_by: existing?.createdBy || state.profile.id,
     updated_by: state.profile.id,
+    updated_at: new Date().toISOString(),
   }
 
   let saved
@@ -1271,16 +1340,188 @@ async function saveQuestion(event) {
     snapshot_after: saved,
   })
 
+  if (shouldApproveAfterSave) {
+    const approvalResult = await supabase.rpc('approve_question', { p_question_id: id })
+    if (approvalResult.error) return showToast(friendlyError(approvalResult.error))
+    rememberUndo({ type: 'revoke-approval', id, label: `validation de ${id}` })
+  } else {
+    forgetUndo()
+  }
+
   state.modal = null
   await loadWorkspace({ quiet: true })
   updatePresence(null)
-  showToast(existing ? 'Question enregistrée. Les validations ont été réinitialisées.' : 'Question créée.')
+  showToast(shouldApproveAfterSave
+    ? 'Question enregistrée et validée par toi.'
+    : existing ? 'Question enregistrée. Les validations ont été réinitialisées.' : 'Question créée.')
+}
+
+async function changeQuestionDifficulty(id, direction) {
+  if (previewMode) return showToast('Mode aperçu : difficulté non enregistrée.')
+  const question = state.questions.find((item) => item.id === id)
+  if (!question || !direction) return
+  const nextMilestone = clampMilestones(question.milestones + direction)
+  if (nextMilestone === clampMilestones(question.milestones)) return
+
+  const nextDifficulty = difficultyForMilestone(nextMilestone)
+  const { data: saved, error } = await supabase
+    .from('questions')
+    .update({
+      difficulty: nextDifficulty,
+      milestones: nextMilestone,
+      status: question.status === 'review' ? 'review' : 'pending',
+      version: question.version + 1,
+      updated_by: state.profile.id,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', id)
+    .eq('version', question.version)
+    .select()
+    .maybeSingle()
+
+  if (error) return showToast(friendlyError(error))
+  if (!saved) {
+    showToast('Cette carte a été modifiée ailleurs. Les nouvelles données viennent d’être rechargées.')
+    await loadWorkspace({ quiet: true })
+    return
+  }
+
+  const approvalsResult = await supabase
+    .from('question_approvals')
+    .delete()
+    .eq('question_id', id)
+  if (approvalsResult.error) return showToast(friendlyError(approvalsResult.error))
+
+  await supabase.from('question_history').insert({
+    question_id: id,
+    actor_id: state.profile.id,
+    action: 'edited',
+    detail: 'Difficulté modifiée · validations annulées',
+    snapshot_before: questionToDatabaseSnapshot(question),
+    snapshot_after: saved,
+  })
+
+  rememberUndo({
+    type: 'difficulty',
+    id,
+    label: `difficulté de ${id}`,
+    difficulty: question.difficulty,
+    milestones: clampMilestones(question.milestones),
+    status: question.status,
+  })
+  await loadWorkspace({ quiet: true })
+  showToast(`Difficulté passée en ${nextDifficulty}.`)
+}
+
+function rememberUndo(action) {
+  state.lastUndo = action
+}
+
+function forgetUndo() {
+  state.lastUndo = null
+}
+
+async function undoLastAction() {
+  if (previewMode) return showToast('Mode aperçu : annulation non enregistrée.')
+  if (!state.lastUndo || state.undoing) return
+
+  const undo = state.lastUndo
+  state.undoing = true
+  render()
+
+  let error = null
+
+  if (undo.type === 'revoke-approval') {
+    const result = await supabase.rpc('revoke_my_approval', { p_question_id: undo.id })
+    error = result.error
+  }
+
+  if (undo.type === 'approve') {
+    const result = await supabase.rpc('approve_question', { p_question_id: undo.id })
+    error = result.error
+  }
+
+  if (undo.type === 'restore') {
+    const result = await supabase.rpc('restore_question', { p_question_id: undo.id })
+    error = result.error
+  }
+
+  if (undo.type === 'trash') {
+    const result = await supabase.rpc('move_question_to_trash', { p_question_id: undo.id })
+    error = result.error
+  }
+
+  if (undo.type === 'favorite') {
+    const result = await supabase
+      .from('questions')
+      .update({
+        favorite: undo.favorite,
+        updated_by: state.profile.id,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', undo.id)
+    error = result.error
+  }
+
+  if (undo.type === 'difficulty') {
+    const question = state.questions.find((item) => item.id === undo.id)
+    if (!question) {
+      error = { message: 'Question introuvable' }
+    } else {
+      const result = await supabase
+        .from('questions')
+        .update({
+          difficulty: undo.difficulty,
+          milestones: undo.milestones,
+          status: undo.status,
+          version: question.version + 1,
+          updated_by: state.profile.id,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', undo.id)
+        .eq('version', question.version)
+        .select()
+        .maybeSingle()
+      error = result.error
+      if (!error && !result.data) {
+        state.lastUndo = undo
+        state.undoing = false
+        await loadWorkspace({ quiet: true })
+        showToast('Cette carte a été modifiée ailleurs. Les nouvelles données viennent d’être rechargées.')
+        return
+      }
+      if (!error) {
+        await supabase.from('question_history').insert({
+          question_id: undo.id,
+          actor_id: state.profile.id,
+          action: 'edited',
+          detail: 'Annulation du changement de difficulté',
+          snapshot_before: questionToDatabaseSnapshot(question),
+          snapshot_after: result.data,
+        })
+      }
+    }
+  }
+
+  if (error) {
+    state.lastUndo = undo
+    state.undoing = false
+    render()
+    showToast(friendlyError(error))
+    return
+  }
+
+  state.lastUndo = null
+  state.undoing = false
+  await loadWorkspace({ quiet: true })
+  showToast('Action annulée.')
 }
 
 async function approveQuestion(id) {
   if (previewMode) return showToast('Mode aperçu : validation simulée uniquement.')
   const { error } = await supabase.rpc('approve_question', { p_question_id: id })
   if (error) return showToast(friendlyError(error))
+  rememberUndo({ type: 'revoke-approval', id, label: `validation de ${id}` })
   await loadWorkspace({ quiet: true })
   showToast(`Validation ajoutée par ${state.profile.display_name}.`)
 }
@@ -1289,6 +1530,7 @@ async function revokeApproval(id) {
   if (previewMode) return showToast('Mode aperçu : validation simulée uniquement.')
   const { error } = await supabase.rpc('revoke_my_approval', { p_question_id: id })
   if (error) return showToast(friendlyError(error))
+  rememberUndo({ type: 'approve', id, label: `retrait de validation de ${id}` })
   await loadWorkspace({ quiet: true })
   showToast('Ta validation a été retirée.')
 }
@@ -1302,6 +1544,7 @@ async function changeStatus(id, status) {
     p_status: status,
   })
   if (error) return showToast(friendlyError(error))
+  forgetUndo()
   await loadWorkspace({ quiet: true })
   showToast(`Carte passée ${label}.`)
 }
@@ -1312,6 +1555,7 @@ async function trashQuestion(id) {
   const { error } = await supabase.rpc('move_question_to_trash', { p_question_id: id })
   if (error) return showToast(friendlyError(error))
   state.modal = null
+  rememberUndo({ type: 'restore', id, label: `mise à la corbeille de ${id}` })
   await loadWorkspace({ quiet: true })
   showToast('Carte placée dans la corbeille.')
 }
@@ -1320,6 +1564,7 @@ async function restoreQuestion(id) {
   if (previewMode) return showToast('Mode aperçu : restauration non enregistrée.')
   const { error } = await supabase.rpc('restore_question', { p_question_id: id })
   if (error) return showToast(friendlyError(error))
+  rememberUndo({ type: 'trash', id, label: `restauration de ${id}` })
   await loadWorkspace({ quiet: true })
   showToast('Carte restaurée.')
 }
@@ -1330,6 +1575,7 @@ async function emptyTrash() {
   if (!window.confirm(`Supprimer définitivement ${count} carte${count > 1 ? 's' : ''} ? Cette action est irréversible.`)) return
   const { error } = await supabase.rpc('empty_trash')
   if (error) return showToast(friendlyError(error))
+  forgetUndo()
   await loadWorkspace({ quiet: true })
   showToast('Corbeille vidée.')
 }
@@ -1337,14 +1583,22 @@ async function emptyTrash() {
 async function toggleFavorite(id) {
   if (previewMode) return showToast('Mode aperçu : favori non enregistré.')
   const question = state.questions.find((item) => item.id === id)
+  if (!question) return
   const { error } = await supabase
     .from('questions')
     .update({
       favorite: !question.favorite,
       updated_by: state.profile.id,
+      updated_at: new Date().toISOString(),
     })
     .eq('id', id)
   if (error) return showToast(friendlyError(error))
+  rememberUndo({
+    type: 'favorite',
+    id,
+    label: question.favorite ? `retrait du favori ${id}` : `favori ${id}`,
+    favorite: question.favorite,
+  })
   await loadWorkspace({ quiet: true })
 }
 
@@ -1521,6 +1775,18 @@ function modalQuestionId() {
 
 function splitPipe(value = '') {
   return String(value).split('|').map((item) => item.trim()).filter(Boolean)
+}
+
+function sourceLabel(question) {
+  return question.source || 'Source non renseignée'
+}
+
+function clampMilestones(value) {
+  return Math.min(5, Math.max(1, Number(value) || 3))
+}
+
+function difficultyForMilestone(value) {
+  return DIFFICULTY_BY_MILESTONE[clampMilestones(value)]
 }
 
 function option(value, selected) {

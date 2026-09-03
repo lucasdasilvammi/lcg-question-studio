@@ -1,0 +1,5294 @@
+[
+  {
+    "id": "PYRAMIDE-QCM-001",
+    "question": "Les typographies scriptes imitent...",
+    "answer": "l'écriture manuscrite",
+    "wrongAnswers": [
+      "l'écriture informatique",
+      "l'écriture des moines"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-002",
+    "question": "Où placer une espace insécable ?",
+    "answer": "Entre deux mots que l'on ne souhaite pas voir séparés",
+    "wrongAnswers": [
+      "Après des guillemets anglais",
+      "En début de paragraphe"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-003",
+    "question": "Le nombre d'or correspond à environ...",
+    "answer": "1,618",
+    "wrongAnswers": [
+      "3,4518",
+      "212,85"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-004",
+    "question": "La chasse est...",
+    "answer": "l'encombrement des lettres d'un mot",
+    "wrongAnswers": [
+      "l'activité favorite de tonton Jean",
+      "l'espacement entre les lettres"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-005",
+    "question": "Laquelle de ces graisses de caractères n'existe pas ?",
+    "answer": "Hyper Bold",
+    "wrongAnswers": [
+      "Ultra",
+      "Extra Gras"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-006",
+    "question": "Dans Photoshop, comment appelle-t-on l'outil se situant entre le remplissage et la gomme ?",
+    "answer": "L'aérographe",
+    "wrongAnswers": [
+      "L'aéronautique",
+      "L'aéroplane"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-007",
+    "question": "Que signifie le sigle « RVB » ?",
+    "answer": "Rouge, vert, bleu",
+    "wrongAnswers": [
+      "Responsive, vite, bien",
+      "Résolution, vecteur, bandeau"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-008",
+    "question": "Laquelle de ces affirmations est vraie ?",
+    "answer": "Une police de caractères regroupe plusieurs fontes",
+    "wrongAnswers": [
+      "Une fonte regroupe plusieurs polices de caractères",
+      "La fonte est l'équivalent d'une police de caractères"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #1",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-009",
+    "question": "Qui a créé la première police italique ?",
+    "answer": "Francesco Griffo de Bologne",
+    "wrongAnswers": [
+      "Claude Garamont",
+      "Nicolas Jenson"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-010",
+    "question": "Combien d'encre la variante Ecofont d'Arial permet-elle d'économiser ?",
+    "answer": "28 %",
+    "wrongAnswers": [
+      "35 %",
+      "52 %"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-011",
+    "question": "Le pictogramme est...",
+    "answer": "un dessin",
+    "wrongAnswers": [
+      "une mesure",
+      "une photo"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-012",
+    "question": "Un blanc de pied, c'est...",
+    "answer": "La marge en bas de la page",
+    "wrongAnswers": [
+      "Une lettre sans empattement en bas",
+      "Une ligne blanche entre deux paragraphes"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-013",
+    "question": "Que signifie le sigle DPI ?",
+    "answer": "Dots per inch",
+    "wrongAnswers": [
+      "Don't push it",
+      "Draw per inch"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-014",
+    "question": "Sous InDesign, pour accéder aux caractères spéciaux, on ouvre le menu...",
+    "answer": "Glyphes",
+    "wrongAnswers": [
+      "Caractère",
+      "Article"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-015",
+    "question": "Parmi ces formats de fichiers, lequel est le seul à supporter la compression ?",
+    "answer": "JPEG",
+    "wrongAnswers": [
+      "GIF",
+      "PNG"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-016",
+    "question": "Lorsque l'on agrandit la taille d'une photographie, celle-ci perd-elle en qualité ?",
+    "answer": "Oui",
+    "wrongAnswers": [
+      "Non",
+      "Ça dépend"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-017",
+    "question": "« Colombelle » est synonyme de...",
+    "answer": "gouttière",
+    "wrongAnswers": [
+      "têtière",
+      "folio"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-018",
+    "question": "Qu'est-ce que l'« anticrénelage » ?",
+    "answer": "Un procédé permettant de réduire l'effet de pixélisation d'un élément graphique",
+    "wrongAnswers": [
+      "Un procédé de mise en page spécifique",
+      "Un procédé de gestion des créneaux"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-019",
+    "question": "Une phrase comportant les 26 lettres de l'alphabet s'appelle...",
+    "answer": "un pangramme",
+    "wrongAnswers": [
+      "un programme",
+      "une pandémie"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-020",
+    "question": "En quelle année Giambattista Bodoni a-t-il conçu la police Bodoni ?",
+    "answer": "En 1798",
+    "wrongAnswers": [
+      "En 1717",
+      "En 1889"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-021",
+    "question": "Le terme correct pour désigner une minuscule est...",
+    "answer": "bas-de-casse",
+    "wrongAnswers": [
+      "approche",
+      "hampe"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-022",
+    "question": "Où doit-on généralement mettre des espaces pour les parenthèses ?",
+    "answer": "À l'extérieur, mais pas à l'intérieur",
+    "wrongAnswers": [
+      "À l'intérieur, mais pas à l'extérieur",
+      "On ne met pas d'espaces avec les parenthèses"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-023",
+    "question": "L'American Type Founders a été fondée en 1892 par...",
+    "answer": "Linn Boyd Benton",
+    "wrongAnswers": [
+      "Morris Fuller Benton",
+      "Jack Larry Benton"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-024",
+    "question": "Où faut-il placer l'espace avec une virgule ?",
+    "answer": "Après",
+    "wrongAnswers": [
+      "Avant",
+      "Avant et après"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-025",
+    "question": "Lequel de ces caractères a beaucoup orné les emballages de produits alimentaires bio ?",
+    "answer": "Papyrus",
+    "wrongAnswers": [
+      "Comic Sans",
+      "Fajitas"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-026",
+    "question": "Comment appelle-t-on la liste des divisions d'un livre placée en fin d'ouvrage ?",
+    "answer": "La table des matières",
+    "wrongAnswers": [
+      "L'index",
+      "Le sommaire"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #9",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-027",
+    "question": "La règle des tiers désigne...",
+    "answer": "une règle qui permet d'équilibrer une composition",
+    "wrongAnswers": [
+      "une méthode de calcul pour choisir le corps d'un texte",
+      "une manière de calculer la pagination d'un livre"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-028",
+    "question": "Le synonyme de « fût », c'est...",
+    "answer": "montant",
+    "wrongAnswers": [
+      "descendant",
+      "tonneau"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-029",
+    "question": "Le caractère Antique Olive a été créé par...",
+    "answer": "Roger Excoffon",
+    "wrongAnswers": [
+      "Paul Renner",
+      "Jean-François Porchez"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-030",
+    "question": "Qu'est-ce qu'un « em » ?",
+    "answer": "Une unité de mesure utilisée pour la typographie sur le Web",
+    "wrongAnswers": [
+      "Une fonctionnalité de retouche rapide sur Photoshop",
+      "Un outil After Effects pour couper des vidéos"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-031",
+    "question": "Comment appelle-t-on la structure sous-jacente d'une mise en page ?",
+    "answer": "La grille",
+    "wrongAnswers": [
+      "La formule",
+      "Le tableur"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-032",
+    "question": "Comment nomme-t-on une image animée ?",
+    "answer": "Un GIF",
+    "wrongAnswers": [
+      "Un dessin animé",
+      "Une image accélérée"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-033",
+    "question": "Lorsque la dernière phrase d'un paragraphe commence une colonne ou une page, on parle...",
+    "answer": "de veuve",
+    "wrongAnswers": [
+      "de divorcée",
+      "d'orpheline"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-034",
+    "question": "Ed Benguiat a conçu plus de...",
+    "answer": "600 polices de caractères",
+    "wrongAnswers": [
+      "300 polices de caractères",
+      "900 polices de caractères"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-035",
+    "question": "Lesquelles de ces polices ont été créées par Roger Excoffon ?",
+    "answer": "Banco, Mistral et Calypso",
+    "wrongAnswers": [
+      "Billy, Crakis et Bébé",
+      "Festival, Zut et Zéphyr"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-036",
+    "question": "Un caractère bâton désigne...",
+    "answer": "un caractère sans empattements",
+    "wrongAnswers": [
+      "un caractère avec empattements",
+      "un caractère neutre"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-037",
+    "question": "Le caractère Fairplex a été créé par...",
+    "answer": "Zuzana Licko",
+    "wrongAnswers": [
+      "Jan Tschichold",
+      "Matthew Carter"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-038",
+    "question": "Qu'appelle-t-on une typographie « serif » ?",
+    "answer": "Une typographie avec empattements",
+    "wrongAnswers": [
+      "Une typographie en capitales",
+      "Une typographie imitant la machine à écrire"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-039",
+    "question": "Quel est l'intérêt de renommer une image ?",
+    "answer": "La possibilité de ne pas écraser l'image d'origine",
+    "wrongAnswers": [
+      "Le plaisir de changer de nom",
+      "Le fait de réduire son poids"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-040",
+    "question": "Le trait vertical principal d'une lettre est...",
+    "answer": "une hampe",
+    "wrongAnswers": [
+      "une jambe",
+      "une lampe"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-041",
+    "question": "Lequel de ces patronymes est celui d'une grande famille d'imprimeurs et typographes ?",
+    "answer": "Didot",
+    "wrongAnswers": [
+      "Dadou",
+      "Dondin"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-042",
+    "question": "Les caractères de labeur sont utilisés...",
+    "answer": "pour les textes",
+    "wrongAnswers": [
+      "pour les titres",
+      "pour les tableaux"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-043",
+    "question": "En 2023, Creative Cloud d'Adobe permet d'accéder à combien de services et applications ?",
+    "answer": "Entre 25 et 30",
+    "wrongAnswers": [
+      "Entre 5 et 10",
+      "Entre 15 et 20"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-044",
+    "question": "La ligature permet de...",
+    "answer": "coller 2 lettres",
+    "wrongAnswers": [
+      "rapprocher 2 lignes",
+      "fusionner 2 paragraphes"
+    ],
+    "explanation": "",
+    "category": "Typographie",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Typographie & mise en page"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #10",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Typographie & mise en page. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-045",
+    "question": "Quel terme ne peut pas s'appliquer à la finition d'un imprimé ?",
+    "answer": "Le modelage",
+    "wrongAnswers": [
+      "La découpe",
+      "Le gaufrage"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-046",
+    "question": "L'encre utilisée dans les presses numériques se présente sous forme...",
+    "answer": "de poudre",
+    "wrongAnswers": [
+      "liquide",
+      "de cubes"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-047",
+    "question": "Que signifie le sigle « BAT » ?",
+    "answer": "Bon à tirer",
+    "wrongAnswers": [
+      "Bon à tracer",
+      "Broché à toile"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-048",
+    "question": "La gravure en taille douce implique...",
+    "answer": "de graver la surface d'une plaque métallique",
+    "wrongAnswers": [
+      "de graver la surface d'une plaque de marbre",
+      "de plonger la plaque gravée dans un bain d'eau tiède"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-049",
+    "question": "Quel est le premier livre imprimé en série par Gutenberg ?",
+    "answer": "La Bible latine à 42 lignes",
+    "wrongAnswers": [
+      "Les 95 Thèses, de Martin Luther",
+      "Un traité d'orfèvrerie"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-050",
+    "question": "Qu'est-ce qu'un « repiquage au noir » ?",
+    "answer": "La réalisation d'une impression sur un document déjà imprimé",
+    "wrongAnswers": [
+      "Une impression en bichromie",
+      "Une photocopie"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-051",
+    "question": "Comment nomme-t-on une reliure faite de deux fils de métal se refermant sur des trous et rappelant le principe de la spirale ?",
+    "answer": "Une wire-o",
+    "wrongAnswers": [
+      "Un leporello",
+      "Une reliure japonaise"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-052",
+    "question": "Quelles encres doivent être privilégiées dans une démarche d'écoconception ?",
+    "answer": "Les encres végétales",
+    "wrongAnswers": [
+      "Les encres minérales",
+      "Les encres animales"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-053",
+    "question": "En offset, comment le rouleau qui transfère l'encre sur le papier se nomme-t-il ?",
+    "answer": "Le blanchet",
+    "wrongAnswers": [
+      "Le blanchon",
+      "Le blancheur"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-054",
+    "question": "Quelle reliure n'existe pas ?",
+    "answer": "La reliure italienne",
+    "wrongAnswers": [
+      "La reliure suisse",
+      "La reliure japonaise"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-055",
+    "question": "Quel est l'ordre logique de ces différentes étapes ?",
+    "answer": "Maquette en blanc - traceurs - bonnes feuilles",
+    "wrongAnswers": [
+      "Traceurs - maquette en blanc - bonnes feuilles",
+      "Maquette en blanc - bonnes feuilles - traceurs"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-056",
+    "question": "La flexographie fait appel à des plaques...",
+    "answer": "en caoutchouc ou plastique souple",
+    "wrongAnswers": [
+      "en métal souple",
+      "en bois tendre"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-057",
+    "question": "Qui a introduit la première rotative aux États-Unis ?",
+    "answer": "William Bullock",
+    "wrongAnswers": [
+      "Stephen Daye",
+      "Friedrich Koenig"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-058",
+    "question": "Quelle information est indispensable pour une photogravure réussie ?",
+    "answer": "Le profil ICC de l'impression",
+    "wrongAnswers": [
+      "Le nom de l'imprimeur",
+      "Le nombre d'exemplaires imprimés"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-059",
+    "question": "Que signifie le sigle « PAO » ?",
+    "answer": "Publication assistée par ordinateur",
+    "wrongAnswers": [
+      "Participation assistée par ordinateur",
+      "Persistance à l'obsolescence"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-060",
+    "question": "L'embossage est un marquage...",
+    "answer": "en creux",
+    "wrongAnswers": [
+      "en bosse",
+      "en zigzag"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-061",
+    "question": "Lequel de ces papiers est aplati et lissé ?",
+    "answer": "Le papier calandré",
+    "wrongAnswers": [
+      "Le papier offset",
+      "Le papier mat à main"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-062",
+    "question": "Le format rogné est obtenu après...",
+    "answer": "façonnage",
+    "wrongAnswers": [
+      "impression",
+      "reliure"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #2",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-063",
+    "question": "Le « roulage » consiste à...",
+    "answer": "mettre en marche une machine d'impression",
+    "wrongAnswers": [
+      "faire rouler les rouleaux encreurs",
+      "pratiquer un palper-rouler sur le conducteur de la machine"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-064",
+    "question": "Au Moyen Âge, à partir de quoi le vélin était-il fabriqué ?",
+    "answer": "De peau d'un veau mort-né",
+    "wrongAnswers": [
+      "De velours recyclé",
+      "De copeaux de bois"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-065",
+    "question": "Un papier qui a de la « main » est un papier qui...",
+    "answer": "semble plus épais qu'il ne l'est réellement",
+    "wrongAnswers": [
+      "a été fabriqué avec des chiffons",
+      "garde les traces de doigts quand on le manipule"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-066",
+    "question": "Un leporello est...",
+    "answer": "un dépliant accordéon",
+    "wrongAnswers": [
+      "une couverture en cuir",
+      "une découpe biseautée"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-067",
+    "question": "Qu'est-ce que le maculage ?",
+    "answer": "Des traces d'encre sur les feuilles d'impression",
+    "wrongAnswers": [
+      "Des structures géométriques qui apparaissent lors de la reproduction d'une image déjà tramée",
+      "Des défauts du papier"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-068",
+    "question": "Quel outil permet de vérifier les trames d'impression sur les bonnes feuilles ?",
+    "answer": "Un compte-fils",
+    "wrongAnswers": [
+      "Un compte-trames",
+      "Un compte-points"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-069",
+    "question": "L'« integra » est...",
+    "answer": "une couverture souple rembordée",
+    "wrongAnswers": [
+      "un imprimeur intègre",
+      "un mode de calcul pour les pixels"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-070",
+    "question": "Un document imprimé ne peut comporter...",
+    "answer": "un nombre impair de pages",
+    "wrongAnswers": [
+      "moins de 12 pages",
+      "un nombre impair de feuilles"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #3",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-071",
+    "question": "Dans un A3, combien y a-t-il de A5 ?",
+    "answer": "4",
+    "wrongAnswers": [
+      "6",
+      "8"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-072",
+    "question": "Qui a mis au point la fabrication du papier vélin en France ?",
+    "answer": "François-Ambroise Didot",
+    "wrongAnswers": [
+      "Johannes Gutenberg",
+      "Nicolas Robert"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-073",
+    "question": "Comment nomme-t-on les premiers livres imprimés ?",
+    "answer": "Les incunables",
+    "wrongAnswers": [
+      "Les impliables",
+      "Les insolubles"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-074",
+    "question": "L'imposition est une étape...",
+    "answer": "du prépresse",
+    "wrongAnswers": [
+      "de l'impression",
+      "de la photogravure"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-075",
+    "question": "Comment appelle-t-on le paragraphe qui fournit les informations d'impression d'un ouvrage ?",
+    "answer": "Le colophon",
+    "wrongAnswers": [
+      "L'incipit",
+      "Le cabochon"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-076",
+    "question": "Andy Warhol a très largement fait usage de...",
+    "answer": "la sérigraphie",
+    "wrongAnswers": [
+      "la risographie",
+      "la flexographie"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-077",
+    "question": "Quel format n'existe pas ?",
+    "answer": "Le format à la japonaise",
+    "wrongAnswers": [
+      "Le format à l'italienne",
+      "Le format à la française"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-078",
+    "question": "Un papier bouffant est un papier...",
+    "answer": "léger et épais",
+    "wrongAnswers": [
+      "lourd et fin",
+      "rugueux et lourd"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-079",
+    "question": "L'hexachromie est une impression en...",
+    "answer": "6 couleurs",
+    "wrongAnswers": [
+      "3 couleurs",
+      "10 couleurs"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-080",
+    "question": "Qu'est-ce que l'amalgame ?",
+    "answer": "Un tirage simultané, sur une même feuille, d'impressions différentes",
+    "wrongAnswers": [
+      "Un test d'impression",
+      "Un réglage du niveau d'encre"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-081",
+    "question": "Avant Gutenberg, quelle technique était utilisée pour reproduire un livre ?",
+    "answer": "La xylographie",
+    "wrongAnswers": [
+      "La reprographie",
+      "La sérigraphie"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-082",
+    "question": "Quand on parle de « gâche », on évoque...",
+    "answer": "le papier",
+    "wrongAnswers": [
+      "l'encre",
+      "l'écologie"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-083",
+    "question": "Les livres « souples » sont dits...",
+    "answer": "brochés",
+    "wrongAnswers": [
+      "reliés",
+      "pliés"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-084",
+    "question": "Une découpe au laser suppose de...",
+    "answer": "brûler le papier",
+    "wrongAnswers": [
+      "humidifier le papier",
+      "écraser le papier"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-085",
+    "question": "Un papier qui laisse entrevoir par transparence de fines lignes horizontales et parallèles dans son épaisseur est...",
+    "answer": "un papier vergé",
+    "wrongAnswers": [
+      "un papier washi",
+      "un papier bible"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-086",
+    "question": "Le format A0 est...",
+    "answer": "le double de A1",
+    "wrongAnswers": [
+      "la moitié de A1",
+      "le double de A3"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-087",
+    "question": "Le « trapping » désigne...",
+    "answer": "l'ajustement de deux zones colorées",
+    "wrongAnswers": [
+      "la trame d'une photographie imprimée",
+      "l'imposition selon les aplats de couleur à imprimer"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-088",
+    "question": "Quelle piqûre n'existe pas ?",
+    "answer": "La piqûre cousue",
+    "wrongAnswers": [
+      "La piqûre à plat",
+      "La piqûre à cheval"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Fabrication"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #11",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Fabrication. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-195",
+    "question": "« Je fais plutôt du print » signifie...",
+    "answer": "« Mes créations graphiques sont destinées à être imprimées »",
+    "wrongAnswers": [
+      "« Je cours tous les dimanches »",
+      "« Mes créations graphiques sont destinées à un usage digital »"
+    ],
+    "explanation": "",
+    "category": "Production",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-089",
+    "question": "Quel est l'autre nom du style typographique international ?",
+    "answer": "Le style suisse",
+    "wrongAnswers": [
+      "Le style allemand",
+      "Le style belge"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-090",
+    "question": "En peinture, l'invention de la perspective date du...",
+    "answer": "XVe siècle",
+    "wrongAnswers": [
+      "XIVe siècle",
+      "XVIe siècle"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-091",
+    "question": "Le studio Pentagram a été fondé en...",
+    "answer": "1972",
+    "wrongAnswers": [
+      "1952",
+      "1962"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-092",
+    "question": "Quel magazine mis en page par Herb Lubalin a valu un emprisonnement de huit mois à son fondateur ?",
+    "answer": "Avant-Garde",
+    "wrongAnswers": [
+      "Eros",
+      "Fact"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-093",
+    "question": "Élisabeth Vigée-Lebrun excellait dans l'art...",
+    "answer": "du portrait",
+    "wrongAnswers": [
+      "de la nature morte",
+      "du paysage"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-094",
+    "question": "Quel graphiste a été surnommé « Monsieur Couverture » par Jacques Chancel ?",
+    "answer": "Pierre Faucheux",
+    "wrongAnswers": [
+      "Massin",
+      "Pierre di Sciullo"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-095",
+    "question": "Quand le manifeste First Things First de Garland a-t-il été écrit ?",
+    "answer": "En 1963",
+    "wrongAnswers": [
+      "En 1933",
+      "En 1993"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-096",
+    "question": "Le constructivisme est né...",
+    "answer": "en Russie",
+    "wrongAnswers": [
+      "en Allemagne",
+      "en Suisse"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-097",
+    "question": "Quelle était la nationalité de l'imprimeur vénitien Nicolas Jenson ?",
+    "answer": "Française",
+    "wrongAnswers": [
+      "Italienne",
+      "Canadienne"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-098",
+    "question": "Qui fut la première femme à intégrer l'Art Directors Club ?",
+    "answer": "Cipe Pineles",
+    "wrongAnswers": [
+      "Paula Scher",
+      "Linda Hinrichs"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-099",
+    "question": "La Vénus de Botticelli naît dans...",
+    "answer": "un coquillage",
+    "wrongAnswers": [
+      "un char",
+      "un temple"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-100",
+    "question": "Qui est considéré comme le fondateur du land art ?",
+    "answer": "Robert Smithson",
+    "wrongAnswers": [
+      "Jackson Pollock",
+      "Christo"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-101",
+    "question": "Saul Bass est connu pour...",
+    "answer": "ses génériques et affiches de films",
+    "wrongAnswers": [
+      "ses livres de poche",
+      "ses typographies manuscrites"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-102",
+    "question": "Où Armin Hofmann a-t-il enseigné le graphisme ?",
+    "answer": "À la Schule für Gestaltung Basel",
+    "wrongAnswers": [
+      "À la Hochschule für Gestaltung d'Ulm",
+      "Au Bauhaus"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-103",
+    "question": "Comment la femme de Joseph Albers se prénomme-t-elle ?",
+    "answer": "Anni",
+    "wrongAnswers": [
+      "Sonia",
+      "Frida"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-104",
+    "question": "Le collectif Grapus se sépare en...",
+    "answer": "1990",
+    "wrongAnswers": [
+      "1985",
+      "1988"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-105",
+    "question": "La première œuvre de ready-made était...",
+    "answer": "un urinoir",
+    "wrongAnswers": [
+      "une fontaine",
+      "un bidet"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-106",
+    "question": "Josef Albers a rendu hommage...",
+    "answer": "au carré",
+    "wrongAnswers": [
+      "au rond",
+      "au triangle"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #4",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-107",
+    "question": "Giovanni Pintori marqua de son style les productions de...",
+    "answer": "Olivetti",
+    "wrongAnswers": [
+      "Gucci",
+      "Panzani"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-108",
+    "question": "Le système de pictogrammes développé par Otto et Marie Neurath s'appelle...",
+    "answer": "l'ISOTYPE",
+    "wrongAnswers": [
+      "le PICTUS",
+      "l'ICONOTYPE"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-109",
+    "question": "Stefan Sagmeister a collaboré avec...",
+    "answer": "Lou Reed",
+    "wrongAnswers": [
+      "David Bowie",
+      "Prince"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-110",
+    "question": "Le DA de Ray Gun était...",
+    "answer": "David Carson",
+    "wrongAnswers": [
+      "Stefan Sagmeister",
+      "Milton Glaser"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-111",
+    "question": "Paul Klee a produit...",
+    "answer": "9 000 tableaux",
+    "wrongAnswers": [
+      "500 tableaux",
+      "1 000 tableaux"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-112",
+    "question": "Alexey Brodovitch a été le DA de...",
+    "answer": "Harper's Bazaar",
+    "wrongAnswers": [
+      "Vanity Fair",
+      "Penguin"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-113",
+    "question": "Picasso a exposé Guernica pour la première fois...",
+    "answer": "à l'Exposition universelle de Paris",
+    "wrongAnswers": [
+      "au V&A Museum de Londres",
+      "au MoMA de New York"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-114",
+    "question": "Jackson Pollock est devenu célèbre grâce...",
+    "answer": "à l'action painting",
+    "wrongAnswers": [
+      "à l'op art",
+      "au pointillisme"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-115",
+    "question": "Edgar Degas aimait...",
+    "answer": "les danseuses",
+    "wrongAnswers": [
+      "les comédiennes",
+      "les chanteuses"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-116",
+    "question": "Qui a créé les logos du National Geographic, de Mobil et de la Chase Manhattan Bank ?",
+    "answer": "Chermayeff & Geismar",
+    "wrongAnswers": [
+      "Paul Rand",
+      "Massimo Vignelli"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-117",
+    "question": "Le Quattrocento italien correspond au...",
+    "answer": "XVe siècle",
+    "wrongAnswers": [
+      "XIIIe siècle",
+      "XIVe siècle"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-118",
+    "question": "L'identité et la signalétique des Jeux olympiques d'été de Munich (1972) ont été créées par...",
+    "answer": "Otl Aicher",
+    "wrongAnswers": [
+      "Herb Lubalin",
+      "Paul Rand"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-119",
+    "question": "Henri Cartier-Bresson est réputé pour...",
+    "answer": "ses photos de rue",
+    "wrongAnswers": [
+      "ses photos en couleurs",
+      "ses paysages"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-120",
+    "question": "Le grand concept de Le Corbusier était...",
+    "answer": "l'unité d'habitation",
+    "wrongAnswers": [
+      "l'unité de construction",
+      "l'unité d'élévation"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-121",
+    "question": "Le peintre Wassily Kandinsky est mort...",
+    "answer": "en 1944",
+    "wrongAnswers": [
+      "en 1949",
+      "en 1954"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-122",
+    "question": "Une célèbre fresque de Michel-Ange orne le plafond de...",
+    "answer": "la chapelle Sixtine",
+    "wrongAnswers": [
+      "la basilique Saint-Pierre",
+      "la villa Borghèse"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-123",
+    "question": "Qui a conçu au début des années 2000 l'identité de la collection « Great Ideas » de Penguin ?",
+    "answer": "David Pearson",
+    "wrongAnswers": [
+      "Jan Tschichold",
+      "Neville Brody"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-124",
+    "question": "Au Bauhaus, Marcel Breuer a créé...",
+    "answer": "du mobilier",
+    "wrongAnswers": [
+      "de la tapisserie",
+      "des bâtiments"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #5",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-125",
+    "question": "Comment le style d'affiche publicitaire dont Lucian Bernhard est le chef de file se nomme-t-il ?",
+    "answer": "Le SachPlakat",
+    "wrongAnswers": [
+      "Le MenschPlakat",
+      "Le LandschaftPlakat"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-126",
+    "question": "« I love New York » est un logo créé par...",
+    "answer": "Milton Glaser",
+    "wrongAnswers": [
+      "Paul Rand",
+      "David Hasselhoff"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-127",
+    "question": "Rudy VanderLans et Zuzana Licko ont fondé en 1984 la revue...",
+    "answer": "Emigre",
+    "wrongAnswers": [
+      "Resist",
+      "Exile"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-128",
+    "question": "Hokusai est célèbre pour...",
+    "answer": "sa vague",
+    "wrongAnswers": [
+      "son trombone",
+      "sa maîtrise de l'espéranto"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-129",
+    "question": "Bart Van der Leck est l'un des fondateurs...",
+    "answer": "de De Stijl",
+    "wrongAnswers": [
+      "du Bauhaus",
+      "de la Sécession"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-130",
+    "question": "Gutenberg est sans doute le premier à avoir utilisé...",
+    "answer": "des caractères typographiques métalliques",
+    "wrongAnswers": [
+      "de l'encre de Chine",
+      "du papier recyclé"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-131",
+    "question": "Wes Wilson, Bonnie MacLean et Victor Moscoso sont connus pour...",
+    "answer": "leurs affiches psychédéliques",
+    "wrongAnswers": [
+      "leurs fanzines érotiques",
+      "leurs packagings minimalistes"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-132",
+    "question": "Qui a peint L'Homme au chapeau melon ?",
+    "answer": "René Magritte",
+    "wrongAnswers": [
+      "John Steed",
+      "Salvador Dalí"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-133",
+    "question": "Edvard Munch a atteint la notoriété avec...",
+    "answer": "son cri",
+    "wrongAnswers": [
+      "ses pleurs",
+      "son rire"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-134",
+    "question": "Les œuvres de Robert Doisneau relèvent de...",
+    "answer": "la photographie humaniste",
+    "wrongAnswers": [
+      "la photographie nostalgique",
+      "la photographie militante"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Culture visuelle"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #12",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Culture visuelle. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-183",
+    "question": "Qu'est-ce que le graphisme n'est pas ?",
+    "answer": "Une spécificité française",
+    "wrongAnswers": [
+      "Un métier créatif",
+      "Un art appliqué"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-185",
+    "question": "Comment nomme-t-on le graphisme des emballages de biens de consommation ?",
+    "answer": "Le packaging",
+    "wrongAnswers": [
+      "Le graphisme éditorial",
+      "Le graphisme d'utilisation"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-187",
+    "question": "La présentation graphique de données chiffrées s'appelle...",
+    "answer": "la datavisualisation",
+    "wrongAnswers": [
+      "le datagraphisme",
+      "le chiffrographisme"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-196",
+    "question": "Quel site web propose une banque de pictogrammes et autres symboles graphiques ?",
+    "answer": "The Noun Project",
+    "wrongAnswers": [
+      "The Design Project",
+      "The Form Project"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-198",
+    "question": "Quelle revue fondée en 1994 par Michel Chanaud et Patrick Morin offre un panorama de l'actualité du graphisme ?",
+    "answer": "étapes:",
+    "wrongAnswers": [
+      "Baseline",
+      "Idea"
+    ],
+    "explanation": "",
+    "category": "Culture graphique",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-190",
+    "question": "Avec quel procédé peut-on lancer son processus créatif ?",
+    "answer": "Une carte mentale",
+    "wrongAnswers": [
+      "Une vectorisation de caractères typographiques",
+      "Une maquette en blanc"
+    ],
+    "explanation": "",
+    "category": "Composition",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Vie de pro"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #13",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Vie de pro. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-135",
+    "question": "Sous quel nom plus vendeur les designers évoquent-ils la couleur « chair » ?",
+    "answer": "pêche",
+    "wrongAnswers": [
+      "pommette",
+      "rosette"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-136",
+    "question": "Quelle est la couleur complémentaire du jaune ?",
+    "answer": "Le violet",
+    "wrongAnswers": [
+      "L'orange",
+      "Le vert"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-137",
+    "question": "Le Pantone Reflex Blue est un...",
+    "answer": "bleu profond",
+    "wrongAnswers": [
+      "bleu métallique",
+      "bleu fluorescent"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-138",
+    "question": "Quel outil colorimétrique est encore utilisé dans certaines industries ?",
+    "answer": "Le nuancier de Munsell",
+    "wrongAnswers": [
+      "Le nuancier de Funsell",
+      "Le nuancier de Punsell"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-139",
+    "question": "L'incarnat a une dominante...",
+    "answer": "rouge",
+    "wrongAnswers": [
+      "jaune",
+      "verte"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-140",
+    "question": "Une teinte est...",
+    "answer": "le mélange d'une couleur avec du blanc",
+    "wrongAnswers": [
+      "le mélange d'une couleur avec du gris ou du noir",
+      "le mélange d'une couleur avec du bleu"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-141",
+    "question": "Qu'est-ce qu'un « camaïeu » ?",
+    "answer": "Un dégradé plus ou moins foncé de la même couleur",
+    "wrongAnswers": [
+      "L'association de deux couleurs contrastées",
+      "Une teinte entre le rose et l'orange"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-142",
+    "question": "Le tableau de Picasso intitulé Mère et Enfant (1901) arbore...",
+    "answer": "des teintes de bleu",
+    "wrongAnswers": [
+      "des teintes de rouge",
+      "des teintes de rose"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-143",
+    "question": "Le pigment de carthame est...",
+    "answer": "rouge",
+    "wrongAnswers": [
+      "jaune",
+      "bleu"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-144",
+    "question": "Le système de couleurs RVB est utilisé...",
+    "answer": "à l'écran",
+    "wrongAnswers": [
+      "en impression",
+      "en peinture"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-145",
+    "question": "Pour une référence Pantone, que signifie le C ?",
+    "answer": "Coated",
+    "wrongAnswers": [
+      "Cartonné",
+      "Customisé"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-146",
+    "question": "Le « Gofun Shirayuki » est un pigment blanc japonais produit à partir de...",
+    "answer": "coquilles d'huîtres",
+    "wrongAnswers": [
+      "plâtre pilé",
+      "calcaire"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-147",
+    "question": "Lequel de ces logos n'est pas rouge ?",
+    "answer": "Starbucks",
+    "wrongAnswers": [
+      "H&M",
+      "Coca-Cola"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-148",
+    "question": "Le vert avocat a beaucoup été utilisé...",
+    "answer": "sur les appareils électroménagers des années 1970",
+    "wrongAnswers": [
+      "dans les tribunaux du début du XXe siècle",
+      "sur les plateaux télé des années 2000"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-149",
+    "question": "Quelle couleur obtient-on avec le lapis-lazuli ?",
+    "answer": "Du bleu",
+    "wrongAnswers": [
+      "Du jaune",
+      "Du violet"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-150",
+    "question": "Comment le livre culte de Josef Albers se nomme-t-il ?",
+    "answer": "L'Interaction des couleurs",
+    "wrongAnswers": [
+      "La Symphonie des couleurs",
+      "L'Harmonie des couleurs"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-151",
+    "question": "Une tétrade désigne...",
+    "answer": "une combinaison de quatre couleurs",
+    "wrongAnswers": [
+      "une combinaison de deux couleurs",
+      "une combinaison de dix couleurs"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-152",
+    "question": "Quel est le nom du noir absolu déposé par l'artiste Anish Kapoor ?",
+    "answer": "Vantablack",
+    "wrongAnswers": [
+      "Absoluteblack",
+      "Blackissime"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #6",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-153",
+    "question": "Quelle est la couleur Pantone de l'année 2023 ?",
+    "answer": "Viva Magenta",
+    "wrongAnswers": [
+      "Ultimate Grey",
+      "Pirate Black"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-154",
+    "question": "Qui a déclaré : « L'air frais est violet » ?",
+    "answer": "Claude Monet",
+    "wrongAnswers": [
+      "Vincent Van Gogh",
+      "Paul Cézanne"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-155",
+    "question": "Laquelle de ces associations n'existe pas ?",
+    "answer": "Couleurs complémentaires perdues",
+    "wrongAnswers": [
+      "Couleurs complémentaires",
+      "Couleurs complémentaires rompues"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-156",
+    "question": "Le pigment indigo était obtenu à partir...",
+    "answer": "de graines",
+    "wrongAnswers": [
+      "de terre",
+      "d'aluminium"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-157",
+    "question": "Quelle artiste française contemporaine recrée et explore dans ses œuvres le spectre de la lumière ?",
+    "answer": "Nathalie Junod Ponsard",
+    "wrongAnswers": [
+      "Camille Henrot",
+      "Martine Aballéa"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-158",
+    "question": "En impression, les encres métalliques...",
+    "answer": "sont plus chères",
+    "wrongAnswers": [
+      "sont moins chères",
+      "n'existent pas"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-159",
+    "question": "« Cinabre » est une nuance de...",
+    "answer": "rouge",
+    "wrongAnswers": [
+      "vert",
+      "bleu"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-160",
+    "question": "Si je veux signifier la vérité et la loyauté, j'utilise du...",
+    "answer": "bleu",
+    "wrongAnswers": [
+      "noir",
+      "rouge"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-161",
+    "question": "Le violet héliotrope tient son nom...",
+    "answer": "d'une fleur",
+    "wrongAnswers": [
+      "d'un coquillage",
+      "d'un papillon"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-162",
+    "question": "« Chartreuse » est une teinte de...",
+    "answer": "vert",
+    "wrongAnswers": [
+      "bleu",
+      "rouge"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-163",
+    "question": "Le cercle chromatique de Johannes Itten comporte...",
+    "answer": "7 contrastes",
+    "wrongAnswers": [
+      "8 contrastes",
+      "9 contrastes"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-164",
+    "question": "« Zinzolin » est une nuance de...",
+    "answer": "violet",
+    "wrongAnswers": [
+      "bleu",
+      "jaune"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-165",
+    "question": "Sous quel nom un peu plus joli peut-on présenter la couleur « caca d'oie » ?",
+    "answer": "Vert olive",
+    "wrongAnswers": [
+      "Jaune crasseux",
+      "Vert menthe"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-166",
+    "question": "« Citron », « soleil » ou « indien » définissent...",
+    "answer": "des jaunes",
+    "wrongAnswers": [
+      "des ocres",
+      "des ors"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-167",
+    "question": "Le sépia est la couleur d'un pigment produit par...",
+    "answer": "la seiche",
+    "wrongAnswers": [
+      "les épicéas",
+      "un champignon"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-168",
+    "question": "Un ton est...",
+    "answer": "le mélange d'une couleur avec du gris ou du noir",
+    "wrongAnswers": [
+      "le mélange d'une couleur avec du blanc",
+      "le mélange de trois couleurs"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-169",
+    "question": "Quelles sont les couleurs utilisées en quadrichromie ?",
+    "answer": "Cyan, magenta, jaune, noir",
+    "wrongAnswers": [
+      "Rouge, vert, bleu",
+      "Bleu, jaune, rouge"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-170",
+    "question": "L'aplat est...",
+    "answer": "une surface de couleur uniforme",
+    "wrongAnswers": [
+      "l'association de deux couleurs similaires",
+      "une tache de couleur"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #7",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-171",
+    "question": "Lequel de ces roses existe ?",
+    "answer": "Le rose « shocking »",
+    "wrongAnswers": [
+      "Le rose « amazing »",
+      "Le rose « troubling »"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-172",
+    "question": "Le vert de flambe est obtenu à partir...",
+    "answer": "de fleurs pilées et d'oxyde de plomb",
+    "wrongAnswers": [
+      "de lichens séchés",
+      "de sécrétions de chenilles"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-173",
+    "question": "Qui a dit : « Quand je n'ai pas de bleu, je mets du rouge » ?",
+    "answer": "Pablo Picasso",
+    "wrongAnswers": [
+      "Salvador Dalí",
+      "Piet Mondrian"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-174",
+    "question": "Le vert est une couleur...",
+    "answer": "froide",
+    "wrongAnswers": [
+      "chaude",
+      "mitigée"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : B.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-175",
+    "question": "Un accord isocèle est composé de...",
+    "answer": "3 couleurs",
+    "wrongAnswers": [
+      "5 couleurs",
+      "6 couleurs"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-176",
+    "question": "Le système Pantone a été créé en...",
+    "answer": "1963",
+    "wrongAnswers": [
+      "1943",
+      "1953"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-177",
+    "question": "À quelle couleur l'adjectif « sarcelle » correspond-il ?",
+    "answer": "Au bleu",
+    "wrongAnswers": [
+      "Au jaune",
+      "Au rouge"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Facile",
+    "milestones": 1,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-178",
+    "question": "Lequel de ces savants n'a pas travaillé sur la couleur ?",
+    "answer": "Albert Einstein",
+    "wrongAnswers": [
+      "Johann Wolfgang von Goethe",
+      "Isaac Newton"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-179",
+    "question": "Regarder du rouge peut...",
+    "answer": "augmenter la tension artérielle",
+    "wrongAnswers": [
+      "déclencher un fou rire",
+      "troubler la vision de loin"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-180",
+    "question": "Quelle est la meilleure astuce pour rendre lisible le blanc sur un fond jaune ?",
+    "answer": "Ajouter au moins 20 % de magenta dans le jaune",
+    "wrongAnswers": [
+      "Passer le texte en italique",
+      "Utiliser un nuancier Pantone"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-181",
+    "question": "On parle de synthèse...",
+    "answer": "soustractive",
+    "wrongAnswers": [
+      "colorimétrique",
+      "administrative"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Moyen",
+    "milestones": 3,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : A.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  },
+  {
+    "id": "PYRAMIDE-QCM-182",
+    "question": "Le violet a une longueur d'onde...",
+    "answer": "plus courte que le rouge",
+    "wrongAnswers": [
+      "plus longue que le rouge",
+      "identique au rouge"
+    ],
+    "explanation": "",
+    "category": "Signe et couleur",
+    "difficulty": "Expert",
+    "milestones": 5,
+    "mode": "Quiz",
+    "challengeType": "Aucun",
+    "status": "pending",
+    "tags": [
+      "pyramide-qcm",
+      "cartes-qcm",
+      "Couleur"
+    ],
+    "source": "pyramide QCM",
+    "sourcePage": "Image #8",
+    "revisionNotes": "Import Pyramide QCM. Categorie originale : Couleur. Reponse carte : C.",
+    "favorite": false,
+    "confidence": 0.95,
+    "createdAt": "2026-08-29T00:00:00.000Z",
+    "updatedAt": "2026-08-29T00:00:00.000Z"
+  }
+]

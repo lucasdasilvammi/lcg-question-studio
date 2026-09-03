@@ -6,6 +6,8 @@
   "scripts": {
     "catalog": "node scripts/build-question-catalog.mjs",
     "supabase:bootstrap": "node scripts/bootstrap-supabase.mjs",
+    "supabase:import:pyramide": "node scripts/import-pyramide-qcm.mjs",
+    "supabase:import:pyramide:dry-run": "node scripts/import-pyramide-qcm.mjs --dry-run",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
