@@ -6,10 +6,14 @@
   "scripts": {
     "catalog": "node scripts/build-question-catalog.mjs",
     "supabase:bootstrap": "node scripts/bootstrap-supabase.mjs",
+    "supabase:studio:plan": "node scripts/seed-studio-documents.mjs",
+    "supabase:studio:apply:mock": "node scripts/seed-studio-documents.mjs --apply --source=mock",
+    "supabase:studio:apply:snapshot": "node scripts/seed-studio-documents.mjs --apply",
     "supabase:import:pyramide": "node scripts/import-pyramide-qcm.mjs",
     "supabase:import:pyramide:dry-run": "node scripts/import-pyramide-qcm.mjs --dry-run",
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host 0.0.0.0 --port 5174 --strictPort",
     "build": "vite build",
+    "test": "node --test src/modules/*.test.js",
     "preview": "vite preview"
   },
   "devDependencies": {

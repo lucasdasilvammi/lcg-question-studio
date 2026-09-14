@@ -2,6 +2,9 @@ import { randomBytes } from 'node:crypto'
 import process from 'node:process'
 import { createClient } from '@supabase/supabase-js'
 import { initialQuestions } from '../src/initialQuestions.js'
+import { createMockWorkspace } from '../src/mockWorkspace.js'
+import { DEFAULT_BACKLOG_TAGS } from '../src/studioConfig.js'
+import { createPocPatch } from '../src/modules/worklog.js'
 
 try {
   process.loadEnvFile('.env.local')
@@ -81,6 +84,10 @@ const { error: profileError } = await supabase.from('profiles').upsert(
     id: account.id,
     username: account.username,
     display_name: account.displayName,
+    avatar_key: 'couronne',
+    accent_key: account.username === 'lucas' ? 'cyan' : 'yellow',
+    accent_color: account.username === 'lucas' ? '#06C0F9' : '#FFC400',
+    accent_secondary: account.username === 'lucas' ? '#103743' : '#4C3E0F',
   })),
   { onConflict: 'id' },
 )
@@ -91,6 +98,45 @@ const profileIdByName = Object.fromEntries(
 )
 const defaultActor = profileIdByName.Lucas
 
+const workspace = createMockWorkspace()
+const ownerId = (name) => profileIdByName[name] || defaultActor
+const studioDocuments = [
+  {
+    key: 'backlog',
+    content: {
+      tickets: workspace.backlog.map((ticket) => ({
+        ...ticket,
+        ownerId: ownerId(ticket.owner),
+        createdById: ownerId(ticket.owner),
+      })),
+      tags: DEFAULT_BACKLOG_TAGS,
+    },
+  },
+  { key: 'ideas', content: { items: workspace.ideas } },
+  {
+    key: 'playtests',
+    content: {
+      sessions: workspace.playtests.map((session) => ({
+        ...session,
+        facilitatorId: session.facilitatorId === 'awen-preview' ? profileIdByName.Awen : defaultActor,
+      })),
+    },
+  },
+  { key: 'worklog', content: { patches: [createPocPatch()] } },
+]
+
+const { data: existingDocuments, error: documentsReadError } = await supabase
+  .from('studio_documents')
+  .select('key')
+if (documentsReadError) throw documentsReadError
+const existingDocumentKeys = new Set(existingDocuments.map((document) => document.key))
+const missingDocuments = studioDocuments
+  .filter((document) => !existingDocumentKeys.has(document.key))
+  .map((document) => ({ ...document, updated_by: defaultActor }))
+if (missingDocuments.length) {
+  const { error } = await supabase.from('studio_documents').insert(missingDocuments)
+  if (error) throw error
+}
 const resetTables = [
   ['export_items', 'question_id'],
   ['export_batches', 'id'],
@@ -174,6 +220,7 @@ if (historyCount === 0) {
 
 console.log('\nSupabase est prêt.')
 console.log(`Questions synchronisées : ${questionRows.length}`)
+console.log('Documents Studio initialisés : ' + missingDocuments.length)
 console.log('Toutes les questions sont en attente, sans validation ni historique d’export.')
 console.log('\nIdentifiants du studio :')
 for (const account of accounts) {

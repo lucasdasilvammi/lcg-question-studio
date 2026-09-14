@@ -1,6 +1,8 @@
 node_modules/
 dist/
 .netlify/
+supabase/.temp/
+.codex/
 .env
 .env.local
 .env.*.local

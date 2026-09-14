@@ -1,6 +1,6 @@
-# LCG Question Studio
+# LCG Studio
 
-Outil editorial partage pour preparer les questions du Cube Graphique.
+Outil interne pour piloter la creation du Cube Graphique. Le backlog/kanban est l'ecran d'accueil et Question Studio reste le module de production des questions.
 
 Le Studio et le jeu restent deux applications independantes :
 
@@ -10,6 +10,10 @@ Le Studio et le jeu restent deux applications independantes :
 
 ## Fonctionnement
 
+- Le mode local demarre en donnees fictives par defaut, sans Supabase.
+- Le backlog/kanban est l'ecran d'accueil.
+- En mode local, Backlog, Idees, Playtests, profils et Worklog utilisent des donnees fictives conservees dans le navigateur.
+- En mode Supabase, ces modules sont partages dans des documents JSON versionnes avec detection des conflits.
 - Deux comptes fixes : `Lucas` et `Awen`.
 - Les deux utilisateurs voient les memes donnees en temps reel.
 - Une carte devient `Validee` uniquement apres les deux validations.
@@ -22,15 +26,17 @@ Le Studio et le jeu restent deux applications independantes :
 
 ## Installer Supabase
 
-Supabase fournit la base de donnees, l'authentification et le temps reel. Un projet gratuit suffit pour ce Studio.
+Supabase est optionnel pour cette phase. Par defaut, l'application reste en mode prototype local. Pour reconnecter la base, l'authentification et le temps reel, definir explicitement `VITE_USE_SUPABASE=true` avec les variables Supabase. Un projet gratuit suffit pour ce Studio.
 
-1. Creer un projet sur [Supabase](https://supabase.com/dashboard).
+1. Pour une nouvelle installation seulement, creer un projet sur [Supabase](https://supabase.com/dashboard).
 2. Ouvrir `SQL Editor` dans le projet.
-3. Executer tout le fichier [`supabase/schema.sql`](supabase/schema.sql).
-4. Copier `.env.example` vers `.env.local`.
-5. Renseigner les variables suivantes :
+3. Sur un projet neuf, executer tout le fichier [`supabase/schema.sql`](supabase/schema.sql). Ne pas le rejouer sur la base Question Studio existante.
+4. Executer [`supabase/studio-modules.sql`](supabase/studio-modules.sql). Cette migration conserve les questions et ajoute les nouveaux modules.
+5. Copier `.env.example` vers `.env.local`.
+6. Renseigner les variables suivantes :
 
 ```env
+VITE_USE_SUPABASE=true
 VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=VOTRE_CLE_PUBLIQUE
 SUPABASE_SECRET_KEY=VOTRE_CLE_SECRETE
@@ -38,7 +44,7 @@ SUPABASE_SECRET_KEY=VOTRE_CLE_SECRETE
 
 La cle publique se trouve dans les reglages API du projet. La cle secrete sert uniquement au script local de creation des comptes et ne doit jamais etre ajoutee a Netlify ou a Git.
 
-Installer les dependances puis creer les deux comptes et le catalogue initial :
+Sur un projet neuf uniquement, installer les dependances puis creer les deux comptes et le catalogue initial :
 
 ```bash
 npm install
@@ -56,7 +62,16 @@ AWEN_PASSWORD=un-autre-mot-de-passe-solide
 
 Il est recommande de definir ces deux mots de passe avant le premier lancement et de les conserver dans un gestionnaire de mots de passe.
 
-Le bootstrap peut etre relance sans recreer les comptes. Attention : il resynchronise le catalogue canonique, remet toutes les cartes en attente, efface les validations existantes et reinitialise les marqueurs d'export.
+Ne pas relancer le bootstrap sur la base existante. Meme sans recreer les comptes, il resynchronise le catalogue canonique, remet toutes les cartes en attente, efface les validations existantes et reinitialise les marqueurs d'export.
+
+Sur la base Question Studio existante, apres la migration SQL et avec les deux profils deja presents, inspecter les documents manquants puis, seulement si les donnees fictives conviennent, les initialiser :
+
+```bash
+npm run supabase:studio:plan
+npm run supabase:studio:apply
+```
+
+La sauvegarde se telecharge depuis le menu du compte avec `Sauvegarder les donnees`. La commande `plan` ne modifie rien. La commande `apply:snapshot` valide le format puis insere uniquement les documents absents. Pour utiliser volontairement les donnees fictives du code, la commande distincte est `npm run supabase:studio:apply:mock`.
 
 Apres un bootstrap reussi :
 
@@ -70,17 +85,30 @@ Cette fermeture des inscriptions est importante : les politiques de la base auto
 
 ## Developpement local
 
+Le serveur de developpement canonique utilise toujours `http://localhost:5174/` :
+
 ```bash
 npm run dev
 ```
 
-Le mode de previsualisation sans Supabase est disponible uniquement en developpement sur `?preview=1`. Il sert aux tests visuels et ne sauvegarde pas les modifications.
+Le port est configure en mode strict. Si `5174` est deja utilise, Vite s'arrete avec une erreur au lieu de lancer une autre version sur un autre port. Il faut alors fermer l'ancien serveur avant de relancer la commande depuis le dossier principal du projet.
 
+Un serveur Vite ne rassemble pas automatiquement plusieurs worktrees. Toute fonctionnalite developpee dans un chat isole doit etre integree au dossier principal, puis validee avec `npm run build`, avant d'etre consideree comme disponible sur `5174`.
+
+Le mode prototype sans Supabase est le comportement par defaut tant que `VITE_USE_SUPABASE` n'est pas defini a `true`. Il conserve les modifications dans le `localStorage` du navigateur, mais elles ne sont pas partagees entre appareils. Le parametre `?preview=1` force aussi ce mode en developpement.
+## Modules partages
+
+La migration `supabase/studio-modules.sql` ajoute un document versionne pour chacun des modules `backlog`, `ideas`, `playtests` et `worklog`. Les ecritures verifient la revision connue par le navigateur. Une modification concurrente provoque un rechargement de la version partagee au lieu d'un ecrasement silencieux.
+
+Les scripts `supabase:studio:apply:snapshot` et `supabase:studio:apply:mock` initialisent uniquement les documents absents et ne remplacent pas les donnees partagees existantes. Le profil conserve aussi le nom, le role, l'avatar et la palette choisis.
+
+La recette de mise en ligne est detaillee dans [`docs/publication-checklist.md`](docs/publication-checklist.md).
 ## Deploiement Netlify
 
 Dans les variables d'environnement Netlify, ajouter seulement :
 
 ```env
+VITE_USE_SUPABASE=true
 VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=VOTRE_CLE_PUBLIQUE
 ```
@@ -106,6 +134,7 @@ Elles sont importees dans Supabase avec la source `pyramide QCM`, le type `Quiz`
 Avant import, verifier que `.env.local` contient :
 
 ```env
+VITE_USE_SUPABASE=true
 VITE_SUPABASE_URL=https://VOTRE-PROJET.supabase.co
 SUPABASE_SECRET_KEY=VOTRE_CLE_SECRETE
 ```
