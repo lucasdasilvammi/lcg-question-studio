@@ -107,7 +107,8 @@ function backlogMarkup({ state, escapeHtml, profileBadgeMarkup }) {
           <button type="button" data-backlog-view="priority" class="${state.backlogView === 'priority' ? 'active' : ''}" aria-pressed="${state.backlogView === 'priority'}">Priorité</button>
           <button type="button" data-backlog-view="flow" class="${state.backlogView === 'flow' ? 'active' : ''}" aria-pressed="${state.backlogView === 'flow'}">Flux</button>
         </div>
-          ${state.backlogView === 'flow' ? columnToggleMarkup(state, escapeHtml) : '<span class="priority-view-note">Tâches ouvertes classées par priorité</span>'}
+        ${columnToggleMarkup(state, escapeHtml)}
+        ${state.backlogView === 'priority' ? '<span class="priority-view-note">Tâches ouvertes classées par priorité</span>' : ''}
       </section>
 
       <section class="backlog-layout">
