@@ -49,4 +49,58 @@ test('downloadable template can be imported', () => {
   const patch = parsePatchMarkdown(template)
   assert.equal(patch.version, '0.1.0')
   assert.equal(patchMinutes(patch), 90)
+  assert.equal(patch.sessions[0].description, 'Mise en place du workflow')
+})
+
+test('readable markdown without JSON imports rich content and session descriptions', () => {
+  const markdown = `# 0.1.0 - Consolidation V1
+
+Statut : Terminé
+
+## Resume
+
+Une base plus sûre et maintenable.
+
+## Changements
+
+### Sécurité
+
+- Validation des commandes.
+- Protection des réponses privées.
+
+## Sessions
+
+| Debut (ISO) | Fin (ISO) | Duree | Objet |
+| --- | --- | --- | --- |
+| 2026-09-17T22:39:00+02:00 | 2026-09-17T23:14:00+02:00 | 35 min | Mise en place du workflow V1 |
+
+Répartition synthétique du travail.`
+  const patch = parsePatchMarkdown(markdown)
+  assert.equal(patch.status, 'released')
+  assert.equal(patch.sessions[0].description, 'Mise en place du workflow V1')
+  assert.match(patch.contentMarkdown, /### Sécurité/)
+  assert.equal(patch.sessionNotesMarkdown, 'Répartition synthétique du travail.')
+})
+
+test('worklog renders in reading mode before explicit editing', () => {
+  const patch = parsePatchMarkdown(`# 0.2.0 - Lecture\n\nStatut : Terminé\n\n## Resume\n\nLecture seule.\n\n## Sessions\n\n| Debut (ISO) | Fin (ISO) | Duree | Objet |\n| --- | --- | --- | --- |\n| 2026-09-17T22:39:00+02:00 | 2026-09-17T23:14:00+02:00 | 35 min | Workflow V1 |`)
+  const reading = worklogViewMarkup({ worklogPatches: [patch], worklogSelectedId: patch.id, worklogFileId: null, worklogEditingId: null }, String)
+  assert.match(reading, /Modifier le patch/)
+  assert.match(reading, /worklog-patch-reader/)
+  assert.doesNotMatch(reading, /id="worklog-patch-notes"/)
+  const editing = worklogViewMarkup({ worklogPatches: [patch], worklogSelectedId: patch.id, worklogFileId: null, worklogEditingId: patch.id }, String)
+  assert.match(editing, /id="worklog-patch-notes"/)
+})
+
+test('visible rich content enriches an older structured JSON block', () => {
+  const visible = `# 0.4.0 - Patch enrichi\n\nStatut : Terminé\n\n## Resume\n\nContenu détaillé.\n\n## Sessions\n\n| Debut (ISO) | Fin (ISO) | Duree | Objet |\n| --- | --- | --- | --- |\n| 2026-09-17T22:39:00+02:00 | 2026-09-17T23:14:00+02:00 | 35 min | Workflow V1 |`
+  const oldPatch = createPatch('0.4.0', 'Patch enrichi', '2026-09-17T22:39:00+02:00')
+  oldPatch.status = 'released'
+  oldPatch.sessions = [{ startedAt: '2026-09-17T22:39:00+02:00', endedAt: '2026-09-17T23:14:00+02:00' }]
+  delete oldPatch.contentMarkdown
+  delete oldPatch.sessionNotesMarkdown
+  const markdown = `${visible}\n\n<!-- lcg-worklog:v1 -->\n\`\`\`json\n${JSON.stringify(oldPatch)}\n\`\`\``
+  const patch = parsePatchMarkdown(markdown)
+  assert.match(patch.contentMarkdown, /Contenu détaillé/)
+  assert.equal(patch.sessions[0].description, 'Workflow V1')
 })

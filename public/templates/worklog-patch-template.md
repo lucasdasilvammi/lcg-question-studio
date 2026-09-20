@@ -15,9 +15,9 @@ Objectif et resultat principal du patch.
 
 Les sessions sont ajoutees automatiquement par les boutons Debut de session et Fin de session du Worklog.
 
-| Debut (ISO) | Fin (ISO) | Duree |
-| --- | --- | --- |
-| 2026-09-14T08:00:00.000Z | 2026-09-14T09:30:00.000Z | 1 h 30 min |
+| Debut (ISO) | Fin (ISO) | Duree | Objet |
+| --- | --- | --- | --- |
+| 2026-09-14T08:00:00.000Z | 2026-09-14T09:30:00.000Z | 1 h 30 min | Mise en place du workflow |
 
 **Temps du patch : 1 h 30 min**
 
@@ -40,7 +40,8 @@ Les sessions sont ajoutees automatiquement par les boutons Debut de session et F
   "sessions": [
     {
       "startedAt": "2026-09-14T08:00:00.000Z",
-      "endedAt": "2026-09-14T09:30:00.000Z"
+      "endedAt": "2026-09-14T09:30:00.000Z",
+      "description": "Mise en place du workflow"
     }
   ],
   "createdAt": "2026-09-14T08:00:00.000Z",

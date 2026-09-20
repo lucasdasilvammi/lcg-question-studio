@@ -27,6 +27,6 @@ Navigation commune et preparation des sessions de test.
 **Temps du patch : 1 h 30 min**
 ```
 
-L'application ajoute a la fin du vrai fichier un bloc JSON structure pour une reimportation fiable. Les sections lisibles sont generees depuis ce bloc : pour modifier un patch, utilise le Worklog, puis reexporte ou lie le fichier. Un debut sans fin reste une session ouverte et n'entre dans le total definitif qu'a la cloture.
+L'application ajoute a la fin du vrai fichier un bloc JSON structure pour une reimportation fiable. Elle accepte aussi une note lisible qui suit ce format, puis ajoute le bloc structure au prochain export. La quatrieme colonne du tableau de sessions contient l'objet synthetique de chaque plage. Pour modifier un patch, utilise le bouton **Modifier le patch**, puis reexporte ou lie le fichier. Un debut sans fin reste une session ouverte et n'entre dans le total definitif qu'a la cloture.
 
 Nomenclature proposee : `0.1.0` pour une evolution avant la V1, `0.1.1` pour un correctif, `1.0.0` pour la V1 nommee. Les 300 h du POC sont un point de depart estime, distinct des heures mesurees ensuite.

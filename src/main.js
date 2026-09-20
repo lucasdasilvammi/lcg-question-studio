@@ -85,6 +85,7 @@ const state = {
   playtestEditorPhase: null,
   worklogPatches: readWorklogPatches(),
   worklogSelectedId: null,
+  worklogEditingId: null,
   worklogFileHandle: null,
   worklogFileId: null,
   studioDocumentRevisions: {},
@@ -2169,8 +2170,21 @@ async function handleAction(event) {
   }
   if (action === 'worklog-select') {
     state.worklogSelectedId = event.currentTarget.dataset.id
+    state.worklogEditingId = null
     state.worklogFileHandle = null
     state.worklogFileId = null
+    render()
+    return
+  }
+  if (action === 'worklog-edit') {
+    const patch = selectedWorklogPatch()
+    if (!patch) return
+    state.worklogEditingId = patch.id
+    render()
+    return
+  }
+  if (action === 'worklog-cancel-edit') {
+    state.worklogEditingId = null
     render()
     return
   }
@@ -3368,10 +3382,16 @@ async function saveWorklogPatchNotes(event) {
   const data = Object.fromEntries(new FormData(event.currentTarget))
   await storeWorklogPatch({
     ...patch,
-    summary: String(data.summary || '').trim(),
-    changes: String(data.changes || '').split(/\r?\n/).map((item) => item.trim()).filter(Boolean),
+    contentMarkdown: String(data.contentMarkdown || '').trim(),
+    sessionNotesMarkdown: String(data.sessionNotesMarkdown || '').trim(),
+    sessions: patch.sessions.map((session, index) => ({
+      ...session,
+      description: String(data[`sessionDescription-${index}`] || '').trim(),
+    })),
   })
-  showToast('Contenu du patch enregistré.')
+  state.worklogEditingId = null
+  render()
+  showToast('Modifications du patch enregistrées.')
 }
 
 async function importWorklogInput(event) {

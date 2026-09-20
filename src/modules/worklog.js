@@ -19,7 +19,7 @@ export function normalizePatch(value) {
     if (!Number.isFinite(start) || (endedAt && (!Number.isFinite(end) || end < start))) {
       throw new Error('Horodatage de session invalide.')
     }
-    return { startedAt, endedAt }
+    return { startedAt, endedAt, description: String(session?.description || '').trim() }
   })
   if (sessions.filter((session) => !session.endedAt).length > 1) throw new Error('Plusieurs sessions sont ouvertes.')
   if (sessions.some((session, index) => !session.endedAt && index !== sessions.length - 1)) {
@@ -36,6 +36,8 @@ export function normalizePatch(value) {
     summary: String(value.summary || '').trim(),
     initialMinutes: Math.max(0, Number(value.initialMinutes) || 0),
     changes: value.changes.map((item) => String(item).trim()).filter(Boolean),
+    contentMarkdown: String(value.contentMarkdown || '').trim(),
+    sessionNotesMarkdown: String(value.sessionNotesMarkdown || '').trim(),
     sessions,
     createdAt: String(value.createdAt || new Date().toISOString()),
     updatedAt: String(value.updatedAt || value.createdAt || new Date().toISOString()),
@@ -95,23 +97,102 @@ export function formatMinutes(minutes) {
 export function serializePatchMarkdown(patch) {
   const current = normalizePatch(patch)
   const changes = current.changes.length ? current.changes.map((change) => `- ${change}`).join('\n') : '- A renseigner'
+  const content = current.contentMarkdown || `## Resume\n\n${current.summary || 'A renseigner'}\n\n## Changements\n\n${changes}`
   const sessions = current.sessions.length
-    ? current.sessions.map((session) => `| ${session.startedAt} | ${session.endedAt || 'En cours'} | ${formatMinutes(patchMinutes({ sessions: [session] }))} |`).join('\n')
-    : '| Aucune session | | |'
+    ? current.sessions.map((session) => `| ${session.startedAt} | ${session.endedAt || 'En cours'} | ${formatMinutes(patchMinutes({ sessions: [session] }))} | ${session.description || ''} |`).join('\n')
+    : '| Aucune session | | | |'
   const reported = current.initialMinutes ? `\nTemps initial reporte : ${formatMinutes(current.initialMinutes)}\n` : ''
-  return `# ${current.version} - ${current.title}\n\nStatut : ${current.status === 'released' ? 'Clos' : 'En cours'}\n${reported}\n## Resume\n\n${current.summary || 'A renseigner'}\n\n## Changements\n\n${changes}\n\n## Sessions\n\n| Debut (ISO) | Fin (ISO) | Duree |\n| --- | --- | --- |\n${sessions}\n\n**Temps du patch : ${formatMinutes(patchMinutes(current))}**\n\n<!-- lcg-worklog:v1 ; les donnees JSON ci-dessous font foi pour la reimportation -->\n\`\`\`json\n${JSON.stringify(current, null, 2)}\n\`\`\`\n`
+  const sessionNotes = current.sessionNotesMarkdown ? `\n\n${current.sessionNotesMarkdown}` : ''
+  return `# ${current.version} - ${current.title}\n\nStatut : ${current.status === 'released' ? 'Clos' : 'En cours'}\n${reported}\n${content}\n\n## Sessions\n\n| Debut (ISO) | Fin (ISO) | Duree | Objet |\n| --- | --- | --- | --- |\n${sessions}\n\n**Temps du patch : ${formatMinutes(patchMinutes(current))}**${sessionNotes}\n\n<!-- lcg-worklog:v1 ; les donnees JSON ci-dessous font foi pour la reimportation -->\n\`\`\`json\n${JSON.stringify(current, null, 2)}\n\`\`\`\n`
 }
 
 export function parsePatchMarkdown(markdown) {
   const marker = '<!-- lcg-worklog:v1'
   const start = markdown.indexOf(marker)
-  if (start < 0) throw new Error('Ce Markdown ne contient pas de patch LCG importable.')
-  const match = markdown.slice(start).match(/```json\s*([\s\S]*?)\s*```/)
-  if (!match) throw new Error('Bloc JSON du patch introuvable.')
-  try {
-    return normalizePatch(JSON.parse(match[1]))
-  } catch (error) {
-    if (error instanceof SyntaxError) throw new Error('Bloc JSON du patch invalide.')
-    throw error
+  if (start >= 0) {
+    const match = markdown.slice(start).match(/```json\s*([\s\S]*?)\s*```/)
+    if (!match) throw new Error('Bloc JSON du patch introuvable.')
+    try {
+      const raw = JSON.parse(match[1])
+      const structured = normalizePatch(raw)
+      const readable = parseReadablePatchMarkdown(markdown.slice(0, start))
+      const readableSessions = new Map(readable.sessions.map((session) => [`${session.startedAt}|${session.endedAt || ''}`, session]))
+      return normalizePatch({
+        ...structured,
+        contentMarkdown: Object.hasOwn(raw, 'contentMarkdown') ? structured.contentMarkdown : readable.contentMarkdown,
+        sessionNotesMarkdown: Object.hasOwn(raw, 'sessionNotesMarkdown') ? structured.sessionNotesMarkdown : readable.sessionNotesMarkdown,
+        sessions: structured.sessions.map((session, index) => ({
+          ...session,
+          description: Object.hasOwn(raw.sessions?.[index] || {}, 'description')
+            ? session.description
+            : readableSessions.get(`${session.startedAt}|${session.endedAt || ''}`)?.description || '',
+        })),
+      })
+    } catch (error) {
+      if (error instanceof SyntaxError) throw new Error('Bloc JSON du patch invalide.')
+      throw error
+    }
   }
+  return parseReadablePatchMarkdown(markdown)
+}
+
+function parseReadablePatchMarkdown(markdown) {
+  const source = String(markdown || '').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').trim()
+  const heading = source.match(/^#\s+(\d+\.\d+\.\d+)\s+-\s+(.+)$/m)
+  if (!heading) throw new Error('Titre de patch introuvable. Format attendu : # 0.1.0 - Nom du patch.')
+  const statusLabel = source.match(/^Statut\s*:\s*(.+)$/mi)?.[1]?.trim() || 'En cours'
+  const contentStart = source.indexOf(heading[0]) + heading[0].length
+  const afterHeading = source.slice(contentStart).replace(/^\s*Statut\s*:[^\n]*\n?/i, '').trim()
+  const sessionsHeading = afterHeading.match(/^##\s+Sessions\s*$/mi)
+  const beforeSessions = sessionsHeading ? afterHeading.slice(0, sessionsHeading.index).trim() : afterHeading
+  const sessionsBody = sessionsHeading ? afterHeading.slice(sessionsHeading.index + sessionsHeading[0].length).trim() : ''
+  const { sessions, notes } = parseReadableSessions(sessionsBody)
+  const now = new Date().toISOString()
+  const createdAt = sessions[0]?.startedAt || now
+  const updatedAt = [...sessions].reverse().find((session) => session.endedAt)?.endedAt || createdAt
+  return normalizePatch({
+    format: FORMAT,
+    id: `patch-${heading[1]}`,
+    version: heading[1],
+    title: heading[2].trim(),
+    status: /^(clos|termin[eé]|released)$/i.test(statusLabel) ? 'released' : 'draft',
+    summary: sectionBody(beforeSessions, 'Resume'),
+    initialMinutes: 0,
+    changes: sectionBody(beforeSessions, 'Changements')
+      .split('\n')
+      .map((line) => line.match(/^\s*-\s+(.+)$/)?.[1]?.trim())
+      .filter(Boolean),
+    contentMarkdown: beforeSessions,
+    sessionNotesMarkdown: notes,
+    sessions,
+    createdAt,
+    updatedAt,
+  })
+}
+
+function sectionBody(markdown, title) {
+  const escaped = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return markdown.match(new RegExp(`^##\\s+${escaped}\\s*$([\\s\\S]*?)(?=^##\\s+|$)`, 'mi'))?.[1]?.trim() || ''
+}
+
+function parseReadableSessions(markdown) {
+  const lines = markdown.split('\n')
+  const headerIndex = lines.findIndex((line) => /^\s*\|\s*Debut\s*\(ISO\)/i.test(line))
+  if (headerIndex < 0) return { sessions: [], notes: markdown.trim() }
+  let tableEnd = headerIndex
+  while (tableEnd < lines.length && /^\s*\|/.test(lines[tableEnd])) tableEnd += 1
+  const sessions = lines.slice(headerIndex + 2, tableEnd).map((line) => {
+    const cells = line.replace(/^\s*\||\|\s*$/g, '').split('|').map((cell) => cell.trim())
+    if (cells.length < 2 || !Number.isFinite(Date.parse(cells[0]))) return null
+    return {
+      startedAt: cells[0],
+      endedAt: /^(en cours)?$/i.test(cells[1]) ? null : cells[1],
+      description: cells.slice(3).join(' | '),
+    }
+  }).filter(Boolean)
+  const notes = [...lines.slice(0, headerIndex), ...lines.slice(tableEnd)]
+    .join('\n')
+    .replace(/^\s*\*\*Temps du patch\s*:[^\n]*\*\*\s*/mi, '')
+    .trim()
+  return { sessions, notes }
 }

@@ -6769,17 +6769,52 @@ h3 {
 }
 .worklog-running strong { color: var(--green); }
 
-.worklog-patch-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px; border-bottom: 1px solid var(--line); }
-.worklog-patch-notes textarea { min-height: 112px; resize: vertical; }
-.worklog-patch-notes .button { grid-column: 1 / -1; justify-self: end; }
-.worklog-session-list { padding: 18px; }
+.worklog-patch-reader { padding: 18px; border-bottom: 1px solid var(--line); }
+.worklog-document-sections { display: grid; gap: 10px; }
+.worklog-document-section { padding: 14px 15px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .018); }
+.worklog-document-section > h3 { margin: 0 0 10px; color: var(--ink-strong); font-size: .86rem; }
+.worklog-document-more > summary,
+.worklog-session-list > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; }
+.worklog-document-more > summary::-webkit-details-marker,
+.worklog-session-list > summary::-webkit-details-marker { display: none; }
+.worklog-document-more > summary::before,
+.worklog-session-list > summary::before { content: '›'; flex: 0 0 auto; color: var(--quiet); font-size: 1rem; transition: transform .16s ease; }
+.worklog-document-more[open] > summary::before,
+.worklog-session-list[open] > summary::before { transform: rotate(90deg); }
+.worklog-document-more > summary span { flex: 1; color: var(--ink-strong); font-size: .86rem; font-weight: 720; }
+.worklog-document-more > summary em { color: var(--quiet); font-size: .65rem; font-style: normal; }
+.worklog-document-more[open] > summary { margin-bottom: 10px; }
+.worklog-markdown { color: var(--muted); font-size: .78rem; line-height: 1.65; }
+.worklog-markdown p { margin: 0 0 10px; }
+.worklog-markdown p:last-child { margin-bottom: 0; }
+.worklog-markdown ul { display: grid; gap: 6px; margin: 8px 0 12px; padding-left: 19px; }
+.worklog-markdown li::marker { color: var(--blue); }
+.worklog-markdown h3,
+.worklog-markdown h4,
+.worklog-markdown h5 { margin: 18px 0 8px; color: var(--ink-strong); font-size: .78rem; }
+.worklog-markdown code { padding: 1px 4px; border-radius: 4px; color: var(--ink-strong); background: rgba(255, 255, 255, .06); font-size: .92em; }
+.worklog-markdown blockquote { margin: 12px 0 0; padding: 10px 12px; border-left: 2px solid var(--blue); color: var(--quiet); background: rgba(255, 255, 255, .02); }
 
-.worklog-session-table { display: grid; margin-top: 10px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
-.worklog-session-heading,
-.worklog-session-row { display: grid; grid-template-columns: 1fr 1fr 92px; gap: 10px; padding: 9px 11px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .72rem; }
-.worklog-session-row:last-child { border-bottom: 0; }
-.worklog-session-heading { color: var(--quiet); font-size: .62rem; font-weight: 740; text-transform: uppercase; }
-.worklog-session-row strong { color: var(--ink-strong); text-align: right; }
+.worklog-patch-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px; border-bottom: 1px solid var(--line); }
+.worklog-patch-notes textarea { min-height: 220px; resize: vertical; }
+.worklog-patch-editor fieldset { display: grid; grid-column: 1 / -1; gap: 9px; margin: 0; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.worklog-patch-editor legend { padding: 0 6px; color: var(--ink-strong); font-size: .72rem; font-weight: 740; }
+.worklog-editor-actions { display: flex; justify-content: flex-end; gap: 8px; grid-column: 1 / -1; }
+
+.worklog-session-list { border-bottom: 0; }
+.worklog-session-list > summary { padding: 17px 18px; }
+.worklog-session-list > summary span { flex: 1; }
+.worklog-session-list > summary em { color: var(--quiet); font-size: .68rem; font-style: normal; }
+.worklog-session-list[open] > summary { border-bottom: 1px solid var(--line); }
+.worklog-session-content { display: grid; gap: 16px; padding: 18px; }
+.worklog-session-cards { display: grid; gap: 8px; }
+.worklog-session-card { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(240px, 1fr); gap: 18px; align-items: center; padding: 12px 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .018); }
+.worklog-session-time { display: grid; grid-template-columns: minmax(100px, 1fr) auto auto; gap: 10px; align-items: center; color: var(--muted); font-size: .7rem; }
+.worklog-session-time span { color: var(--quiet); }
+.worklog-session-time b { color: var(--muted); font-weight: 620; }
+.worklog-session-time strong { min-width: 54px; color: var(--ink-strong); text-align: right; }
+.worklog-session-card p { margin: 0; color: var(--ink-strong); font-size: .76rem; line-height: 1.45; }
+.worklog-session-notes { padding-top: 15px; border-top: 1px solid var(--line); }
 
 .worklog-patch-empty { min-height: 280px; display: grid; align-content: center; justify-items: center; padding: 30px; color: var(--muted); text-align: center; }
 .worklog-patch-empty h2 { margin: 0; color: var(--ink-strong); font-size: 1rem; }
@@ -6798,9 +6833,11 @@ h3 {
   .worklog-patch-create .button,
   .worklog-patch-notes .button { grid-column: auto; }
   .worklog-patch-head { flex-direction: column; }
-  .worklog-session-heading { display: none; }
-  .worklog-session-row { grid-template-columns: 1fr; }
-  .worklog-session-row strong { text-align: left; }
+  .worklog-patch-editor fieldset,
+  .worklog-editor-actions { grid-column: auto; }
+  .worklog-session-card { grid-template-columns: 1fr; gap: 7px; }
+  .worklog-session-time { grid-template-columns: 1fr auto; }
+  .worklog-session-time span { grid-column: 1 / -1; }
 }
 .worklog-create-modal .worklog-patch-create {
   grid-template-columns: 1fr;
