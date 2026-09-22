@@ -14,7 +14,7 @@ function localTime(value) {
   return new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit' }).format(new Date(value))
 }
 
-function inlineMarkdown(value, escapeHtml) {
+function legacyInlineMarkdown(value, escapeHtml) {
   return escapeHtml(value)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -229,4 +229,17 @@ export function worklogCreateModalMarkup() {
       </div>
     </div>
   `
+}
+
+function inlineMarkdown(value, escapeHtml) {
+  const richText = escapeHtml(value)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+
+  return richText.replace(/https?:\/\/[^\s<]+/g, (matchedUrl) => {
+    const trailing = matchedUrl.match(/[),.;!?]+$/)?.[0] || ''
+    const url = trailing ? matchedUrl.slice(0, -trailing.length) : matchedUrl
+    const label = url.length > 46 ? `${url.slice(0, 29)}…${url.slice(-13)}` : url
+    return `<a class="worklog-link" href="${url}" title="${url}" target="_blank" rel="noreferrer">${label}</a>${trailing}`
+  })
 }

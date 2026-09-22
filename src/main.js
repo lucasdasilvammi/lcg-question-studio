@@ -62,6 +62,9 @@ const PROFILES_KEY = STORAGE_KEYS.profiles
 const BACKLOG_COLUMNS_KEY = STORAGE_KEYS.backlogColumns
 const BACKLOG_VIEW_KEY = STORAGE_KEYS.backlogView
 const BACKLOG_TAGS_KEY = STORAGE_KEYS.backlogTags
+const BACKLOG_SOURCES_KEY = STORAGE_KEYS.backlogSources
+const BACKLOG_COLUMN_WIDTHS_KEY = STORAGE_KEYS.backlogColumnWidths
+const TICKET_DRAFT_KEY = STORAGE_KEYS.ticketDraft
 const IDEAS_KEY = STORAGE_KEYS.ideas
 const PLAYTESTS_KEY = STORAGE_KEYS.playtests
 
@@ -80,6 +83,8 @@ const state = {
   ideasSearch: '',
   editingIdeaId: null,
   backlogTags: readBacklogTags(),
+  backlogSources: readBacklogSources(),
+  backlogColumnWidths: readBacklogColumnWidths(),
   playtests: [],
   playtestEditingId: null,
   playtestEditorPhase: null,
@@ -151,8 +156,17 @@ async function start() {
   }
   await applySession(data.session)
 
-  supabase.auth.onAuthStateChange((_event, session) => {
-    window.setTimeout(() => applySession(session), 0)
+  supabase.auth.onAuthStateChange((event, session) => {
+    window.setTimeout(() => {
+      const sameUser = Boolean(session?.user?.id && session.user.id === state.session?.user?.id)
+      if (!session || event === 'SIGNED_OUT') {
+        applySession(null)
+      } else if (!sameUser) {
+        applySession(session)
+      } else {
+        state.session = session
+      }
+    }, 0)
   })
 }
 
@@ -165,11 +179,13 @@ async function startMockWorkspace() {
   state.comments = workspace.comments
   state.exports = workspace.exports
   state.backlog = hydrateBacklog(workspace.backlog)
+  state.backlogSources = mergeBacklogSources([...state.backlogSources, ...state.backlog.map((ticket) => ticket.source)])
   state.ideas = readIdeas(workspace.ideas)
   state.playtests = readPlaytests(workspace.playtests)
   state.worklogSelectedId = state.worklogPatches[0]?.id || null
   state.questions = workspace.questionRows.map(mapQuestion)
   state.loading = false
+  restoreCachedTicketModal()
   render()
 }
 
@@ -213,6 +229,7 @@ function applyStudioDocuments(rows) {
 
   state.backlog = documents.backlog.content.tickets.map(sanitizeBacklogTicket)
   state.backlogTags = mergeBacklogTags(documents.backlog.content.tags)
+  state.backlogSources = mergeBacklogSources([...(documents.backlog.content.sources || []), ...state.backlog.map((ticket) => ticket.source)])
   state.ideas = documents.ideas.content.items.map(sanitizeIdea)
   state.playtests = documents.playtests.content.sessions.map(sanitizePlaytest)
 
@@ -398,6 +415,43 @@ function persistVisibleBacklogStatuses() {
   localStorage.setItem(BACKLOG_COLUMNS_KEY, JSON.stringify(state.visibleBacklogStatuses))
 }
 
+function mergeBacklogSources(sources = []) {
+  return [...new Set([...BACKLOG_SOURCES, ...sources]
+    .map((source) => String(source || '').trim())
+    .filter(Boolean))]
+    .sort((left, right) => left.localeCompare(right, 'fr'))
+}
+
+function readBacklogSources() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(BACKLOG_SOURCES_KEY) || '[]')
+    return mergeBacklogSources(Array.isArray(parsed) ? parsed : [])
+  } catch {
+    return mergeBacklogSources()
+  }
+}
+
+function persistBacklogSources() {
+  if (mockMode) localStorage.setItem(BACKLOG_SOURCES_KEY, JSON.stringify(state.backlogSources))
+  return queueStudioDocument('backlog')
+}
+
+function readBacklogColumnWidths() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(BACKLOG_COLUMN_WIDTHS_KEY) || '{}')
+    return Object.fromEntries(BACKLOG_STATUSES.map((status) => {
+      const width = Number(parsed?.[status])
+      return [status, Number.isFinite(width) ? Math.max(220, Math.min(520, width)) : 264]
+    }))
+  } catch {
+    return Object.fromEntries(BACKLOG_STATUSES.map((status) => [status, 264]))
+  }
+}
+
+function persistBacklogColumnWidths() {
+  localStorage.setItem(BACKLOG_COLUMN_WIDTHS_KEY, JSON.stringify(state.backlogColumnWidths))
+}
+
 function readBacklogTags() {
   try {
     const stored = localStorage.getItem(BACKLOG_TAGS_KEY)
@@ -514,9 +568,15 @@ function sanitizeBacklogTicket(ticket) {
   const rawTagNames = (Array.isArray(ticket.tags) ? ticket.tags : [ticket.tag])
     .map((tag) => String(tag?.name || tag || '').trim())
     .filter(Boolean)
-  const sourceCandidate = String(ticket.source || rawTagNames.find((name) => BACKLOG_SOURCES.some((source) => source.toLowerCase() === name.toLowerCase())) || '').trim()
-  const source = BACKLOG_SOURCES.find((item) => item.toLowerCase() === sourceCandidate.toLowerCase()) || ''
-  const tags = sanitizeTicketTags(ticket.tags || ticket.tag).filter((tag) => !BACKLOG_SOURCES.includes(tag.name))
+  const knownSources = state.backlogSources || BACKLOG_SOURCES
+  const sourceCandidate = String(ticket.source || rawTagNames.find((name) => knownSources.some((source) => source.toLowerCase() === name.toLowerCase())) || '').trim()
+  const source = knownSources.find((item) => item.toLowerCase() === sourceCandidate.toLowerCase()) || sourceCandidate
+  const tags = sanitizeTicketTags(ticket.tags || ticket.tag).filter((tag) => !knownSources.includes(tag.name))
+  const subtasks = (Array.isArray(ticket.subtasks) ? ticket.subtasks : []).map((subtask, index) => ({
+    id: String(subtask?.id || `subtask-${index + 1}`),
+    title: String(subtask?.title || subtask || '').trim(),
+    done: Boolean(subtask?.done),
+  })).filter((subtask) => subtask.title)
 
   return {
     id: String(ticket.id || createBacklogTicketId()).trim(),
@@ -536,6 +596,9 @@ function sanitizeBacklogTicket(ticket) {
     risk: String(ticket.risk || '').trim(),
     validation: String(ticket.validation || '').trim(),
     attachment: sanitizeTicketAttachment(ticket.attachment),
+    parentId: String(ticket.parentId || '').trim(),
+    subtasks,
+    createdAt: ticket.createdAt || ticket.updatedAt || null,
     updatedAt: ticket.updatedAt || null,
   }
 }
@@ -679,6 +742,7 @@ async function loadWorkspace({ quiet = false } = {}) {
   state.questions = questionsResult.data.map(mapQuestion)
   state.loading = false
   state.syncError = null
+  restoreCachedTicketModal()
   render()
 }
 
@@ -1362,12 +1426,18 @@ function ticketModalMarkup() {
     risk: state.modal.prefill?.risk || '',
     validation: state.modal.prefill?.validation || '',
     attachment: null,
+    parentId: state.modal.prefill?.parentId || '',
   }
   const selectedTagNames = new Set(sanitizeTicketTags(ticket.tags || ticket.tag).map((tag) => tag.name))
+  const childTickets = existing ? state.backlog.filter((item) => item.parentId === existing.id) : []
+  const childIds = new Set(childTickets.map((item) => item.id))
+  const parentTicket = state.backlog.find((item) => item.id === ticket.parentId)
+  const parentCandidates = state.backlog.filter((item) => item.id !== ticket.id && !childIds.has(item.id))
+  const selectedOwner = state.profiles.find((profile) => profile.id === ticket.ownerId) || state.profile
 
   return `
     <div class="modal-backdrop" data-close-modal>
-      <div class="modal">
+      <div class="modal ticket-modal">
         <div class="modal-head">
           <div>
             <p class="eyebrow">${existing ? escapeHtml(existing.id) : 'Nouveau ticket'}</p>
@@ -1376,6 +1446,28 @@ function ticketModalMarkup() {
           <button class="close" data-action="close-modal">×</button>
         </div>
         <form id="ticket-form">
+          <div class="ticket-editor-layout">
+            <aside class="ticket-preview" aria-label="Aperçu du ticket">
+              <p class="eyebrow">Aperçu</p>
+              <span class="ticket-preview-id">${escapeHtml(ticket.id || 'Nouveau')}</span>
+              <h3 data-ticket-preview-title>${escapeHtml(ticket.title || 'Nom de la tâche')}</h3>
+              <p class="ticket-preview-description" data-ticket-preview-description>${escapeHtml(ticket.description || 'La description complète du ticket apparaîtra ici.')}</p>
+              <div class="ticket-preview-meta">
+                <span data-ticket-preview-priority>${escapeHtml(ticket.priority)}</span>
+                <span data-ticket-preview-source>${escapeHtml(ticket.source || 'Source non renseignée')}</span>
+              </div>
+              <section class="ticket-preview-children">
+                <div class="ticket-preview-children-head">
+                  <strong>Sous-tickets</strong>
+                  ${existing ? `<button class="text-button" type="button" data-action="new-subticket" data-parent-ticket-id="${escapeHtml(existing.id)}">+ Ajouter</button>` : '<small>Enregistre le ticket pour ajouter des sous-tickets.</small>'}
+                </div>
+                ${parentTicket ? `<button class="ticket-parent-reference" type="button" data-action="edit-ticket" data-ticket-id="${escapeHtml(parentTicket.id)}">Rattaché à <b>${escapeHtml(parentTicket.id)}</b> · ${escapeHtml(parentTicket.title)}</button>` : ''}
+                <div class="ticket-child-list">
+                  ${childTickets.length ? childTickets.map((child) => `<button type="button" data-action="edit-ticket" data-ticket-id="${escapeHtml(child.id)}"><span><b>${escapeHtml(child.id)}</b>${escapeHtml(child.title)}</span><em>${escapeHtml(child.status)}</em></button>`).join('') : '<small>Aucun sous-ticket rattaché.</small>'}
+                </div>
+              </section>
+            </aside>
+            <div class="ticket-editor-pane">
           <div class="modal-body">
             <div class="form-grid">
               <div class="field full">
@@ -1386,11 +1478,27 @@ function ticketModalMarkup() {
                 <label for="ticket-description">Description</label>
                 <textarea id="ticket-description" name="description" maxlength="520">${escapeHtml(ticket.description || '')}</textarea>
               </div>
+              <div class="field full">
+                <label for="ticket-parent">Ticket parent</label>
+                <select id="ticket-parent" name="parentId">
+                  <option value="">Aucun · ticket principal</option>
+                  ${parentCandidates.map((candidate) => `<option value="${escapeHtml(candidate.id)}" ${candidate.id === ticket.parentId ? 'selected' : ''}>${escapeHtml(candidate.id)} · ${escapeHtml(candidate.title)}</option>`).join('')}
+                </select>
+                <p class="field-help">Un sous-ticket reste un ticket complet avec son propre statut et sa priorité.</p>
+              </div>
               <div class="field">
                 <label for="ticket-owner">Responsable</label>
-                <select id="ticket-owner" name="ownerId" required>
-                  ${state.profiles.map((profile) => `<option value="${escapeHtml(profile.id)}" ${profile.id === ticket.ownerId ? 'selected' : ''}>${escapeHtml(profile.display_name)}</option>`).join('')}
-                </select>
+                <input id="ticket-owner" name="ownerId" type="hidden" value="${escapeHtml(selectedOwner.id)}" />
+                <details class="ticket-owner-picker">
+                  <summary>
+                    ${profileAvatarMarkup(selectedOwner, 'profile-badge-avatar')}
+                    <span data-ticket-owner-name>${escapeHtml(selectedOwner.display_name)}</span>
+                    <span class="ticket-owner-chevron" aria-hidden="true">⌄</span>
+                  </summary>
+                  <div class="ticket-owner-options">
+                    ${state.profiles.map((profile) => `<button class="${profile.id === selectedOwner.id ? 'selected' : ''}" type="button" data-action="select-ticket-owner" data-owner-id="${escapeHtml(profile.id)}"><span class="ticket-owner-option-main">${profileAvatarMarkup(profile, 'profile-badge-avatar')}<span>${escapeHtml(profile.display_name)}</span></span><b aria-hidden="true">✓</b></button>`).join('')}
+                  </div>
+                </details>
               </div>
               <div class="field">
                 <label for="ticket-priority">Priorité</label>
@@ -1402,8 +1510,12 @@ function ticketModalMarkup() {
                 <label for="ticket-source">Source</label>
                 <select id="ticket-source" name="source">
                   <option value="">Non renseignée</option>
-                  ${BACKLOG_SOURCES.map((value) => option(value, ticket.source || '')).join('')}
+                  ${state.backlogSources.map((value) => option(value, ticket.source || '')).join('')}
                 </select>
+                <div class="ticket-new-source-control">
+                  <input id="ticket-new-source" name="newSource" maxlength="64" placeholder="Nouvelle source" />
+                  <button class="button small" type="button" data-action="create-ticket-source-from-modal">Créer</button>
+                </div>
               </div>
               <div class="field full ticket-tag-field">
                 <div class="ticket-tag-section-head">
@@ -1465,6 +1577,8 @@ function ticketModalMarkup() {
             <div>
               <button class="button" type="button" data-action="close-modal">Annuler</button>
               <button class="button primary" type="submit">Enregistrer</button>
+            </div>
+          </div>
             </div>
           </div>
         </form>
@@ -1876,6 +1990,9 @@ function bindEvents() {
     })
   })
   document.querySelectorAll('[data-backlog-view]').forEach((button) => {
+  document.querySelectorAll('[data-column-resizer]').forEach((handle) => {
+    handle.addEventListener('pointerdown', beginColumnResize)
+  })
     button.addEventListener('click', () => {
       const nextView = button.dataset.backlogView
       if (!['priority', 'flow'].includes(nextView) || nextView === state.backlogView) return
@@ -2038,7 +2155,14 @@ function bindEvents() {
   }
 
   document.querySelector('#comment-form')?.addEventListener('submit', addComment)
-  document.querySelector('#ticket-form')?.addEventListener('submit', saveBacklogTicket)
+  const ticketForm = document.querySelector('#ticket-form')
+  if (ticketForm) {
+    ticketForm.addEventListener('submit', saveBacklogTicket)
+    restoreTicketDraft(ticketForm)
+    ticketForm.addEventListener('input', syncTicketPreview)
+    ticketForm.addEventListener('change', syncTicketPreview)
+    syncTicketPreview({ currentTarget: ticketForm })
+  }
   document.querySelector('#ticket-attachment')?.addEventListener('change', handleTicketAttachmentFile)
   document.querySelector('#idea-create-form')?.addEventListener('submit', createIdea)
   document.querySelector('[data-idea-edit-form]')?.addEventListener('submit', saveIdeaEdit)
@@ -2088,12 +2212,54 @@ async function handleAction(event) {
     openModal({ type: 'ticket', id: null, prefill: { status: BACKLOG_STATUSES.includes(status) ? status : 'Backlog' } })
     return
   }
+  if (action === 'new-subticket') {
+    const parent = state.backlog.find((item) => item.id === event.currentTarget.dataset.parentTicketId)
+    if (!parent) return
+    clearTicketDraft()
+    openModal({
+      type: 'ticket',
+      id: null,
+      prefill: {
+        parentId: parent.id,
+        status: 'Backlog',
+        priority: parent.priority,
+        source: parent.source,
+        tags: parent.tags,
+        feature: parent.feature,
+      },
+    })
+    return
+  }
   if (action === 'edit-ticket') {
     openModal({ type: 'ticket', id: event.currentTarget.dataset.ticketId })
     return
   }
-  if (action === 'create-ticket-tag') {
+  if (action === 'select-ticket-owner') {
+    const option = event.currentTarget
+    const form = option.closest('#ticket-form')
+    const input = form?.querySelector('[name="ownerId"]')
+    const summary = form?.querySelector('.ticket-owner-picker summary')
+    const profile = state.profiles.find((item) => item.id === option.dataset.ownerId)
+    if (!form || !input || !summary || !profile) return
+    input.value = profile.id
+    form.querySelectorAll('[data-action="select-ticket-owner"]').forEach((item) => {
+      item.classList.toggle('selected', item.dataset.ownerId === profile.id)
+    })
+    summary.innerHTML = `${profileAvatarMarkup(profile, 'profile-badge-avatar')}<span data-ticket-owner-name>${escapeHtml(profile.display_name)}</span><span class="ticket-owner-chevron" aria-hidden="true">⌄</span>`
+    option.closest('details').open = false
+    persistTicketDraft(form)
+    return
+  }
+  if (action === 'create-ticket-source') {
+    createTicketSourceFromBacklog()
+    return
+  }
+  if (action === 'create-ticket-source-from-modal') {
+    createTicketSourceFromModal()
+    return
+  }
     createTicketTagFromModal()
+  if (action === 'create-ticket-tag') {
     return
   }
   if (action === 'toggle-ticket-tag-delete-mode') {
@@ -2158,6 +2324,10 @@ async function handleAction(event) {
   }
   if (action === 'playtest-revert') {
     revertPlaytestReport(event.currentTarget.dataset.playtestId)
+    return
+  }
+  if (action === 'playtest-delete') {
+    deletePlaytestSession(event.currentTarget.dataset.playtestId)
     return
   }
   if (action === 'playtest-cancel') {
@@ -2371,7 +2541,16 @@ function handleTicketDragOver(event) {
   column.classList.add('drop-target')
   event.dataTransfer.dropEffect = 'move'
   updateTicketDropPreview(column, event.clientY)
+  autoScrollTicketDrag(event.clientY)
 }
+function autoScrollTicketDrag(clientY) {
+  const edge = Math.min(120, Math.max(72, window.innerHeight * 0.12))
+  let delta = 0
+  if (clientY < edge) delta = -Math.ceil((edge - clientY) / 5)
+  if (clientY > window.innerHeight - edge) delta = Math.ceil((clientY - (window.innerHeight - edge)) / 5)
+  if (delta) window.scrollBy({ top: delta, behavior: 'auto' })
+}
+
 
 function handleTicketDragLeave(event) {
   if (event.currentTarget.contains(event.relatedTarget)) return
@@ -2549,6 +2728,203 @@ function playtestTicketDraft(playtestId) {
     playtestId,
   }
 }
+function addBacklogSource(rawName) {
+  const name = String(rawName || '').trim()
+  if (!name) return null
+  const existing = state.backlogSources.find((source) => source.toLowerCase() === name.toLowerCase())
+  if (existing) return existing
+  state.backlogSources = mergeBacklogSources([...state.backlogSources, name])
+  persistBacklogSources()
+  return name
+}
+
+function createTicketSourceFromBacklog() {
+  const name = window.prompt('Nom de la nouvelle source')
+  if (name === null) return
+  const source = addBacklogSource(name)
+  if (!source) return showToast('Donne un nom à la nouvelle source.')
+  state.backlogSourceFilter = source
+  render()
+  showToast(`Source « ${source} » créée.`)
+}
+
+function createTicketSourceFromModal() {
+  const form = document.querySelector('#ticket-form')
+  const input = form?.querySelector('#ticket-new-source')
+  const select = form?.querySelector('#ticket-source')
+  if (!input || !select) return
+  const source = addBacklogSource(input.value)
+  if (!source) {
+    input.focus()
+    return showToast('Donne un nom à la nouvelle source.')
+  }
+  if (![...select.options].some((option) => option.value === source)) select.add(new Option(source, source))
+  select.value = source
+  input.value = ''
+  syncTicketPreview({ currentTarget: form })
+  showToast(`Source « ${source} » sélectionnée.`)
+}
+
+function readCachedTicketDraft() {
+  try {
+    const draft = JSON.parse(localStorage.getItem(TICKET_DRAFT_KEY) || 'null')
+    if (!draft || draft.type !== 'ticket') return null
+    const age = Date.now() - Date.parse(draft.savedAt || '')
+    if (!Number.isFinite(age) || age > 7 * 24 * 60 * 60 * 1000) {
+      localStorage.removeItem(TICKET_DRAFT_KEY)
+      return null
+    }
+    return draft
+  } catch {
+    return null
+  }
+}
+
+function restoreCachedTicketModal() {
+  if (state.modal) return
+  const draft = readCachedTicketDraft()
+  if (!draft) return
+  state.modal = {
+    type: 'ticket',
+    id: draft.ticketId || null,
+    prefill: draft.prefill || {},
+  }
+}
+
+function persistTicketDraft(form) {
+  if (state.modal?.type !== 'ticket' || !form) return
+  const formData = new FormData(form)
+  const scalarFields = ['title', 'description', 'ownerId', 'priority', 'source', 'parentId', 'newSource', 'newTag', 'newTagColorKey']
+  const fields = Object.fromEntries(scalarFields.map((name) => [name, String(formData.get(name) || '')]))
+  localStorage.setItem(TICKET_DRAFT_KEY, JSON.stringify({
+    type: 'ticket',
+    ticketId: state.modal.id || null,
+    prefill: state.modal.prefill || {},
+    fields,
+    tags: formData.getAll('tags').map(String),
+    completedSubtasks: formData.getAll('completedSubtasks').map(String),
+    savedAt: new Date().toISOString(),
+  }))
+}
+
+function restoreTicketDraft(form) {
+  const draft = readCachedTicketDraft()
+  if (!draft || state.modal?.type !== 'ticket' || (draft.ticketId || null) !== (state.modal.id || null)) return
+  Object.entries(draft.fields || {}).forEach(([name, value]) => {
+    const field = form.elements.namedItem(name)
+    if (!field) return
+    if (typeof field.value === 'string') field.value = value
+  })
+  const selectedTags = new Set(draft.tags || [])
+  form.querySelectorAll('input[name="tags"]').forEach((input) => {
+    input.checked = selectedTags.has(input.value)
+  })
+  const completedSubtasks = new Set(draft.completedSubtasks || [])
+  form.querySelectorAll('input[name="completedSubtasks"]').forEach((input) => {
+    input.checked = completedSubtasks.has(input.value)
+  })
+  const colorKey = draft.fields?.newTagColorKey
+  if (colorKey) {
+    const colorInput = [...form.querySelectorAll('input[name="newTagColorKey"]')].find((input) => input.value === colorKey)
+    if (colorInput) colorInput.checked = true
+  }
+}
+
+function clearTicketDraft() {
+  localStorage.removeItem(TICKET_DRAFT_KEY)
+}
+
+function syncTicketPreview(event) {
+  const form = event.currentTarget?.matches?.('#ticket-form') ? event.currentTarget : document.querySelector('#ticket-form')
+  if (!form) return
+  persistTicketDraft(form)
+  const title = form.querySelector('[name="title"]')?.value.trim()
+  const description = form.querySelector('[name="description"]')?.value.trim()
+  const priority = form.querySelector('[name="priority"]')?.value
+  const source = form.querySelector('[name="source"]')?.value
+  const subtaskTitles = String(form.querySelector('[name="subtasks"]')?.value || '')
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+  const completed = new Set([...form.querySelectorAll('[name="completedSubtasks"]:checked')].map((input) => input.value))
+
+  const titleNode = document.querySelector('[data-ticket-preview-title]')
+  const descriptionNode = document.querySelector('[data-ticket-preview-description]')
+  const priorityNode = document.querySelector('[data-ticket-preview-priority]')
+  const sourceNode = document.querySelector('[data-ticket-preview-source]')
+  const subtaskNode = document.querySelector('[data-ticket-preview-subtasks]')
+  if (titleNode) titleNode.textContent = title || 'Nom de la tâche'
+  if (descriptionNode) descriptionNode.textContent = description || 'La description complète du ticket apparaîtra ici.'
+  if (priorityNode) priorityNode.textContent = priority || 'Moyenne'
+  if (sourceNode) sourceNode.textContent = source || 'Source non renseignée'
+  if (subtaskNode) {
+    subtaskNode.replaceChildren()
+    if (!subtaskTitles.length) {
+      const empty = document.createElement('small')
+      empty.textContent = 'Aucune sous-tâche.'
+      subtaskNode.append(empty)
+    } else {
+      subtaskTitles.forEach((subtask) => {
+        const row = document.createElement('span')
+        row.classList.toggle('done', completed.has(subtask))
+        row.append(document.createElement('i'), document.createTextNode(subtask))
+        subtaskNode.append(row)
+      })
+    }
+  }
+}
+
+function beginColumnResize(event) {
+  if (event.button !== 0) return
+  event.preventDefault()
+  event.stopPropagation()
+  const handle = event.currentTarget
+  const column = handle.closest('.kanban-column')
+  const board = column?.closest('.kanban-board')
+  const columns = [...(board?.querySelectorAll('.kanban-column') || [])]
+  const status = handle.dataset.columnResizer
+  if (!column || columns.length < 2 || !BACKLOG_STATUSES.includes(status)) return
+  const startX = event.clientX
+  const startWidths = new Map(columns.map((item) => [item, item.getBoundingClientRect().width]))
+  const startWidth = startWidths.get(column)
+  const totalWidth = [...startWidths.values()].reduce((total, width) => total + width, 0)
+  const minWidth = Math.min(150, Math.floor((totalWidth / columns.length) * .72))
+  columns.forEach((item) => {
+    const width = startWidths.get(item)
+    item.style.setProperty('--column-weight', String(width))
+    state.backlogColumnWidths[item.dataset.status] = width
+  })
+  document.body.classList.add('is-resizing-kanban')
+
+  const resize = (moveEvent) => {
+    const maxWidth = totalWidth - minWidth * (columns.length - 1)
+    const width = Math.max(minWidth, Math.min(maxWidth, startWidth + moveEvent.clientX - startX))
+    const otherColumns = columns.filter((item) => item !== column)
+    const otherTargetWidth = totalWidth - width
+    const distributableWidth = otherTargetWidth - minWidth * otherColumns.length
+    const capacityTotal = otherColumns.reduce((total, item) => total + Math.max(1, startWidths.get(item) - minWidth), 0)
+
+    column.style.setProperty('--column-weight', String(width))
+    state.backlogColumnWidths[status] = width
+    otherColumns.forEach((item) => {
+      const share = Math.max(1, startWidths.get(item) - minWidth) / capacityTotal
+      const nextWidth = minWidth + distributableWidth * share
+      item.style.setProperty('--column-weight', String(nextWidth))
+      state.backlogColumnWidths[item.dataset.status] = nextWidth
+    })
+  }
+  const finish = () => {
+    document.removeEventListener('pointermove', resize)
+    document.removeEventListener('pointerup', finish)
+    document.removeEventListener('pointercancel', finish)
+    document.body.classList.remove('is-resizing-kanban')
+    persistBacklogColumnWidths()
+  }
+  document.addEventListener('pointermove', resize)
+  document.addEventListener('pointerup', finish, { once: true })
+  document.addEventListener('pointercancel', finish, { once: true })
+}
+
 function createTicketTagFromModal() {
   const form = document.querySelector('#ticket-form')
   const nameInput = form?.querySelector('#ticket-new-tag')
@@ -2646,6 +3022,17 @@ function saveBacklogTicket(event) {
   const existing = state.backlog.find((ticket) => ticket.id === state.modal.id)
   const owner = state.profiles.find((profile) => profile.id === data.ownerId) || state.profile
   const now = new Date().toISOString()
+  const newSource = addBacklogSource(data.newSource)
+  const completedSubtasks = new Set(new FormData(event.currentTarget).getAll('completedSubtasks'))
+  const subtasks = String(data.subtasks || '')
+    .split(/\r?\n/)
+    .map((title) => title.trim())
+    .filter(Boolean)
+    .map((title, index) => ({
+      id: existing?.subtasks?.find((subtask) => subtask.title === title)?.id || `${existing?.id || 'new'}-subtask-${index + 1}`,
+      title,
+      done: completedSubtasks.has(title),
+    }))
   const selectedTagNames = new FormData(event.currentTarget).getAll('tags')
   const newTagName = String(data.newTag || '').trim()
   const newTagColor = USER_COLORS.find((color) => color.id === data.newTagColorKey)
@@ -2687,7 +3074,7 @@ function saveBacklogTicket(event) {
     ownerId: owner.id,
     createdById: existing?.createdById || state.profile.id,
     priority: data.priority,
-    source: data.source,
+    source: newSource || data.source,
     tags: nextTags,
     due: existing?.due || state.modal.prefill?.due || 'À cadrer',
     feature: existing?.feature || state.modal.prefill?.feature || 'Backlog / Kanban',
@@ -2695,6 +3082,9 @@ function saveBacklogTicket(event) {
     risk: existing?.risk || state.modal.prefill?.risk || '',
     validation: existing?.validation || state.modal.prefill?.validation || '',
     attachment,
+    parentId: data.parentId && data.parentId !== (existing?.id || '') ? data.parentId : '',
+    subtasks,
+    createdAt: existing?.createdAt || now,
     updatedAt: now,
   })
 
@@ -2712,6 +3102,7 @@ function saveBacklogTicket(event) {
     persistPlaytests()
   }
   state.modal = null
+  clearTicketDraft()
   persistBacklog()
   render()
   showToast(existing ? `${ticket.id} mis à jour.` : `${ticket.id} créé.`)
@@ -2738,8 +3129,11 @@ function deleteBacklogTicket(ticketId) {
   const ticket = state.backlog.find((item) => item.id === ticketId)
   if (!ticket) return
   if (!window.confirm(`Supprimer ${ticket.id} du backlog prototype ?`)) return
-  state.backlog = state.backlog.filter((item) => item.id !== ticketId)
+  state.backlog = state.backlog
+    .filter((item) => item.id !== ticketId)
+    .map((item) => item.parentId === ticketId ? { ...item, parentId: '' } : item)
   state.modal = null
+  clearTicketDraft()
   persistBacklog()
   render()
   showToast(`${ticket.id} supprimé du backlog prototype.`)
@@ -2853,6 +3247,7 @@ function openModal(modal) {
 
 function closeModal() {
   if (!state.modal) return
+  if (state.modal.type === 'ticket') clearTicketDraft()
   if (state.modal.type === 'playtest') {
     state.playtestEditingId = null
     state.playtestEditorPhase = null
@@ -3292,7 +3687,8 @@ async function toggleFavorite(id) {
 
 function savePlaytestSession(event) {
   event.preventDefault()
-  const data = Object.fromEntries(new FormData(event.currentTarget))
+  const formData = new FormData(event.currentTarget)
+  const data = Object.fromEntries(formData)
   const existing = state.playtests.find((session) => session.id === state.modal?.id)
   const listFromLines = (value) => String(value || '').split(/\r?\n/).map((item) => item.trim()).filter(Boolean)
   if (state.playtestEditorPhase === 'report') {
@@ -3300,6 +3696,12 @@ function savePlaytestSession(event) {
     const session = sanitizePlaytest({
       ...existing,
       status: 'Terminée',
+      date: data.date,
+      prototype: data.prototype,
+      facilitatorId: data.facilitatorId,
+      participants: String(data.participants || '').split(',').map((item) => item.trim()).filter(Boolean),
+      scenario: data.scenario,
+      relatedTicketIds: formData.getAll('relatedTicketIds').map(String),
       sentiment: data.sentiment,
       learnings: listFromLines(data.learnings),
       issues: listFromLines(data.issues),
@@ -3771,4 +4173,17 @@ function showToast(message) {
   toast.textContent = message
   document.body.append(toast)
   state.toastTimer = window.setTimeout(() => toast.remove(), 3600)
+}
+
+function deletePlaytestSession(id) {
+  const session = state.playtests.find((item) => item.id === id)
+  if (!session) return
+  if (!window.confirm(`Supprimer définitivement ${session.id} et son compte rendu ?`)) return
+  state.playtests = state.playtests.filter((item) => item.id !== id)
+  state.playtestEditingId = null
+  state.playtestEditorPhase = null
+  state.modal = null
+  persistPlaytests()
+  render()
+  showToast(`${session.id} supprimée.`)
 }

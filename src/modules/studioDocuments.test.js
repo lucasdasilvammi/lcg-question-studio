@@ -4,8 +4,8 @@ import { readFileSync } from 'node:fs'
 import { createWorkspaceSnapshot, documentMap, documentPayload, invalidDocumentKeys, missingDocumentKeys, resolvedRevision, snapshotModules } from './studioDocuments.js'
 
 test('module state is serialized into isolated documents', () => {
-  const state = { backlog: [{ id: 'LCG-1' }], backlogTags: [{ name: 'App' }], ideas: [{ id: 'I-1' }], playtests: [], worklogPatches: [] }
-  assert.deepEqual(documentPayload('backlog', state), { tickets: state.backlog, tags: state.backlogTags })
+  const state = { backlog: [{ id: 'LCG-1' }], backlogTags: [{ name: 'App' }], backlogSources: ['Moi'], ideas: [{ id: 'I-1' }], playtests: [], worklogPatches: [] }
+  assert.deepEqual(documentPayload('backlog', state), { tickets: state.backlog, tags: state.backlogTags, sources: state.backlogSources })
   assert.deepEqual(documentPayload('ideas', state), { items: state.ideas })
   assert.throws(() => documentPayload('unknown', state))
 })
@@ -14,6 +14,7 @@ test('workspace snapshot round trip preserves every shared module', () => {
   const state = {
     backlog: [{ id: 'LCG-1' }],
     backlogTags: [{ name: 'App' }],
+    backlogSources: ['Moi'],
     ideas: [{ id: 'I-1' }],
     playtests: [{ id: 'PT-1' }],
     worklogPatches: [{ id: 'P-1' }],

@@ -6,6 +6,9 @@ export const STORAGE_KEYS = {
   backlogColumns: 'lcg-studio-backlog-columns-v1',
   backlogView: 'lcg-studio-backlog-view-v1',
   backlogTags: 'lcg-studio-backlog-tags-v4',
+  backlogSources: 'lcg-studio-backlog-sources-v1',
+  backlogColumnWidths: 'lcg-studio-backlog-column-widths-v1',
+  ticketDraft: 'lcg-studio-ticket-draft-v1',
   ideas: 'lcg-studio-ideas-v1',
   playtests: 'lcg-studio-playtests-v1',
 }

@@ -83,13 +83,16 @@ function backlogMarkup({ state, escapeHtml, profileBadgeMarkup }) {
                 ${backlogTags(state.backlog).map((tag) => optionMarkup(tag, state.backlogTagFilter, escapeHtml)).join('')}
               </select>
             </label>
-            <label class="backlog-filter-control">
-              <span>Source</span>
-              <select data-backlog-filter="source" aria-label="Filtrer par source">
-                <option value="all">Toutes</option>
-                ${BACKLOG_SOURCES.map((source) => optionMarkup(source, state.backlogSourceFilter, escapeHtml)).join('')}
-              </select>
-            </label>
+            <div class="backlog-source-filter-group">
+              <label class="backlog-filter-control">
+                <span>Source</span>
+                <select data-backlog-filter="source" aria-label="Filtrer par source">
+                  <option value="all">Toutes</option>
+                  ${state.backlogSources.map((source) => optionMarkup(source, state.backlogSourceFilter, escapeHtml)).join('')}
+                </select>
+              </label>
+              <button class="source-add-button" type="button" data-action="create-ticket-source" aria-label="Créer une source" title="Créer une source">+</button>
+            </div>
             <label class="backlog-filter-control">
               <span>Priorité</span>
               <select data-backlog-filter="priority" aria-label="Filtrer par priorité">
@@ -146,7 +149,7 @@ function backlogMarkup({ state, escapeHtml, profileBadgeMarkup }) {
             ${visibleStatuses.map((status) => {
               const tickets = visibleBacklog.filter((ticket) => ticket.status === status)
               return `
-                <article class="kanban-column" data-status="${escapeHtml(status)}" data-drop-status="${escapeHtml(status)}">
+                <article class="kanban-column" style="--column-weight: ${state.backlogColumnWidths?.[status] || 264}" data-status="${escapeHtml(status)}" data-drop-status="${escapeHtml(status)}">
                   <header class="kanban-column-head">
                     <div><i aria-hidden="true"></i><h2>${escapeHtml(status)}</h2></div>
                     <span>${tickets.length}</span>
@@ -155,6 +158,7 @@ function backlogMarkup({ state, escapeHtml, profileBadgeMarkup }) {
                     ${['Backlog', 'À faire'].includes(status) ? createTicketCardMarkup(status, escapeHtml) : ''}
                     ${tickets.length ? tickets.map((ticket) => ticketRowMarkup(ticket, state, escapeHtml, profileBadgeMarkup)).join('') : '<p class="kanban-empty">Aucun ticket</p>'}
                   </div>
+                  <button class="kanban-column-resizer" type="button" data-column-resizer="${escapeHtml(status)}" aria-label="Redimensionner la colonne ${escapeHtml(status)}" title="Faire glisser pour redimensionner"></button>
                 </article>
               `
             }).join('')}
@@ -528,7 +532,7 @@ function playtestGroupMarkup(title, description, sessions, tone, state, escapeHt
   `
 }
 
-export function playtestEditorMarkup(session, state, escapeHtml) {
+function legacyPlaytestEditorMarkup(session, state, escapeHtml) {
   const phase = state.playtestEditorPhase || 'planning'
   const isReport = phase === 'report'
   const value = (field) => escapeHtml(session?.[field] || '')
@@ -611,6 +615,9 @@ function featureCardMarkup(feature, escapeHtml) {
 function ticketRowMarkup(ticket, state, escapeHtml, profileBadgeMarkup) {
   const tags = ticketTags(ticket)
   const description = ticket.description || ticket.objective || 'Description à compléter.'
+  const childTickets = state.backlog.filter((item) => item.parentId === ticket.id)
+  const completedChildren = childTickets.filter((item) => item.status === 'Terminé').length
+  const parentTicket = state.backlog.find((item) => item.id === ticket.parentId)
   return `
     <div class="record-row ticket-row" draggable="true" data-ticket-id="${escapeHtml(ticket.id)}" data-priority="${escapeHtml(ticket.priority)}" tabindex="0">
       <div class="ticket-card-top">
@@ -626,8 +633,13 @@ function ticketRowMarkup(ticket, state, escapeHtml, profileBadgeMarkup) {
           </div>
         ` : ''}
         <div class="ticket-tags">
+        ${parentTicket ? `<span class="ticket-parent-chip">↳ ${escapeHtml(parentTicket.id)} · ${escapeHtml(parentTicket.title)}</span>` : ''}
           ${tags.map((tag) => `<span class="ticket-tag-chip" style="--tag-primary: ${escapeHtml(tag.primary || '#f4f1ea')}; --tag-secondary: ${escapeHtml(tag.secondary || '#262a31')}">${escapeHtml(tag.name)}</span>`).join('')}
         </div>
+        ${childTickets.length ? `<div class="ticket-subtask-progress" title="${completedChildren} sous-tickets terminés sur ${childTickets.length}">
+          <span><i style="width: ${Math.round((completedChildren / childTickets.length) * 100)}%"></i></span>
+          <small>${completedChildren}/${childTickets.length} sous-tickets</small>
+        </div>` : ''}
       </div>
       <footer class="ticket-footer">
         ${profileBadgeMarkup(ticket.createdById || ticket.ownerId, creatorLabel(ticket, state.profiles))}
@@ -737,7 +749,11 @@ function featureSummaries(tickets) {
 }
 
 function sortTodoTickets(left, right) {
-  return todoWeight(left) - todoWeight(right) || left.id.localeCompare(right.id)
+  const leftDate = Date.parse(left.createdAt || left.updatedAt || '') || 0
+  const rightDate = Date.parse(right.createdAt || right.updatedAt || '') || 0
+  return todoWeight(left) - todoWeight(right)
+    || leftDate - rightDate
+    || left.id.localeCompare(right.id)
 }
 
 function todoWeight(ticket) {
@@ -759,6 +775,11 @@ function playtestCardMarkup(playtest, state, escapeHtml, profileBadgeMarkup) {
   const linkedTickets = (playtest.relatedTicketIds || [])
     .map((ticketId) => linkedTicketMarkup(ticketId, state.backlog, escapeHtml))
     .join('')
+  const noteSections = [
+    noteListMarkup('Apprentissages', playtest.learnings, escapeHtml),
+    noteListMarkup('Problèmes observés', playtest.issues, escapeHtml),
+    noteListMarkup('Décisions', playtest.decisions, escapeHtml),
+  ].filter(Boolean).join('')
 
   return `
     <article class="playtest-card" data-status="${escapeHtml(playtest.status)}">
@@ -778,11 +799,7 @@ function playtestCardMarkup(playtest, state, escapeHtml, profileBadgeMarkup) {
       ${needsReport ? '<div class="playtest-report-prompt"><strong>Test effectué</strong><span>Le compte rendu reste à compléter.</span></div>' : ''}
       ${isFinished ? `
         ${playtest.sentiment ? `<p class="playtest-sentiment"><b>Ressenti</b>${escapeHtml(playtest.sentiment)}</p>` : ''}
-        <div class="playtest-notes">
-          ${noteListMarkup('Apprentissages', playtest.learnings, escapeHtml)}
-          ${noteListMarkup('Problèmes observés', playtest.issues, escapeHtml)}
-          ${noteListMarkup('Décisions', playtest.decisions, escapeHtml)}
-        </div>
+        ${noteSections ? `<div class="playtest-notes">${noteSections}</div>` : ''}
         <div class="playtest-linked">
           <span>Tickets liés</span>
           <div class="linked-ticket-list">${linkedTickets || '<span class="muted-line">Aucun ticket lié.</span>'}</div>
@@ -825,8 +842,10 @@ function scoreMarkup(label, value, escapeHtml) {
   `
 }
 
-function noteListMarkup(title, items = [], escapeHtml) {
+function legacyNoteListMarkup(title, items = [], escapeHtml) {
+  if (!items.length) return ''
   return `
+  if (!items.length) return ''
     <section>
       <h3>${escapeHtml(title)}</h3>
       ${items.length
@@ -915,5 +934,76 @@ function linkedTicketMarkup(ticketId, backlog, escapeHtml) {
       <strong>${escapeHtml(ticketId)}</strong>
       <span>${escapeHtml(ticket?.status || 'Introuvable')}</span>
     </button>
+  `
+}
+
+export function playtestEditorMarkup(session, state, escapeHtml) {
+  const phase = state.playtestEditorPhase || 'planning'
+  const isReport = phase === 'report'
+  const value = (field) => escapeHtml(session?.[field] || '')
+  const lines = (field) => escapeHtml((session?.[field] || []).join('\n'))
+  const linkedTicketIds = new Set(session?.relatedTicketIds || [])
+
+  return `
+    <section class="playtest-editor ${isReport ? 'report-phase' : 'planning-phase'}" aria-label="${isReport ? 'Modifier le test et son compte rendu' : 'Planifier une session'}">
+      <form id="playtest-form">
+        <div class="playtest-editor-head">
+          <div>
+            <p class="eyebrow">${session ? escapeHtml(session.id) : 'Préparation'}</p>
+            <h2>${isReport ? 'Modifier le test et son compte rendu' : session ? `Modifier ${escapeHtml(session.id)}` : 'Planifier une session'}</h2>
+          </div>
+          <button class="button small" type="button" data-action="playtest-cancel">Annuler</button>
+        </div>
+
+        <div class="playtest-form-grid planning-fields">
+          <label class="field"><span>Nom du test / version</span><input name="prototype" value="${value('prototype')}" required /></label>
+          <label class="field"><span>Date</span><input name="date" type="date" value="${escapeHtml(session?.date || new Date().toISOString().slice(0, 10))}" required /></label>
+          <label class="field"><span>Facilitation</span><select name="facilitatorId">${state.profiles.map((profile) => `<option value="${escapeHtml(profile.id)}" ${profile.id === (session?.facilitatorId || state.profile.id) ? 'selected' : ''}>${escapeHtml(profile.display_name)}</option>`).join('')}</select></label>
+          <label class="field"><span>Joueur(s)</span><input name="participants" value="${escapeHtml((session?.participants || []).join(', '))}" placeholder="Prénoms séparés par des virgules" /></label>
+          <label class="field full"><span>Objectif / scénario du test</span><textarea name="scenario" required placeholder="Ce que cette session doit permettre de vérifier">${value('scenario')}</textarea></label>
+        </div>
+
+        ${isReport ? `
+          <div class="playtest-form-grid report-fields">
+            <label class="field full"><span>Ressenti général</span><textarea name="sentiment" required placeholder="Ce qui s’est passé pendant la session">${value('sentiment')}</textarea></label>
+            <label class="field"><span>Apprentissages</span><textarea name="learnings" placeholder="Un constat par ligne">${lines('learnings')}</textarea></label>
+            <label class="field"><span>Problèmes observés</span><textarea name="issues" placeholder="Un problème par ligne">${lines('issues')}</textarea></label>
+            <label class="field"><span>Décisions</span><textarea name="decisions" placeholder="Une décision par ligne">${lines('decisions')}</textarea></label>
+            <label class="field"><span>Prochaines actions</span><textarea name="nextActions" placeholder="Une action par ligne">${lines('nextActions')}</textarea></label>
+            <label class="field full"><span>Lien des documents</span><input name="driveUrl" type="url" value="${value('driveUrl')}" placeholder="https://…" /></label>
+            <div class="field full">
+              <span>Tickets existants liés à ce test</span>
+              <div class="playtest-ticket-picker">
+                ${state.backlog.length ? state.backlog.map((ticket) => `
+                  <label class="playtest-ticket-choice">
+                    <input type="checkbox" name="relatedTicketIds" value="${escapeHtml(ticket.id)}" ${linkedTicketIds.has(ticket.id) ? 'checked' : ''} />
+                    <span><b>${escapeHtml(ticket.id)}</b><em>${escapeHtml(ticket.title)}</em></span>
+                    <small>${escapeHtml(ticket.status)}</small>
+                  </label>
+                `).join('') : '<p class="muted-line">Aucun ticket disponible dans le backlog.</p>'}
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="playtest-editor-actions split-footer">
+          <div>${session ? `<button class="button danger" type="button" data-action="playtest-delete" data-playtest-id="${escapeHtml(session.id)}">Supprimer le test</button>` : ''}</div>
+          <div>
+            ${isReport ? `<button class="button" type="button" data-action="playtest-revert" data-playtest-id="${escapeHtml(session?.id || '')}">Repasser en planifiée</button>` : ''}
+            <button class="button primary" type="submit">${isReport ? 'Enregistrer toutes les modifications' : session ? 'Enregistrer la planification' : 'Planifier la session'}</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  `
+}
+
+function noteListMarkup(title, items = [], escapeHtml) {
+  if (!items.length) return ''
+  return `
+    <section>
+      <h3>${escapeHtml(title)}</h3>
+      <ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    </section>
   `
 }

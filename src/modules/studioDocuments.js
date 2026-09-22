@@ -28,7 +28,7 @@ export function snapshotModules(snapshot) {
   return modules
 }
 export function documentPayload(key, state) {
-  if (key === 'backlog') return { tickets: state.backlog, tags: state.backlogTags }
+  if (key === 'backlog') return { tickets: state.backlog, tags: state.backlogTags, sources: state.backlogSources || [] }
   if (key === 'ideas') return { items: state.ideas }
   if (key === 'playtests') return { sessions: state.playtests }
   if (key === 'worklog') return { patches: state.worklogPatches }
